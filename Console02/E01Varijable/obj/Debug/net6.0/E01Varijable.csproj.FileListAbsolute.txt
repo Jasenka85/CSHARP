@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\bin\Debug\net6.0\E01Varijable.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\bin\Debug\net6.0\E01Varijable.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\bin\Debug\net6.0\E01Varijable.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\bin\Debug\net6.0\E01Varijable.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\bin\Debug\net6.0\E01Varijable.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\E01Varijable.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\E01Varijable.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\E01Varijable.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\E01Varijable.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\E01Varijable.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\E01Varijable.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\refint\E01Varijable.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\E01Varijable.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\E01Varijable.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E01Varijable\obj\Debug\net6.0\ref\E01Varijable.dll

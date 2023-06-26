@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\bin\Debug\net6.0\E04Operatori.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\bin\Debug\net6.0\E04Operatori.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\bin\Debug\net6.0\E04Operatori.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\bin\Debug\net6.0\E04Operatori.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\bin\Debug\net6.0\E04Operatori.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\E04Operatori.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\E04Operatori.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\E04Operatori.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\E04Operatori.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\E04Operatori.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\E04Operatori.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\refint\E04Operatori.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\E04Operatori.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\E04Operatori.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E04Operatori\obj\Debug\net6.0\ref\E04Operatori.dll

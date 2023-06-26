@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\bin\Debug\net6.0\DZ-TablicaMnozenja.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\bin\Debug\net6.0\DZ-TablicaMnozenja.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\bin\Debug\net6.0\DZ-TablicaMnozenja.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\bin\Debug\net6.0\DZ-TablicaMnozenja.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\bin\Debug\net6.0\DZ-TablicaMnozenja.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\DZ-TablicaMnozenja.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\DZ-TablicaMnozenja.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\DZ-TablicaMnozenja.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\DZ-TablicaMnozenja.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\DZ-TablicaMnozenja.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\DZ-TablicaMnozenja.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\refint\DZ-TablicaMnozenja.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\DZ-TablicaMnozenja.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\DZ-TablicaMnozenja.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-TablicaMnozenja\obj\Debug\net6.0\ref\DZ-TablicaMnozenja.dll

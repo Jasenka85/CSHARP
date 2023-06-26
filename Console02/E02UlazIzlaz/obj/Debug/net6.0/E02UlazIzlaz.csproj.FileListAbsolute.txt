@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\bin\Debug\net6.0\E02UlazIzlaz.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\bin\Debug\net6.0\E02UlazIzlaz.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\bin\Debug\net6.0\E02UlazIzlaz.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\bin\Debug\net6.0\E02UlazIzlaz.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\bin\Debug\net6.0\E02UlazIzlaz.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\E02UlazIzlaz.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\E02UlazIzlaz.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\E02UlazIzlaz.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\E02UlazIzlaz.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\E02UlazIzlaz.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\E02UlazIzlaz.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\refint\E02UlazIzlaz.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\E02UlazIzlaz.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\E02UlazIzlaz.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E02UlazIzlaz\obj\Debug\net6.0\ref\E02UlazIzlaz.dll

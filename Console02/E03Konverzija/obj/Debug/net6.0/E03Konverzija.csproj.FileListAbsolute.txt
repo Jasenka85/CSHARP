@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\bin\Debug\net6.0\E03Konverzija.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\bin\Debug\net6.0\E03Konverzija.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\bin\Debug\net6.0\E03Konverzija.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\bin\Debug\net6.0\E03Konverzija.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\bin\Debug\net6.0\E03Konverzija.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\E03Konverzija.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\E03Konverzija.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\E03Konverzija.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\E03Konverzija.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\E03Konverzija.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\E03Konverzija.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\refint\E03Konverzija.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\E03Konverzija.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\E03Konverzija.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\E03Konverzija\obj\Debug\net6.0\ref\E03Konverzija.dll

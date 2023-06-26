@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\bin\Debug\net6.0\DZ-If.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\bin\Debug\net6.0\DZ-If.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\bin\Debug\net6.0\DZ-If.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\bin\Debug\net6.0\DZ-If.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\bin\Debug\net6.0\DZ-If.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\DZ-If.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\DZ-If.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\DZ-If.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\DZ-If.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\DZ-If.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\DZ-If.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\refint\DZ-If.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\DZ-If.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\DZ-If.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\DZ-If\obj\Debug\net6.0\ref\DZ-If.dll

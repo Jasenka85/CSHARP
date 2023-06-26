@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\bin\Debug\net6.0\DZ-Operatori.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\bin\Debug\net6.0\DZ-Operatori.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\bin\Debug\net6.0\DZ-Operatori.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\bin\Debug\net6.0\DZ-Operatori.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\bin\Debug\net6.0\DZ-Operatori.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\DZ-Operatori.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\DZ-Operatori.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\DZ-Operatori.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\DZ-Operatori.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\DZ-Operatori.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\DZ-Operatori.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\refint\DZ-Operatori.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\DZ-Operatori.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\DZ-Operatori.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console02\DZ-Operatori\obj\Debug\net6.0\ref\DZ-Operatori.dll

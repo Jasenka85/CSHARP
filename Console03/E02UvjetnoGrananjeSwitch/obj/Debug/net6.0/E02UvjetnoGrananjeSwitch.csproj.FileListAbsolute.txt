@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\bin\Debug\net6.0\E02UvjetnoGrananjeSwitch.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\bin\Debug\net6.0\E02UvjetnoGrananjeSwitch.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\bin\Debug\net6.0\E02UvjetnoGrananjeSwitch.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\bin\Debug\net6.0\E02UvjetnoGrananjeSwitch.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\bin\Debug\net6.0\E02UvjetnoGrananjeSwitch.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\E02UvjetnoGrananjeSwitch.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\E02UvjetnoGrananjeSwitch.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\E02UvjetnoGrananjeSwitch.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\E02UvjetnoGrananjeSwitch.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\E02UvjetnoGrananjeSwitch.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\E02UvjetnoGrananjeSwitch.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\refint\E02UvjetnoGrananjeSwitch.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\E02UvjetnoGrananjeSwitch.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\E02UvjetnoGrananjeSwitch.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E02UvjetnoGrananjeSwitch\obj\Debug\net6.0\ref\E02UvjetnoGrananjeSwitch.dll

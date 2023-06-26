@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\bin\Debug\net6.0\E03Nizovi.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\bin\Debug\net6.0\E03Nizovi.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\bin\Debug\net6.0\E03Nizovi.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\bin\Debug\net6.0\E03Nizovi.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\bin\Debug\net6.0\E03Nizovi.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\E03Nizovi.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\E03Nizovi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\E03Nizovi.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\E03Nizovi.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\E03Nizovi.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\E03Nizovi.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\refint\E03Nizovi.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\E03Nizovi.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\E03Nizovi.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console03\E03Nizovi\obj\Debug\net6.0\ref\E03Nizovi.dll
