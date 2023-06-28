@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\bin\Debug\net6.0\E03DoPetlja.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\bin\Debug\net6.0\E03DoPetlja.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\bin\Debug\net6.0\E03DoPetlja.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\bin\Debug\net6.0\E03DoPetlja.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\bin\Debug\net6.0\E03DoPetlja.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\E03DoPetlja.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\E03DoPetlja.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\E03DoPetlja.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\E03DoPetlja.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\E03DoPetlja.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\E03DoPetlja.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\refint\E03DoPetlja.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\E03DoPetlja.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\E03DoPetlja.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E03DoPetlja\obj\Debug\net6.0\ref\E03DoPetlja.dll

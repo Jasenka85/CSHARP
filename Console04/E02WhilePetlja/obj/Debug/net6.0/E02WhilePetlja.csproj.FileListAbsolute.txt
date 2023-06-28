@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\E02WhilePetlja.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\E02WhilePetlja.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\E02WhilePetlja.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\E02WhilePetlja.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\E02WhilePetlja.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\bin\Debug\net6.0\E02WhilePetlja.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\bin\Debug\net6.0\E02WhilePetlja.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\bin\Debug\net6.0\E02WhilePetlja.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\bin\Debug\net6.0\E02WhilePetlja.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\bin\Debug\net6.0\E02WhilePetlja.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\E02WhilePetlja.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\refint\E02WhilePetlja.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\E02WhilePetlja.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\E02WhilePetlja.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\E02WhilePetlja\obj\Debug\net6.0\ref\E02WhilePetlja.dll

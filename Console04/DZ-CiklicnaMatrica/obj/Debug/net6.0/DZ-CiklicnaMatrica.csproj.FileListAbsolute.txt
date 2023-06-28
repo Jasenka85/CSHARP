@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\bin\Debug\net6.0\DZ-CiklicnaMatrica.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\bin\Debug\net6.0\DZ-CiklicnaMatrica.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\bin\Debug\net6.0\DZ-CiklicnaMatrica.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\bin\Debug\net6.0\DZ-CiklicnaMatrica.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\bin\Debug\net6.0\DZ-CiklicnaMatrica.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\DZ-CiklicnaMatrica.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\DZ-CiklicnaMatrica.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\DZ-CiklicnaMatrica.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\DZ-CiklicnaMatrica.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\DZ-CiklicnaMatrica.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\DZ-CiklicnaMatrica.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\refint\DZ-CiklicnaMatrica.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\DZ-CiklicnaMatrica.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\DZ-CiklicnaMatrica.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console04\DZ-CiklicnaMatrica\obj\Debug\net6.0\ref\DZ-CiklicnaMatrica.dll
