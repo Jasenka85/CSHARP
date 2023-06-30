@@ -10,6 +10,8 @@ int[,] matrica = new int[redaka, stupaca];
 int b = 1;
 
 int n = 0;          // n je dodatni brojač - broj krugova koje smo namotali
+                    // kada ispišemo jedan krug brojeva, n se poveća za 1
+                    // i sužava područje za 1 sa svih strana
                     // ispisat ću matricu nakon svakog kruga da se vidi kako upisuje brojeve
 
 string s;
@@ -49,7 +51,7 @@ while (b < stupaca*redaka)
     }
 
 
-    for (int i = 0; i < redaka; i++)            // ispisujem matricu nakon svakog kruga i povećam brojač
+    for (int i = 0; i < redaka; i++)            // ispisujem matricu nakon svakog kruga i povećam n za 1
     {
         for (int j = 0; j < stupaca; j++)
         {
