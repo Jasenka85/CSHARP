@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\bin\Debug\net6.0\DZ-LjubavniKalkulator.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\bin\Debug\net6.0\DZ-LjubavniKalkulator.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\bin\Debug\net6.0\DZ-LjubavniKalkulator.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\bin\Debug\net6.0\DZ-LjubavniKalkulator.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\bin\Debug\net6.0\DZ-LjubavniKalkulator.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\DZ-LjubavniKalkulator.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\DZ-LjubavniKalkulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\DZ-LjubavniKalkulator.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\DZ-LjubavniKalkulator.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\DZ-LjubavniKalkulator.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\DZ-LjubavniKalkulator.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\refint\DZ-LjubavniKalkulator.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\DZ-LjubavniKalkulator.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\DZ-LjubavniKalkulator.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console05\DZ-LjubavniKalkulator\obj\Debug\net6.0\ref\DZ-LjubavniKalkulator.dll
