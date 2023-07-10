@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\bin\Debug\net6.0\E03JednakostObjekata.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\bin\Debug\net6.0\E03JednakostObjekata.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\bin\Debug\net6.0\E03JednakostObjekata.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\bin\Debug\net6.0\E03JednakostObjekata.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\bin\Debug\net6.0\E03JednakostObjekata.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\E03JednakostObjekata.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\E03JednakostObjekata.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\E03JednakostObjekata.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\E03JednakostObjekata.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\E03JednakostObjekata.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\E03JednakostObjekata.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\refint\E03JednakostObjekata.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\E03JednakostObjekata.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\E03JednakostObjekata.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E03JednakostObjekata\obj\Debug\net6.0\ref\E03JednakostObjekata.dll

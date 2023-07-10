@@ -1,0 +1,4 @@
+﻿
+
+Kreirajte klasu Dokument s dva konstruktora (po izboru)
+u Program.cs napravite tri instance klase Dokument

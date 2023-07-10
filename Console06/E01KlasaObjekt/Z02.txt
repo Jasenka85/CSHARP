@@ -1,0 +1,2 @@
+﻿Kreirati klasu Smjer s konstruktorom koji proma naziv smjera i cijenu
+U Program.cs napraviti jednu instancu klase Smjer

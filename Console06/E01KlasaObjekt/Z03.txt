@@ -1,0 +1,3 @@
+﻿
+Kreirati klasu Grupa s konstruktorom koji ne prima parametre
+U Program cs. napraviti 128 instanci klase Grupa

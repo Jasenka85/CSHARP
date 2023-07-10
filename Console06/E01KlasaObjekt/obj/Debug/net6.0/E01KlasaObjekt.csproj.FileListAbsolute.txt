@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\bin\Debug\net6.0\E01KlasaObjekt.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\bin\Debug\net6.0\E01KlasaObjekt.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\bin\Debug\net6.0\E01KlasaObjekt.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\bin\Debug\net6.0\E01KlasaObjekt.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\bin\Debug\net6.0\E01KlasaObjekt.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\E01KlasaObjekt.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\E01KlasaObjekt.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\E01KlasaObjekt.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\E01KlasaObjekt.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\E01KlasaObjekt.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\E01KlasaObjekt.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\refint\E01KlasaObjekt.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\E01KlasaObjekt.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\E01KlasaObjekt.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console06\E01KlasaObjekt\obj\Debug\net6.0\ref\E01KlasaObjekt.dll
