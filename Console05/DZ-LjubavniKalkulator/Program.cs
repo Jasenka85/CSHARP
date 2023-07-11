@@ -8,10 +8,12 @@ int[] StringuNiz(string z)
     int[] napraviniz = new int[p];
     for (int i = 0; i < p; i++)
     {
-        napraviniz[i] = Convert.ToInt32(z[i])-48;          // pretvaramo string u niz brojeva (vrlo nezgodno, vidi ASCII!)
+        napraviniz[i] = Convert.ToInt32(z[i])-48;          // pretvaramo string u niz brojeva (vidi ASCII!)
         Console.Write(napraviniz[i] + " ");
     }
     Console.WriteLine();
+    Console.WriteLine();
+
     return napraviniz;
 }
 
@@ -20,6 +22,8 @@ int[] PrebrojiSlova(string x, string y)
     x = x.ToUpper();
     y = y.ToUpper();
     string nizslova = x + y;        //prebacimo sve u velika slova i spojimo u jedan string
+
+    Console.WriteLine();
     Console.WriteLine(nizslova);
 
     string s = "";
@@ -45,11 +49,15 @@ int[] PrebrojiSlova(string x, string y)
             n++;        // n se povećava dok ne dođemo do slova na 0. mjestu
         }               // kada je to gotovo, prelazimo na sljedeće slovo (i se poveća za 1)
     }
+    
+    Console.WriteLine();
+
     for (int i = 0; i < k; i++)
     {
         Console.Write(nizbrojeva[i] + " ");     //ispišemo sve članove niza brojeva
         s = s + nizbrojeva[i];
     }
+    
     Console.WriteLine();
 
     nizbrojeva = StringuNiz(s);
@@ -82,27 +90,25 @@ int[] Sansa(int[] niz)
     noviniz = StringuNiz(t);
 
     if (noviniz.Length <= 2)
+    {
+        Console.WriteLine("Šansa za vašu ljubav je {0}{1} %", noviniz[0], noviniz[1]);
         return noviniz;
+        
+    }
     else
         return Sansa(noviniz);
-
-
-
 
 }
 
 
-Console.Write("Unesi svoje ime:");
+Console.Write("Unesi svoje ime: ");
 string a = Console.ReadLine();
 
-Console.Write("Unesi ime svoje simpatije:");
+Console.Write("Unesi ime svoje simpatije: ");
 string b = Console.ReadLine();
 
-int[] c = PrebrojiSlova(a, b);
 
-int[] d = Sansa(c);
+Sansa(PrebrojiSlova(a, b));
 
-
-Console.WriteLine("Šansa za vašu ljubav je {0}{1} %", d[0], d[1]);
 
 

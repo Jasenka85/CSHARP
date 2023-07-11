@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\bin\Debug\net6.0\LjetniRad.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\bin\Debug\net6.0\LjetniRad.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\bin\Debug\net6.0\LjetniRad.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\bin\Debug\net6.0\LjetniRad.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\bin\Debug\net6.0\LjetniRad.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\LjetniRad.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\LjetniRad.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\LjetniRad.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\LjetniRad.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\LjetniRad.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\LjetniRad.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\refint\LjetniRad.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\LjetniRad.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\LjetniRad.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console08\LjetniRad\obj\Debug\net6.0\ref\LjetniRad.dll

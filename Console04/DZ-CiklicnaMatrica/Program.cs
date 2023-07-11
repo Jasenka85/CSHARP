@@ -1,12 +1,53 @@
-﻿int redaka, stupaca;
+﻿
 
-Console.Write("Unesi broj redova: ");
-redaka = int.Parse(Console.ReadLine());
+int ucitajBroj(string s)
+{
+    while (true)
+    {
+        int broj;
+        Console.Write("Unesi broj " + s + " matrice: ");
+        try
+        {        
+            broj = int.Parse(Console.ReadLine());
+            if (broj > 0)
+            {
+                Console.WriteLine();
+                return broj;
+            }
+            Console.WriteLine("Broj " + s + " mora biti pozitivan!");
+            Console.WriteLine();
 
-Console.Write("Unesi broj stupaca: ");
-stupaca = int.Parse(Console.ReadLine());
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Broj " + s + " mora biti prirodan broj!");
+            Console.WriteLine();
+
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("Ne pretjeruj!");
+            Console.WriteLine();
+        }
+        catch (Exception)           
+        {
+            Console.WriteLine("Ooops, nešto si zeznuo. Pokušaj ponovo!");
+            Console.WriteLine();
+        }
+        
+    }
+
+
+}
+
+
+
+int redaka = ucitajBroj("redaka");
+
+int stupaca = ucitajBroj("stupaca");
 
 int[,] matrica = new int[redaka, stupaca];
+
 int b = 1;
 
 int n = 0;          // n je dodatni brojač - broj krugova koje smo namotali
@@ -50,9 +91,13 @@ while (b < stupaca*redaka)
         else break;
     }
 
+    Console.WriteLine("   {0}. krug:", n+1);
+    Console.WriteLine();
 
     for (int i = 0; i < redaka; i++)            // ispisujem matricu nakon svakog kruga i povećam n za 1
     {
+
+        
         for (int j = 0; j < stupaca; j++)
         {
             s = "       " + matrica[i, j];
@@ -60,6 +105,7 @@ while (b < stupaca*redaka)
         }
         Console.WriteLine();
     }
+    Console.WriteLine();
     Console.WriteLine();
 
     n++;
