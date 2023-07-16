@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LjetniRad
 {
-    internal class Smjer: Entitet
+    internal class Smjer: Entitet           //za ovakvu klasu kažemo da je poco, jer ima samo svojstva
     {
         public string Naziv { get; set; }
         public int Trajanje { get; set; }

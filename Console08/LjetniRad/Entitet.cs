@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LjetniRad
 {
-    abstract class Entitet
+    internal abstract class Entitet
     {
         public int Sifra { get; set; }
     }

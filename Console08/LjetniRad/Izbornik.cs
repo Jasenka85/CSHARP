@@ -8,14 +8,15 @@ namespace LjetniRad
 {
     internal class Izbornik
     {
-        private ObradaSmjer ObradaSmjer;
-        private ObradaPolaznik ObradaPolaznik;
+        public ObradaSmjer ObradaSmjer { get; }
+        public ObradaPolaznik ObradaPolaznik { get; }
+
         private ObradaGrupa ObradaGrupa;
         public Izbornik()
         {
             ObradaSmjer = new ObradaSmjer();
             ObradaPolaznik = new ObradaPolaznik();
-            ObradaGrupa = new ObradaGrupa();
+            ObradaGrupa = new ObradaGrupa(this);    //pošaljemo sebe, odnosno Izbornik
             PozdravnaPoruka();
             PrikaziIzbornik();
         }
