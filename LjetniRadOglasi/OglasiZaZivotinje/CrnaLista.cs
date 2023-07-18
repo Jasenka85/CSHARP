@@ -12,8 +12,6 @@ namespace OglasiZaZivotinje
 
         public Korisnik Korisnik { get; set; }
 
-        public string IPadresa { get; set; }
-
         public string RazlogBlokiranja { get; set; }
 
         public DateTime DatumBlokiranja { get; set; }
@@ -23,6 +21,12 @@ namespace OglasiZaZivotinje
             this.Korisnik = korisnik;
 
         }
+
+        public override string ToString()
+        {
+            return Korisnik.Ime + " " + Korisnik.Prezime + " " + RazlogBlokiranja;
+        }
+
     }
     
 }

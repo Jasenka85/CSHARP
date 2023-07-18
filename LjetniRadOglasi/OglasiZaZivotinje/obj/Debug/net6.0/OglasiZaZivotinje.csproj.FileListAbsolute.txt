@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\bin\Debug\net6.0\OglasiZaZivotinje.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\bin\Debug\net6.0\OglasiZaZivotinje.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\bin\Debug\net6.0\OglasiZaZivotinje.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\bin\Debug\net6.0\OglasiZaZivotinje.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\bin\Debug\net6.0\OglasiZaZivotinje.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\OglasiZaZivotinje.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\OglasiZaZivotinje.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\OglasiZaZivotinje.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\OglasiZaZivotinje.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\OglasiZaZivotinje.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\OglasiZaZivotinje.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\refint\OglasiZaZivotinje.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\OglasiZaZivotinje.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\OglasiZaZivotinje.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\LjetniRadOglasi\OglasiZaZivotinje\obj\Debug\net6.0\ref\OglasiZaZivotinje.dll
