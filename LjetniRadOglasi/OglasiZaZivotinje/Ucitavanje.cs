@@ -80,5 +80,37 @@ namespace OglasiZaZivotinje
                 }
             }
         }
+
+        internal static bool UcitajBool(string poruka, string greska)
+        {
+            
+            Console.Write(poruka);
+            return Console.ReadLine().Trim().ToLower().Equals("da") ? true : false;
+               
+        }
+
+
+
+        internal static string OdrediUlogu(int broj)
+        {
+            string s;
+            switch (broj)
+            {
+                case 0:
+                    s = "korisnik";
+                    break;
+                case 1:
+                    s = "administrator";
+                    break;
+                case 2:
+                    s = "moderator";
+                    break;
+                default:
+                    s = "";
+                    break;
+            }
+            return s;
+
+        }
     }
 }

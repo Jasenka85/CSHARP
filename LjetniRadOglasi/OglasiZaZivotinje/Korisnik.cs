@@ -25,29 +25,11 @@ namespace OglasiZaZivotinje
         public string Grad { get; set; }
 
         public string IPadresa { get; set; }     // sustav bi automatski trebao zabilježiti IP adresu
-        public bool CrnaLista { get; set; }         // po defaultu false, samo admin može promijeniti
-
+        
 
         public override string ToString()
-        {
-            string s;
-            switch (Uloga)
-            {
-                case 0:
-                    s = "korisnik";
-                    break;
-                case 1:
-                    s = "administrator";
-                    break;
-                case 2:
-                    s = "moderator";
-                    break;
-                default: 
-                    s = "";
-                    break;
-            }
-            
-            return Ime + " " + Prezime + " " + s;
+        {   
+            return Ime + " " + Prezime + " - " + Ucitavanje.OdrediUlogu(Uloga);
         }
 
 

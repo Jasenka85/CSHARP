@@ -16,15 +16,11 @@ namespace OglasiZaZivotinje
 
         public DateTime DatumBlokiranja { get; set; }
 
-        public CrnaLista(Korisnik korisnik)
-        {
-            this.Korisnik = korisnik;
-
-        }
+        
 
         public override string ToString()
         {
-            return Korisnik.Ime + " " + Korisnik.Prezime + " " + RazlogBlokiranja;
+            return Korisnik.Ime + " " + Korisnik.Prezime + " - " + RazlogBlokiranja;
         }
 
     }

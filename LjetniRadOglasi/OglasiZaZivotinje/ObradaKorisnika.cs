@@ -9,33 +9,31 @@ namespace OglasiZaZivotinje
     internal class ObradaKorisnika
     {
         public List<Korisnik> Korisnici { get; }
-        public List<CrnaLista> KorisniciNaListi { get; }
+        
         public ObradaKorisnika()
         { 
             Korisnici = new List<Korisnik>();
-            KorisniciNaListi= new List<CrnaLista>();
             TestniPodaci();
         }
 
         public void PrikaziIzbornik()
         {
-            Console.WriteLine("*****************************************");
-            Console.WriteLine("      Izbornik za rad s korisnicima      ");
-            Console.WriteLine("*****************************************");
+            Console.WriteLine("*******************************************************");
+            Console.WriteLine("             Izbornik za rad s korisnicima             ");
+            Console.WriteLine("*******************************************************");
             Console.WriteLine("1. Pregledaj postojeće korisnike");
             Console.WriteLine("2. Unesi novog korisnika");
             Console.WriteLine("3. Promijeni postojećeg korisnika");
             Console.WriteLine("4. Obriši korisnika");
             Console.WriteLine("5. Dodaj admina ili moderatora");
-            Console.WriteLine("6. Pregledaj crnu listu");
-            Console.WriteLine("7. Stavi korisnika na crnu listu");
-            Console.WriteLine("8. Obriši korisnika iz crne liste");
-            Console.WriteLine("9. Povratak na glavni izbornik");
-            Console.WriteLine("*****************************************");
-            switch (Ucitavanje.UcitajBrojRaspon("Odaberite redni broj stavke iz izbornika: ", "Odabir mora biti broj između 1 i 9!", 1, 9))
+            Console.WriteLine("6. Povratak na glavni izbornik");
+            Console.WriteLine("*******************************************************");
+
+            switch (Ucitavanje.UcitajBrojRaspon("Odaberite redni broj stavke iz izbornika: ", "Odabir mora biti broj između 1 i 6!", 1, 6))
             { 
             case 1:
                     PregledKorisnika();
+                    PrikaziDetalje();
                     PrikaziIzbornik();
                     break;
             case 2:
@@ -54,46 +52,61 @@ namespace OglasiZaZivotinje
                     DodajOvlasti();
                     PrikaziIzbornik();
                     break;
-                case 6:
-                    PregledCrneListe();
-                    PrikaziIzbornik();
+               
+            case 6:
+                    Console.WriteLine("\nGotov rad s korisnicima!\n");
                     break;
-                case 7:
-                    NaCrnuListu();
-                    PrikaziIzbornik();
-                    break;
-                case 8:
-                    BrisiIzCrneListe();
-                    PrikaziIzbornik();
-                    break;
-                case 9:
-                    Console.WriteLine("Gotov rad s korisnicima!");
-                    break;
-
-
             }
         }
 
 
-        private void PregledKorisnika()
+        public void PregledKorisnika()
         {
             if (Korisnici.Count() == 0)
             {
-                Console.WriteLine("Nema korisnika na listi!");
+                Console.WriteLine("\nNema korisnika na listi!\n");
                 PrikaziIzbornik();
             }
             else
             {
-                Console.WriteLine("*****************************************");
-                Console.WriteLine("               Korisnici:                ");
-                Console.WriteLine("*****************************************");
+                Console.WriteLine("*******************************************************");
+                Console.WriteLine("                      Korisnici:                       ");
+                Console.WriteLine("*******************************************************");
                 int broj = 1;
                 foreach (Korisnik k in Korisnici)
                 {
                     Console.WriteLine("\t{0}. {1}", broj++, k);
                 }
-                Console.WriteLine("*****************************************");
+                Console.WriteLine("*******************************************************");
+                
+                
+                
             }
+        }
+
+
+        private void PrikaziDetalje()
+        {
+
+            while (true)
+            {
+                if (Ucitavanje.UcitajBool("Želite li detalje o nekom korisniku? \nUpišite 'da' ili bilo što drugo za ne: ", "Nije dobar unos."))
+                {
+                    int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite pregledati: ", "Nije dobar odabir.", 1, Korisnici.Count());
+                    var k = Korisnici[index - 1];
+                    Console.WriteLine("\t Ime: {0}", k.Ime);
+                    Console.WriteLine("\t Prezime: {0}", k.Prezime);
+                    Console.WriteLine("\t Uloga: {0}", Ucitavanje.OdrediUlogu(k.Uloga));
+                    Console.WriteLine("\t E-mail: {0}", k.Email);
+                    Console.WriteLine("\t Broj mobitela: {0}", k.Mobitel);
+                    Console.WriteLine("\t Grad: {0}", k.Grad);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            
         }
 
         private void UnosKorisnika()
@@ -107,9 +120,9 @@ namespace OglasiZaZivotinje
             k.Email = Ucitavanje.UcitajString("Unesite e-mail korisnika: ", "E-mail je obavezan.");
             k.Mobitel = Ucitavanje.UcitajString("Unesite broj mobitela korisnika: ", "Broj mobitela je obavezan.");
             k.Grad = Ucitavanje.UcitajString("Unesite grad ili mjesto: ", "Lokacija je obavezna.");
-            k.CrnaLista = false; // Samo administrator može staviti true
             k.IPadresa = ""; // Za sad stavljam prazno, dok ne vidim može li automatski
             Korisnici.Add(k);
+            Console.WriteLine("\nKorisnik je uspješno dodan na popis.\n");
         }
 
 
@@ -117,13 +130,13 @@ namespace OglasiZaZivotinje
         {
             if (Korisnici.Count() == 0)
             {
-                Console.WriteLine("Nema korisnika na listi!");
+                Console.WriteLine("\nNema korisnika na listi!\n");
                 PrikaziIzbornik();
             }
             else
             {
                 PregledKorisnika();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika: ", "Nije dobar odabir.", 1, Korisnici.Count());
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite promijeniti: ", "Nije dobar odabir.", 1, Korisnici.Count());
                 var k = Korisnici[index - 1];
                 k.Sifra = Ucitavanje.UcitajCijeliBroj("Unesite šifru korisnika (" + k.Sifra + "): ", "Unos mora biti prirodan broj.");
                 k.Ime = Ucitavanje.UcitajString("Unesite ime korisnika (" + k.Ime + "): ", "Ime je obavezno.");
@@ -131,6 +144,7 @@ namespace OglasiZaZivotinje
                 k.Email = Ucitavanje.UcitajString("Unesite e-mail korisnika (" + k.Email + "): ", "E-mail je obavezan.");
                 k.Mobitel = Ucitavanje.UcitajString("Unesite broj mobitela korisnika (" + k.Mobitel + "): ", "Broj mobitela je obavezan.");
                 k.Grad = Ucitavanje.UcitajString("Unesite grad ili mjesto (" + k.Grad + "): ", "Lokacija je obavezna.");
+                Console.WriteLine("\nKorisnik je uspješno promijenjen.\n");
                 // Ostala svojstva može mijenjati samo administrator preko izbornika
                 // IPadresa bi trebala ići automatski
             }
@@ -141,14 +155,15 @@ namespace OglasiZaZivotinje
         {
             if (Korisnici.Count() == 0)
             {
-                Console.WriteLine("Nema korisnika na listi!");
+                Console.WriteLine("\nNema korisnika na listi!\n");
                 PrikaziIzbornik();
             }
             else
             {
                 PregledKorisnika();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika: ", "Nije dobar odabir.", 1, Korisnici.Count());
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite obrisati: ", "Nije dobar odabir.", 1, Korisnici.Count());
                 Korisnici.RemoveAt(index - 1);
+                Console.WriteLine("\nKorisnik je uspješno obrisan s popisa.\n");
             }
         }
 
@@ -156,76 +171,26 @@ namespace OglasiZaZivotinje
         {
             if (Korisnici.Count() == 0)
             {
-                Console.WriteLine("Nema korisnika na listi!");
+                Console.WriteLine("\nNema korisnika na listi!\n");
                 PrikaziIzbornik();
             }
             else
             {
                 PregledKorisnika();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika: ", "Nije dobar odabir.", 1, Korisnici.Count());
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojem želite promijeniti ulogu: ", "Nije dobar odabir.", 1, Korisnici.Count());
                 var k = Korisnici[index - 1];
-                k.Uloga = Ucitavanje.UcitajBrojRaspon("Odredite razinu ovlasti: 1 za administratora, 2 za moderatora.", "Treba upisati broj 1 ili 2.", 1, 2);
-                k.Lozinka = Ucitavanje.UcitajString("Odredite lozinku za korisnika: ", "Lozinka je obavezna za admina i moderatora.");
-
+                k.Uloga = Ucitavanje.UcitajBrojRaspon("Odredite razinu ovlasti: 0 za korisnika, 1 za administratora, 2 za moderatora: ", "Treba upisati broj 0, 1 ili 2.", 0, 2);
+                if (k.Lozinka == "" && index!=0)
+                {
+                    k.Lozinka = Ucitavanje.UcitajString("Odredite lozinku za korisnika: ", "Lozinka je obavezna za admina i moderatora.");
+                }
+                Console.WriteLine("\nKorisniku je uspješno promijenjena uloga\n");
             }
         }
         
 
 
-        private void PregledCrneListe()
-        {
-            if (KorisniciNaListi.Count() == 0)
-            {
-                Console.WriteLine("Nema korisnika na crnoj listi!");
-                PrikaziIzbornik();
-            }
-            else
-            {
-                Console.WriteLine("*****************************************");
-                Console.WriteLine("*       Korisnici na crnoj listi:       *");
-                Console.WriteLine("*****************************************");
-                int broj = 1;
-                foreach (CrnaLista k in KorisniciNaListi)
-                {
-                    Console.WriteLine("\t{0}. {1}", broj++, k);
-                }
-                Console.WriteLine("*****************************************");
-            }
-        }
-
-        private void NaCrnuListu()
-        {
-            PregledKorisnika();
-            int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika: ", "Nije dobar odabir.", 1, Korisnici.Count());
-            var k = Korisnici[index - 1];
-            k.CrnaLista = true;
-            var cl = new CrnaLista(k);
-            cl.RazlogBlokiranja = Ucitavanje.UcitajString("Upišite razlog blokiranja ovog korisnika: ", "Razlog je obavezan.");
-            cl.DatumBlokiranja = Ucitavanje.UcitajDatum("Upišite datum blokiranja: ", "Nije dobar format datuma."); // Za sad stavljam ovako, ali treba ići automatski
-            KorisniciNaListi.Add(cl);
-
-        }
-
-
-        private void BrisiIzCrneListe()
-        {
-            if (KorisniciNaListi.Count() == 0)
-            {
-                Console.WriteLine("Nema korisnika na crnoj listi!");
-                PrikaziIzbornik();
-            }
-            else
-            {
-                PregledCrneListe();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika: ", "Nije dobar odabir.", 1, KorisniciNaListi.Count());
-                var k = Korisnici[index - 1];
-                k.CrnaLista = true;
-                var cl = new CrnaLista(k);
-                cl.RazlogBlokiranja = Ucitavanje.UcitajString("Upišite razlog blokiranja ovog korisnika: ", "Razlog je obavezan.");
-                cl.DatumBlokiranja = Ucitavanje.UcitajDatum("Upišite datum blokiranja: ", "Nije dobar format datuma."); // Za sad stavljam ovako, ali treba ići automatski
-                KorisniciNaListi.Add(cl);
-            }
-        }
+        
 
 
         private void TestniPodaci()
@@ -241,7 +206,6 @@ namespace OglasiZaZivotinje
                 Email = "shabus@gmail.com",
                 Mobitel = "092 146 3753",
                 Grad = "Zaprešić",
-                CrnaLista = false,
                 IPadresa = "91.152.23.137"
 
             });
@@ -257,7 +221,6 @@ namespace OglasiZaZivotinje
                 Email = "jaugustinovic@gmail.com",
                 Mobitel = "091 543 6424",
                 Grad = "Osijek",
-                CrnaLista = false,
                 IPadresa = "92.143.54.128"
 
             });
@@ -273,7 +236,6 @@ namespace OglasiZaZivotinje
                 Email = "amarasovic@gmail.com",
                 Mobitel = "099 234 4422",
                 Grad = "Zagreb",
-                CrnaLista = false,
                 IPadresa = "93.164.72.181"
 
             });
@@ -290,7 +252,6 @@ namespace OglasiZaZivotinje
                 Email = "mgrgic@gmail.com",
                 Mobitel = "095 632 7455",
                 Grad = "Sesvete",
-                CrnaLista = false,
                 IPadresa = "94.164.72.181"
 
             });
@@ -307,7 +268,6 @@ namespace OglasiZaZivotinje
                 Email = "ivana.banic@gmail.com",
                 Mobitel = "091 555 7654",
                 Grad = "Našice",
-                CrnaLista = false,
                 IPadresa = "95.131.57.148"
 
             } );
@@ -323,7 +283,6 @@ namespace OglasiZaZivotinje
                 Email = "apopovic@gmail.com",
                 Mobitel = "098 323 7532",
                 Grad = "Tenja",
-                CrnaLista = false,
                 IPadresa = "96.163.48.131"
 
             });

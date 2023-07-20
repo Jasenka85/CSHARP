@@ -63,7 +63,11 @@ namespace LjetniRad
             int b = 1;
             foreach (Grupa grupa in Grupe)
             {
-                Console.WriteLine("\t{0}. {1}", b++, grupa.Naziv);
+                Console.WriteLine("\t{0}. ({1})", grupa.Naziv, grupa.Smjer.Naziv);
+                foreach (Polaznik polaznik in grupa.Polaznici)
+                {
+                    Console.WriteLine("\t\t {0}", polaznik);
+                }
             }
             Console.WriteLine("-----------------------------");
         }
@@ -74,7 +78,7 @@ namespace LjetniRad
 
             g.Sifra = Pomocno.ucitajCijeliBroj("Unesite sifru grupe: ", "Unos mora biti prirodan broj!");
             g.Naziv = Pomocno.UcitajString("Unesite naziv grupe: ", "Naziv je obavezan!");
-            g.Smjer = PostaviSmjer();
+            g.Smjer = PostaviSmjer();   
             g.Polaznici = PostaviPolaznike();
             g.DatumPocetka = Pomocno.ucitajDatum("Unesi datum pocetka grupe u formatu dd.MM.yyyy", "Greska!");
             Grupe.Add(g);
