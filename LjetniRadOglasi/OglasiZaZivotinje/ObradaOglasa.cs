@@ -104,6 +104,8 @@ namespace OglasiZaZivotinje
                 {
                     int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj oglasa kojeg želite pregledati: ", "Nije dobar odabir.", 1, Oglasi.Count());
                     var o = Oglasi[index - 1];
+
+                    Console.WriteLine("**********************************************************************************************************");
                     Console.WriteLine("\t Šifra oglasa: {0}", o.Sifra);
                     Console.WriteLine("\t Oglas je: {0}", Ucitavanje.OdrediAktivnost(o.Aktivan));
                     Console.WriteLine("\t Kategorija: {0}", Ucitavanje.OdrediKategoriju(o.Kategorija));
@@ -111,12 +113,25 @@ namespace OglasiZaZivotinje
                     Console.WriteLine("\t Naslov: {0}", o.NaslovOglasa);
                     Console.WriteLine("\t Opis: {0}", o.OpisOglasa);
                     Console.WriteLine("\t Vrsta životinje: {0}", o.VrstaZivotinje);
-                    Console.WriteLine("\t Ime životinje: {0}", o.ImeZivotinje);
-                    Console.WriteLine("\t Spol životinje: {0}", o.SpolZivotinje);
-                    Console.WriteLine("\t Je li kastrirana: {0}", o.Kastriran);
-                    Console.WriteLine("\t Dob životinje: {0}", o.DobZivotinje);
-                    Console.WriteLine("\t Ime vlasnika: {0}", o.Korisnik.Ime);
-                    Console.WriteLine("\t Prezime vlasnika: {0}", o.Korisnik.Prezime);
+
+                    if (o.Kategorija == 1)
+                    {
+                        Console.WriteLine("\t Ime životinje: {0}", o.ImeZivotinje);
+                        Console.WriteLine("\t Spol životinje: {0}", o.SpolZivotinje);
+                        Console.WriteLine("\t Je li kastrirana: {0}", o.Kastriran);
+                        Console.WriteLine("\t Dob životinje: {0}", o.DobZivotinje);
+                    }
+                    else 
+                    {
+                        Console.WriteLine("\t Željena pasmina: {0}", o.ImeZivotinje);
+                        Console.WriteLine("\t Željeni spol: {0}", o.SpolZivotinje);
+                        Console.WriteLine("\t Treba li biti kastrirana: {0}", o.Kastriran);
+                        Console.WriteLine("\t Željena dob: {0}", o.DobZivotinje);
+                    }
+
+
+                    Console.WriteLine("\t Ime korisnika: {0}", o.Korisnik.Ime);
+                    Console.WriteLine("\t Prezime korisnika: {0}", o.Korisnik.Prezime);
                     Console.WriteLine("\t E-mail: {0}", o.Korisnik.Email);
                     Console.WriteLine("\t Broj mobitela: {0}", o.Korisnik.Mobitel);
                     Console.WriteLine("\t Grad: {0}", o.Korisnik.Grad);
@@ -125,7 +140,7 @@ namespace OglasiZaZivotinje
                     //    Console.WriteLine("\t{0}. {1}", broj++, f);
                     //}
                     
-                    PregledOglasa();
+                    
                 }
                 else
                 {
@@ -157,12 +172,24 @@ namespace OglasiZaZivotinje
             o.DatumObjave = DateTime.Now;
             o.NaslovOglasa= Ucitavanje.UcitajString("Unesite naslov oglasa: ", "Naslov je obavezan.");
             o.OpisOglasa = Ucitavanje.UcitajString("Unesite opis oglasa: ", "Opis je obavezan.");
-            o.VrstaZivotinje = Ucitavanje.UcitajString("Unesite vrstu životinje: ", "Vrsta je obavezna.");
-            o.ImeZivotinje = Ucitavanje.UcitajString("Unesite ime životinje: ", "Ime je obavezno.");
-            o.SpolZivotinje = Ucitavanje.UcitajString("Unesite spol životinje: ", "Spol je obavezan.");
-            o.Kastriran = Ucitavanje.UcitajString("Je li kastrirana? ", "Podatak je obavezan.");
-            o.DobZivotinje = Ucitavanje.UcitajString("Unesite dob životinje: ", "Dob je obavezna.");
-           
+
+            if (o.Kategorija == 1)  //Pitanja su malo drugačija ako korisnik poklanja životinju...
+            {
+                o.VrstaZivotinje = Ucitavanje.UcitajString("Unesite vrstu životinje: ", "Vrsta je obavezna.");
+                o.ImeZivotinje = Ucitavanje.UcitajString("Unesite ime životinje: ", "Ime je obavezno.");
+                o.SpolZivotinje = Ucitavanje.UcitajString("Unesite spol životinje: ", "Spol je obavezan.");
+                o.Kastriran = Ucitavanje.UcitajString("Je li kastrirana? ", "Odgovor je obavezan.");
+                o.DobZivotinje = Ucitavanje.UcitajString("Unesite dob životinje: ", "Dob je obavezna.");
+            }
+            else    //... ili ako želi udomiti životinju. Ali koriste ista svojstva.
+            {
+                o.VrstaZivotinje = Ucitavanje.UcitajString("Koju vrstu životinje želite udomiti? ", "Vrsta je obavezna.");
+                o.ImeZivotinje = Ucitavanje.UcitajString("Treba li biti određene pasmine ili rasta? ", "Odgovor je obavezan.");
+                o.SpolZivotinje = Ucitavanje.UcitajString("Kojeg spola treba biti? ", "Odgovor je obavezan.");
+                o.Kastriran = Ucitavanje.UcitajString("Treba li biti kastrirana/sterilizirana? ", "Odgovor je obavezan.");
+                o.DobZivotinje = Ucitavanje.UcitajString("Je li vam važna dob životinje? Ako da, koju preferirate? ", "Odgovor je obavezan.");
+
+            }
             Oglasi.Add(o);
             Console.WriteLine("\nOglas je uspješno dodan na popis.\n");
         }
@@ -178,28 +205,53 @@ namespace OglasiZaZivotinje
             }
             else
             {
-                PregledOglasa();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj oglasa kojeg želite promijeniti: ", "Nije dobar odabir.", 1, Oglasi.Count());
-                var o = Oglasi[index - 1];
-                Izbornik.ObradaKorisnika.PregledKorisnika();
-                int index2 = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika koji objavljuje oglas (" + o.Korisnik + "): " , "Nije dobar odabir.", 1, Izbornik.ObradaKorisnika.Korisnici.Count());
-                o.Korisnik = Izbornik.ObradaKorisnika.Korisnici[index2 - 1];
-
-                o.Aktivan = Ucitavanje.UcitajBool("Je li oglas aktivan? Upišite 'da' ili bilo što drugo za ne: ", "Nije dobar unos.");
-                o.Kategorija = Ucitavanje.UcitajBrojRaspon("Odaberite kategoriju: 1 za poklanjam životinju ili 2 za želim udomiti životinju (" + o.Kategorija + "): ", "Treba upisati broj 1 ili 2.", 1, 2);
-                o.DatumObjave = Ucitavanje.UcitajDatum("Upišite datum objave oglasa (" + o.DatumObjave + "): ", "Nije dobar unos.");
-                o.NaslovOglasa = Ucitavanje.UcitajString("Unesite naslov oglasa (" + o.NaslovOglasa + "): ", "Naslov je obavezan.");
-                o.OpisOglasa = Ucitavanje.UcitajString("Unesite opis oglasa (" + o.OpisOglasa + "): ", "Opis je obavezan.");
-                o.VrstaZivotinje = Ucitavanje.UcitajString("Unesite vrstu životinje (" + o.VrstaZivotinje + "): ", "Vrsta je obavezna.");
-                o.ImeZivotinje = Ucitavanje.UcitajString("Unesite ime životinje (" + o.ImeZivotinje + "): ", "Ime je obavezno.");
-                o.SpolZivotinje = Ucitavanje.UcitajString("Unesite spol životinje (" + o.SpolZivotinje + "): ", "Spol je obavezan.");
-                o.Kastriran = Ucitavanje.UcitajString("Je li kastrirana? (" + o.Kastriran + "): ", "Podatak je obavezan.");
-                o.DobZivotinje = Ucitavanje.UcitajString("Unesite dob životinje (" + o.DobZivotinje + "): ", "Dob je obavezna.");
-
+                PregledOglasa();    //Prvo bira oglas kojeg želi mijenjati... ili može odustati
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj oglasa kojeg želite promijeniti (ili 0 za izlaz): ", "Nije dobar odabir.", 0, Oglasi.Count());
                 
-                Console.WriteLine("\nOglas je uspješno promijenjen.\n");
-                // Sifra ide automatski, ne moze se mijenjati
-                
+                if (index == 0)
+                {
+                    Console.WriteLine("\nOglas nije promijenjen.\n");
+                    PrikaziIzbornik();
+                }
+                else
+                {
+
+                    var o = Oglasi[index - 1];
+
+                    Izbornik.ObradaKorisnika.PregledKorisnika();   // Može promijeniti korisnika koji je objavio oglas (a ako izabere istog, ažurirat će se njegovi podaci ako je došlo do neke promjene)
+                    int index2 = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika koji objavljuje oglas (" + o.Korisnik + "): ", "Nije dobar odabir.", 1, Izbornik.ObradaKorisnika.Korisnici.Count());
+                    o.Korisnik = Izbornik.ObradaKorisnika.Korisnici[index2 - 1];
+
+                    // šifra i datum objave idu automatski i ne mogu se mijenjati
+                    o.Aktivan = Ucitavanje.UcitajBool("Je li oglas aktivan? Upišite 'da' ili bilo što drugo za ne: ", "Nije dobar unos.");
+                    o.Kategorija = Ucitavanje.UcitajBrojRaspon("Odaberite kategoriju: 1 za poklanjam životinju ili 2 za želim udomiti životinju (" + o.Kategorija + "): ", "Treba upisati broj 1 ili 2.", 1, 2);
+
+                    Console.WriteLine("\nU nastavku unesite promjene ili pritisnite tipku Enter ako ste zadovoljni s trenutnim podacima:\n");
+
+                    o.NaslovOglasa = Ucitavanje.UcitajPromjenu("Unesite naslov oglasa (" + o.NaslovOglasa + "): ", o.NaslovOglasa);
+                    o.OpisOglasa = Ucitavanje.UcitajPromjenu("Unesite opis oglasa (" + o.OpisOglasa + "): ", o.OpisOglasa);
+
+                    if (o.Kategorija == 1)  //Pitanja su malo drugačija ako korisnik poklanja životinju...
+                    {
+                        o.VrstaZivotinje = Ucitavanje.UcitajPromjenu("Unesite vrstu životinje (" + o.VrstaZivotinje + "): ", o.VrstaZivotinje);
+                        o.ImeZivotinje = Ucitavanje.UcitajPromjenu("Unesite ime životinje (" + o.ImeZivotinje + "): ", o.ImeZivotinje);
+                        o.SpolZivotinje = Ucitavanje.UcitajPromjenu("Unesite spol životinje (" + o.SpolZivotinje + "): ", o.SpolZivotinje);
+                        o.Kastriran = Ucitavanje.UcitajPromjenu("Je li kastrirana? (" + o.Kastriran + "): ", o.Kastriran);
+                        o.DobZivotinje = Ucitavanje.UcitajPromjenu("Unesite dob životinje (" + o.DobZivotinje + "): ", o.DobZivotinje);
+                    }
+                    else    //... ili ako želi udomiti životinju. Ali koriste ista svojstva.
+                    {
+                        o.VrstaZivotinje = Ucitavanje.UcitajPromjenu("Koju vrstu životinje želite udomiti? (" + o.VrstaZivotinje + "): ", o.VrstaZivotinje);
+                        o.ImeZivotinje = Ucitavanje.UcitajPromjenu("Treba li biti određene pasmine ili rasta? (" + o.ImeZivotinje + "): ", o.ImeZivotinje);
+                        o.SpolZivotinje = Ucitavanje.UcitajPromjenu("Kojeg spola treba biti? (" + o.SpolZivotinje + "): ", o.SpolZivotinje);
+                        o.Kastriran = Ucitavanje.UcitajPromjenu("Treba li biti kastrirana/sterilizirana? (" + o.Kastriran + "): ", o.Kastriran);
+                        o.DobZivotinje = Ucitavanje.UcitajPromjenu("Je li vam važna dob životinje? Ako da, koju preferirate? (" + o.DobZivotinje + "): ", o.DobZivotinje);
+
+                    }
+
+
+                    Console.WriteLine("\nOglas je uspješno promijenjen.\n");
+                }
                 
             }
         }
@@ -214,9 +266,18 @@ namespace OglasiZaZivotinje
             else
             {
                 PregledOglasa();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj oglasa kojeg želite obrisati: ", "Nije dobar odabir.", 1, Oglasi.Count());
-                Oglasi.RemoveAt(index - 1);
-                Console.WriteLine("\nOglas je uspješno obrisan s popisa.\n");
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj oglasa kojeg želite obrisati (ili 0 za izlaz): ", "Nije dobar odabir.", 0, Oglasi.Count());
+                if (index == 0)
+                {
+                    Console.WriteLine("\nOglas nije obrisan.\n");
+                    
+                }
+                else
+                {
+
+                    Oglasi.RemoveAt(index - 1);
+                    Console.WriteLine("\nOglas je uspješno obrisan s popisa.\n");
+                }
             }
         }
         
@@ -286,7 +347,7 @@ namespace OglasiZaZivotinje
                 NaslovOglasa = "Sheldon traži društvo!",
                 OpisOglasa = "Tražimo mužjaka kako Miki više ne bi bio sam. Ima 1 godinu.",
                 VrstaZivotinje = "Zamorčić",
-                ImeZivotinje = "Zvat će se Leonard",
+                ImeZivotinje = "dugodlaki",
                 SpolZivotinje = "Mužjak",
                 Kastriran = "Nije važno",
                 DobZivotinje = "Do 1 godinu"
@@ -304,7 +365,7 @@ namespace OglasiZaZivotinje
                 NaslovOglasa = "Tražim činčilu!",
                 OpisOglasa = "Želim udomiti činčilu, po mogućnosti mladog mužjaka.",
                 VrstaZivotinje = "Činčila",
-                ImeZivotinje = "Zvat će se Tin ili Tina",
+                ImeZivotinje = "dugorepa",
                 SpolZivotinje = "Nije važno",
                 Kastriran = "Nije važno",
                 DobZivotinje = "Do 1 godinu"
@@ -321,7 +382,7 @@ namespace OglasiZaZivotinje
                 NaslovOglasa = "Želim udomiti hrčka",
                 OpisOglasa = "Želim udomiti bebu hrčka, po mogućnosti sirijskog, ali može i ruski ili roborovski.",
                 VrstaZivotinje = "Hrčak",
-                ImeZivotinje = "Zvat će se Miki",
+                ImeZivotinje = "sirijski",
                 SpolZivotinje = "Nije važno",
                 Kastriran = "Ne",
                 DobZivotinje = "Do 3 mjeseca"

@@ -89,6 +89,17 @@ namespace OglasiZaZivotinje
                
         }
 
+        internal static string UcitajPromjenu(string poruka, string staro)
+        {
+            Console.Write(poruka);
+            string odgovor = Console.ReadLine();
+            if (odgovor == "")
+                return staro;
+            else
+                return odgovor;
+        }
+
+
 
 
         internal static string OdrediUlogu(int broj)
@@ -152,5 +163,8 @@ namespace OglasiZaZivotinje
             return s;
 
         }
+
+
+        
     }
 }

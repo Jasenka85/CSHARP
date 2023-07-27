@@ -97,6 +97,8 @@ namespace OglasiZaZivotinje
                 {
                     int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite pregledati: ", "Nije dobar odabir.", 1, Korisnici.Count());
                     var k = Korisnici[index - 1];
+
+                    Console.WriteLine("**********************************************************************************************************");
                     Console.WriteLine("\t Sifra: {0}", k.Sifra);
                     Console.WriteLine("\t Ime: {0}", k.Ime);
                     Console.WriteLine("\t Prezime: {0}", k.Prezime);
@@ -140,18 +142,30 @@ namespace OglasiZaZivotinje
             else
             {
                 PregledKorisnika();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite promijeniti: ", "Nije dobar odabir.", 1, Korisnici.Count());
-                var k = Korisnici[index - 1];
-                k.Ime = Ucitavanje.UcitajString("Unesite ime korisnika (" + k.Ime + "): ", "Ime je obavezno.");
-                k.Prezime = Ucitavanje.UcitajString("Unesite prezime korisnika (" + k.Prezime + "): ", "Prezime je obavezno.");
-                k.Email = Ucitavanje.UcitajString("Unesite e-mail korisnika (" + k.Email + "): ", "E-mail je obavezan.");
-                k.Mobitel = Ucitavanje.UcitajString("Unesite broj mobitela korisnika (" + k.Mobitel + "): ", "Broj mobitela je obavezan.");
-                k.Grad = Ucitavanje.UcitajString("Unesite grad ili mjesto (" + k.Grad + "): ", "Lokacija je obavezna.");
-                Console.WriteLine("\nKorisnik je uspješno promijenjen.\n");
-                // Sifra ide automatski, ne moze se mijenjati
-                // Ostala svojstva može mijenjati samo administrator preko izbornika
-                // IPadresa bi trebala ići automatski
-            }
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite promijeniti (ili 0 za izlaz): ", "Nije dobar odabir.", 0, Korisnici.Count());
+                if (index == 0)
+                {
+                    Console.WriteLine("\nKorisnik nije promijenjen.\n");
+
+                }
+                else
+                {
+                    var k = Korisnici[index - 1];
+                    Console.WriteLine("\nUnesite promjene ili pritisnite tipku Enter ako ste zadovoljni s trenutnim podacima:\n");
+
+
+                    k.Ime = Ucitavanje.UcitajPromjenu("Unesite novo ime korisnika ili enter (" + k.Ime + "): ", k.Ime);
+                    k.Prezime = Ucitavanje.UcitajPromjenu("Unesite novo prezime korisnika ili enter (" + k.Prezime + "): ", k.Prezime);
+                    k.Email = Ucitavanje.UcitajPromjenu("Unesite novi e-mail korisnika ili enter (" + k.Email + "): ", k.Email);
+                    k.Mobitel = Ucitavanje.UcitajPromjenu("Unesite novi broj mobitela ili enter (" + k.Mobitel + "): ", k.Mobitel);
+                    k.Grad = Ucitavanje.UcitajPromjenu("Unesite novi grad ili enter (" + k.Grad + "): ", k.Grad);
+
+                    Console.WriteLine("\nKorisnik je uspješno promijenjen.\n");
+                    // Sifra ide automatski, ne moze se mijenjati
+                    // Ostala svojstva može mijenjati samo administrator preko izbornika
+                    // IPadresa bi trebala ići automatski
+                }
+                }
         }
 
 
@@ -165,16 +179,24 @@ namespace OglasiZaZivotinje
             else
             {
                 PregledKorisnika();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite obrisati: ", "Nije dobar odabir.", 1, Korisnici.Count());
-                var k = Korisnici[index - 1];
-                if (k.Uloga == 1 || k.Uloga == 2)
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite obrisati (ili 0 za izlaz): ", "Nije dobar odabir.", 0, Korisnici.Count());
+                if (index == 0)
                 {
-                    Console.WriteLine("\nNe mogu obrisati administratora ili moderatora.\n");
+                    Console.WriteLine("\nKorisnik nije obrisan.\n");
+
                 }
                 else
                 {
-                    Korisnici.RemoveAt(index - 1);
-                    Console.WriteLine("\nKorisnik je uspješno obrisan s popisa.\n");
+                    var k = Korisnici[index - 1];
+                    if (k.Uloga == 1 || k.Uloga == 2)
+                    {
+                        Console.WriteLine("\nNe mogu obrisati administratora ili moderatora.\n");
+                    }
+                    else
+                    {
+                        Korisnici.RemoveAt(index - 1);
+                        Console.WriteLine("\nKorisnik je uspješno obrisan s popisa.\n");
+                    }
                 }
             }
         }
