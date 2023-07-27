@@ -112,5 +112,45 @@ namespace OglasiZaZivotinje
             return s;
 
         }
+
+        internal static string OdrediKategoriju(int broj)
+        {
+            string s;
+            switch (broj)
+            {
+                
+                case 1:
+                    s = "Poklanjam životinju";
+                    break;
+                case 2:
+                    s = "Želim udomiti životinju";
+                    break;
+                default:
+                    s = "";
+                    break;
+            }
+            return s;
+
+        }
+
+        internal static string OdrediAktivnost(bool stanje)
+        {
+            string s;
+            switch (stanje)
+            {
+
+                case true:
+                    s = "Aktivan";
+                    break;
+                case false:
+                    s = "Neaktivan";
+                    break;
+                default:
+                    s = "";
+                    break;
+            }
+            return s;
+
+        }
     }
 }

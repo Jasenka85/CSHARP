@@ -9,39 +9,48 @@ namespace OglasiZaZivotinje
     internal class Izbornik
     {
         public ObradaKorisnika ObradaKorisnika { get; }
+        public ObradaOglasa ObradaOglasa;
         public ObradaCrneListe ObradaCrneListe;
+        
         
         public Izbornik() 
         {
             ObradaKorisnika = new ObradaKorisnika();
+            ObradaOglasa = new ObradaOglasa(this);
             ObradaCrneListe = new ObradaCrneListe(this);
+            
             PozdravnaPoruka();
             PrikaziIzbornik();
         }
 
         private void PozdravnaPoruka()
         {
-            Console.WriteLine("*******************************************************");
-            Console.WriteLine("*        Oglasi za zivotinje Console APP v 1.0        *");
+            Console.WriteLine("**********************************************************************************************************");
+            Console.WriteLine("*                                 Oglasi za zivotinje Console APP v 1.0                                  *");
             
         }
 
         private void PrikaziIzbornik()
         {
-            Console.WriteLine("*******************************************************");
-            Console.WriteLine("*                    Glavni izbornik                  *");
-            Console.WriteLine("*******************************************************");
-            Console.WriteLine("1. Korisnici");
-            Console.WriteLine("2. Oglasi");
-            Console.WriteLine("3. Pošalji poruku korisniku");
-            Console.WriteLine("4. Crna lista");
-            Console.WriteLine("5. Izlaz iz programa");
-            Console.WriteLine("*******************************************************");
+            Console.WriteLine("**********************************************************************************************************");
+            Console.WriteLine("*                                             Glavni izbornik                                            *");
+            Console.WriteLine("**********************************************************************************************************");
+            Console.WriteLine("\t 1. Korisnici");
+            Console.WriteLine("\t 2. Oglasi");
+            Console.WriteLine("\t 3. Pošalji poruku korisniku");
+            Console.WriteLine("\t 4. Crna lista");
+            Console.WriteLine("\t 5. Izlaz iz programa");
+            Console.WriteLine("**********************************************************************************************************");
 
             switch (Ucitavanje.UcitajBrojRaspon("Odaberite redni broj stavke iz izbornika: ", "Odabir mora biti broj između 1 i 5!", 1, 5))
             {
                 case 1:
                     ObradaKorisnika.PrikaziIzbornik();
+                    PrikaziIzbornik();
+                    break;
+
+                case 2:
+                    ObradaOglasa.PrikaziIzbornik();
                     PrikaziIzbornik();
                     break;
 
@@ -52,7 +61,7 @@ namespace OglasiZaZivotinje
 
                 case 5:
                     Console.WriteLine("\n Hvala na korištenju! Doviđenja! :)\n");
-                    Console.WriteLine("*******************************************************");
+                    Console.WriteLine("**********************************************************************************************************");
                     break;
                 
 

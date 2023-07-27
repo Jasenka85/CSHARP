@@ -10,8 +10,10 @@ namespace OglasiZaZivotinje
     {
         public int Sifra { get; set; }
 
+        public bool Aktivan { get; set; }
+
         public Korisnik Korisnik { get; set; }
-        public int Kategorija { get; set; }      // 0 = poklanjam, 1 = trazim
+        public int Kategorija { get; set; }      // 1 = poklanjam, 2 = trazim
 
         public DateTime DatumObjave { get; set; }
 
@@ -27,12 +29,15 @@ namespace OglasiZaZivotinje
 
         public string DobZivotinje { get; set; }      // može biti npr. 3 mjeseca, 2 godine...
 
-        public bool Kastriran { get; set; }
+        public string Kastriran { get; set; }   // nije samo "da" ili "ne", može pisati da je mužjak kastriran ali ženka nije i razne kombinacije
 
         public List<Fotografija> Fotografije { get; set; }   //jedan oglas može imati više fotografija, 
 
-        
 
+        public override string ToString()
+        {
+            return Ucitavanje.OdrediKategoriju(Kategorija) + " : " + VrstaZivotinje + " - " + NaslovOglasa;
+        }
 
     }
 }
