@@ -18,6 +18,8 @@ namespace OglasiZaZivotinje
 
         public string EmailPosiljatelja { get; set; }
 
+        public string Poruka { get; set; }
+
         public DateTime DatumPoruke { get; set; }
     }
 }

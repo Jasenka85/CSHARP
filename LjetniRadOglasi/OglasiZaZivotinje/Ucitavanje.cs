@@ -81,7 +81,7 @@ namespace OglasiZaZivotinje
             }
         }
 
-        internal static bool UcitajBool(string poruka, string greska)
+        internal static bool UcitajBool(string poruka)
         {
             
             Console.Write(poruka);

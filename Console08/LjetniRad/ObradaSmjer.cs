@@ -85,9 +85,7 @@ namespace LjetniRad
             s.Upisnina = Pomocno.ucitajDecimalniBroj("Unesite upisninu, stavite . za decimalni dio: ", "Unos mora biti pozitivan broj!");
             s.Verificiran = Pomocno.ucitajBool("Smjer verificiran? Unesite 'da' ili bilo sto drugo za ne: ");
             Smjerovi.Add(s);
-            //dodajemo u listu, ALI kada izađemo iz programa ti smjerovi će nestati,
-            //ostat će samo Web programiranje
-            //da bi ostali trajno upisani trebamo bazu podataka
+            
         }
 
        

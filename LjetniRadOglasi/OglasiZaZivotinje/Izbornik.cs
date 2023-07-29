@@ -60,7 +60,7 @@ namespace OglasiZaZivotinje
                     break;
 
                 case 5:
-                    Console.WriteLine("\n Hvala na korištenju! Doviđenja! :)\n");
+                    Console.WriteLine("\nHvala na korištenju! Doviđenja! :)\n");
                     Console.WriteLine("**********************************************************************************************************");
                     break;
                 

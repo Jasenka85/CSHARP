@@ -10,8 +10,15 @@ namespace OglasiZaZivotinje
     {
         public int Sifra { get; set; }
 
-        public Oglas Oglas { get; set; }
+        public string Naziv { get; set; }
 
-        public string Link { get; set; }    
+        public string Link { get; set; }
+
+
+        public override string ToString()
+        {
+            return Naziv + ": " + Link;
+        }
+
     }
 }

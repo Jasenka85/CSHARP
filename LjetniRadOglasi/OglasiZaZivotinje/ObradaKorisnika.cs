@@ -93,7 +93,7 @@ namespace OglasiZaZivotinje
 
             while (true)
             {
-                if (Ucitavanje.UcitajBool("Želite li detalje o nekom korisniku? Upišite 'da' ili bilo što drugo za ne: ", "Nije dobar unos."))
+                if (Ucitavanje.UcitajBool("Želite li detalje o nekom korisniku? Upišite 'da' ili bilo što drugo za ne: "))
                 {
                     int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite pregledati: ", "Nije dobar odabir.", 1, Korisnici.Count());
                     var k = Korisnici[index - 1];

@@ -121,5 +121,27 @@ namespace LjetniRad
             }
         }
 
+
+        internal static string UcitajPromjenuStringa(string poruka, string staro)
+        {
+            Console.Write(poruka);
+            string odgovor = Console.ReadLine();
+            if (odgovor == "")
+                return staro;
+            else
+                return odgovor;
+        }
+
+
+        internal static int UcitajPromjenuBroja(string poruka, int staro)
+        {
+            Console.Write(poruka);
+            string odgovor = Console.ReadLine();
+            if (odgovor == "")
+                return staro;
+            else
+                return Int32.Parse(odgovor);
+        }
+
     }
 }

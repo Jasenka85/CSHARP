@@ -35,8 +35,9 @@ namespace LjetniRad
             Console.WriteLine("2. Polaznici");
             Console.WriteLine("3. Grupe");
             Console.WriteLine("4. Izlaz iz programa");
+            Console.WriteLine("*************************************");
 
-            switch (Pomocno.ucitajBrojRaspon("Odaberite stavku izbornika: ", "Odabir mora biti 1-4", 1, 4))
+            switch (Pomocno.ucitajBrojRaspon("\nOdaberite stavku izbornika: ", "Odabir mora biti 1-4", 1, 4))
             {
 
                 case 1:
