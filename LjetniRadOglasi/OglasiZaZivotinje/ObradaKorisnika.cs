@@ -90,28 +90,21 @@ namespace OglasiZaZivotinje
 
         private void PrikaziDetalje()
         {
-
-            while (true)
+            int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite pregledati (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, Korisnici.Count());
+            if (index != 0)
             {
-                if (Ucitavanje.UcitajBool("Želite li detalje o nekom korisniku? Upišite 'da' ili bilo što drugo za ne: "))
-                {
-                    int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite pregledati: ", "Nije dobar odabir.", 1, Korisnici.Count());
-                    var k = Korisnici[index - 1];
+                var k = Korisnici[index - 1];
 
-                    Console.WriteLine("**********************************************************************************************************");
-                    Console.WriteLine("\t Sifra: {0}", k.Sifra);
-                    Console.WriteLine("\t Ime: {0}", k.Ime);
-                    Console.WriteLine("\t Prezime: {0}", k.Prezime);
-                    Console.WriteLine("\t Uloga: {0}", Ucitavanje.OdrediUlogu(k.Uloga));
-                    Console.WriteLine("\t E-mail: {0}", k.Email);
-                    Console.WriteLine("\t Broj mobitela: {0}", k.Mobitel);
-                    Console.WriteLine("\t Grad: {0}", k.Grad);
-                }
-                else
-                {
-                    break;
-                }
+                Console.WriteLine("**********************************************************************************************************");
+                Console.WriteLine("\t Sifra: {0}", k.Sifra);
+                Console.WriteLine("\t Ime: {0}", k.Ime);
+                Console.WriteLine("\t Prezime: {0}", k.Prezime);
+                Console.WriteLine("\t Uloga: {0}", Ucitavanje.OdrediUlogu(k.Uloga));
+                Console.WriteLine("\t E-mail: {0}", k.Email);
+                Console.WriteLine("\t Broj mobitela: {0}", k.Mobitel);
+                Console.WriteLine("\t Grad: {0}", k.Grad);
             }
+            
             
         }
 
@@ -142,17 +135,11 @@ namespace OglasiZaZivotinje
             else
             {
                 PregledKorisnika();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite promijeniti (ili 0 za izlaz): ", "Nije dobar odabir.", 0, Korisnici.Count());
-                if (index == 0)
-                {
-                    Console.WriteLine("\nKorisnik nije promijenjen.\n");
-
-                }
-                else
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite promijeniti (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, Korisnici.Count());
+                if (index != 0)
                 {
                     var k = Korisnici[index - 1];
                     Console.WriteLine("\nUnesite promjene ili pritisnite tipku Enter ako ste zadovoljni s trenutnim podacima:\n");
-
 
                     k.Ime = Ucitavanje.UcitajPromjenu("Unesite novo ime korisnika ili enter (" + k.Ime + "): ", k.Ime);
                     k.Prezime = Ucitavanje.UcitajPromjenu("Unesite novo prezime korisnika ili enter (" + k.Prezime + "): ", k.Prezime);
@@ -165,7 +152,7 @@ namespace OglasiZaZivotinje
                     // Ostala svojstva može mijenjati samo administrator preko izbornika
                     // IPadresa bi trebala ići automatski
                 }
-                }
+            }
         }
 
 
@@ -179,13 +166,8 @@ namespace OglasiZaZivotinje
             else
             {
                 PregledKorisnika();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite obrisati (ili 0 za izlaz): ", "Nije dobar odabir.", 0, Korisnici.Count());
-                if (index == 0)
-                {
-                    Console.WriteLine("\nKorisnik nije obrisan.\n");
-
-                }
-                else
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite obrisati (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, Korisnici.Count());
+                if (index != 0)
                 {
                     var k = Korisnici[index - 1];
                     if (k.Uloga == 1 || k.Uloga == 2)
@@ -211,14 +193,17 @@ namespace OglasiZaZivotinje
             else
             {
                 PregledKorisnika();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojem želite promijeniti ulogu: ", "Nije dobar odabir.", 1, Korisnici.Count());
-                var k = Korisnici[index - 1];
-                k.Uloga = Ucitavanje.UcitajBrojRaspon("Odredite razinu ovlasti: 0 za korisnika, 1 za administratora, 2 za moderatora: ", "Treba upisati broj 0, 1 ili 2.", 0, 2);
-                if (k.Lozinka == "" && index!=0)
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojem želite promijeniti ulogu (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, Korisnici.Count());
+                if (index != 0)
                 {
-                    k.Lozinka = Ucitavanje.UcitajString("Odredite lozinku za korisnika: ", "Lozinka je obavezna za admina i moderatora.");
+                    var k = Korisnici[index - 1];
+                    k.Uloga = Ucitavanje.UcitajBrojRaspon("Odredite razinu ovlasti: 0 za korisnika, 1 za administratora, 2 za moderatora: ", "Treba upisati broj 0, 1 ili 2.", 0, 2);
+                    if (k.Lozinka == "" && k.Uloga != 0)
+                    {
+                        k.Lozinka = Ucitavanje.UcitajString("Odredite lozinku za korisnika: ", "Lozinka je obavezna za admina i moderatora.");
+                    }
+                    Console.WriteLine("\nKorisniku je uspješno promijenjena uloga\n");
                 }
-                Console.WriteLine("\nKorisniku je uspješno promijenjena uloga\n");
             }
         }
         

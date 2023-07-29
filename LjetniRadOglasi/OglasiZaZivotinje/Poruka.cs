@@ -6,19 +6,15 @@ using System.Threading.Tasks;
 
 namespace OglasiZaZivotinje
 {
-    internal class PosaljiPoruku
+    internal class Poruka
     {
         public int Sifra { get; set; }
-
-        public Korisnik Korisnik { get; set; }  
-
-        public Oglas Oglas { get; set; }
 
         public string ImePosiljatelja { get; set; }
 
         public string EmailPosiljatelja { get; set; }
 
-        public string Poruka { get; set; }
+        public string TekstPoruke { get; set; }
 
         public DateTime DatumPoruke { get; set; }
     }

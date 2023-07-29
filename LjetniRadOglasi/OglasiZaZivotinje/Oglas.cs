@@ -33,7 +33,8 @@ namespace OglasiZaZivotinje
 
         public List<Fotografija> Fotografije { get; set; }   //jedan oglas može imati više fotografija, 
 
-
+        public List<Poruka> Poruke { get; set; }  //jedan oglas može imati više poruka
+       
         public override string ToString()
         {
             return Ucitavanje.OdrediKategoriju(Kategorija) + " : " + VrstaZivotinje + " - " + NaslovOglasa;

@@ -37,12 +37,11 @@ namespace OglasiZaZivotinje
             Console.WriteLine("**********************************************************************************************************");
             Console.WriteLine("\t 1. Korisnici");
             Console.WriteLine("\t 2. Oglasi");
-            Console.WriteLine("\t 3. Pošalji poruku korisniku");
-            Console.WriteLine("\t 4. Crna lista");
-            Console.WriteLine("\t 5. Izlaz iz programa");
+            Console.WriteLine("\t 3. Crna lista");
+            Console.WriteLine("\t 4. Izlaz iz programa");
             Console.WriteLine("**********************************************************************************************************");
 
-            switch (Ucitavanje.UcitajBrojRaspon("Odaberite redni broj stavke iz izbornika: ", "Odabir mora biti broj između 1 i 5!", 1, 5))
+            switch (Ucitavanje.UcitajBrojRaspon("Odaberite redni broj stavke iz izbornika: ", "Odabir mora biti broj između 1 i 4!", 1, 4))
             {
                 case 1:
                     ObradaKorisnika.PrikaziIzbornik();
@@ -54,12 +53,12 @@ namespace OglasiZaZivotinje
                     PrikaziIzbornik();
                     break;
 
-                case 4:
+                case 3:
                     ObradaCrneListe.PrikaziIzbornik();
                     PrikaziIzbornik();
                     break;
 
-                case 5:
+                case 4:
                     Console.WriteLine("\nHvala na korištenju! Doviđenja! :)\n");
                     Console.WriteLine("**********************************************************************************************************");
                     break;
