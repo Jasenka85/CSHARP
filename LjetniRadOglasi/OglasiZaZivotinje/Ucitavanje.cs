@@ -45,7 +45,7 @@ namespace OglasiZaZivotinje
                     }
                     Console.WriteLine(greska);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine(greska);
                 }
@@ -74,7 +74,7 @@ namespace OglasiZaZivotinje
                     Console.Write(poruka);
                     return DateTime.Parse(Console.ReadLine());
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine(greska);
                 }
@@ -156,9 +156,7 @@ namespace OglasiZaZivotinje
                 case false:
                     s = "Neaktivan";
                     break;
-                default:
-                    s = "";
-                    break;
+                
             }
             return s;
 

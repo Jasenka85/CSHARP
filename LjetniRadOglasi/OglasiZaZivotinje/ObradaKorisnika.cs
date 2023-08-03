@@ -28,7 +28,7 @@ namespace OglasiZaZivotinje
             Console.WriteLine("\t 2. Unesi novog korisnika");
             Console.WriteLine("\t 3. Promijeni postojećeg korisnika");
             Console.WriteLine("\t 4. Obriši korisnika");
-            Console.WriteLine("\t 5. Dodaj admina ili moderatora");
+            Console.WriteLine("\t 5. Promijeni ulogu korisnika");
             Console.WriteLine("\t 6. Povratak na glavni izbornik");
             Console.WriteLine("**********************************************************************************************************");
 
@@ -36,7 +36,8 @@ namespace OglasiZaZivotinje
             { 
             case 1:
                     PregledKorisnika();
-                    PrikaziDetalje();
+                    if (Korisnici.Count() != 0) 
+                        DetaljiKorisnika();
                     PrikaziIzbornik();
                     break;
             case 2:
@@ -52,7 +53,7 @@ namespace OglasiZaZivotinje
                     PrikaziIzbornik();
                     break;
             case 5:
-                    DodajOvlasti();
+                    PromijeniOvlasti();
                     PrikaziIzbornik();
                     break;
                
@@ -68,7 +69,7 @@ namespace OglasiZaZivotinje
             if (Korisnici.Count() == 0)
             {
                 Console.WriteLine("\nNema korisnika na listi!\n");
-                PrikaziIzbornik();
+                
             }
             else
             {
@@ -88,7 +89,7 @@ namespace OglasiZaZivotinje
         }
 
 
-        private void PrikaziDetalje()
+        private void DetaljiKorisnika()
         {
             int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite pregledati (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, Korisnici.Count());
             if (index != 0)
@@ -103,6 +104,8 @@ namespace OglasiZaZivotinje
                 Console.WriteLine("\t E-mail: {0}", k.Email);
                 Console.WriteLine("\t Broj mobitela: {0}", k.Mobitel);
                 Console.WriteLine("\t Grad: {0}", k.Grad);
+                
+                
             }
             
             
@@ -130,7 +133,7 @@ namespace OglasiZaZivotinje
             if (Korisnici.Count() == 0)
             {
                 Console.WriteLine("\nNema korisnika na listi!\n");
-                PrikaziIzbornik();
+                
             }
             else
             {
@@ -161,7 +164,7 @@ namespace OglasiZaZivotinje
             if (Korisnici.Count() == 0)
             {
                 Console.WriteLine("\nNema korisnika na listi!\n");
-                PrikaziIzbornik();
+                
             }
             else
             {
@@ -183,12 +186,12 @@ namespace OglasiZaZivotinje
             }
         }
 
-        private void DodajOvlasti()
+        private void PromijeniOvlasti()
         {
             if (Korisnici.Count() == 0)
             {
                 Console.WriteLine("\nNema korisnika na listi!\n");
-                PrikaziIzbornik();
+                
             }
             else
             {

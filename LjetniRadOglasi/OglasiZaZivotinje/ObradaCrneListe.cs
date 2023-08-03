@@ -39,7 +39,8 @@ namespace OglasiZaZivotinje
    
                 case 1:
                     PregledCrneListe();
-                    PrikaziDetalje();
+                    if (KorisniciNaListi.Count() != 0)
+                        PrikaziDetalje();
                     PrikaziIzbornik();
                     break;
                 case 2:
@@ -69,6 +70,7 @@ namespace OglasiZaZivotinje
             if (KorisniciNaListi.Count() == 0)
             {
                 Console.WriteLine("\nNema korisnika na crnoj listi!\n");
+                PrikaziIzbornik();
             }
             else
             {
@@ -81,6 +83,7 @@ namespace OglasiZaZivotinje
                     Console.WriteLine("\t{0}. {1}", broj++, k);
                 }
                 Console.WriteLine("**********************************************************************************************************");
+                
             }
         }
 

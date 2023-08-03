@@ -13,8 +13,9 @@ namespace OglasiZaZivotinje
     {
         int Osifra = 7;      // podesiti kada se uklone testni podaci!
         int Fsifra = 4;
-        int Psifra = 6;
+       
         public List<Oglas> Oglasi { get; }
+        public List<Poruka> Poruke { get; }
 
         private Izbornik Izbornik;
 
@@ -39,16 +40,16 @@ namespace OglasiZaZivotinje
             Console.WriteLine("\t 2. Unesi novi oglas");
             Console.WriteLine("\t 3. Promijeni postojeći oglas");
             Console.WriteLine("\t 4. Obriši oglas");
-            Console.WriteLine("\t 5. Pregledaj poruke");
-            Console.WriteLine("\t 6. Povratak na glavni izbornik");
+            Console.WriteLine("\t 5. Povratak na glavni izbornik");
             Console.WriteLine("**********************************************************************************************************");
             
 
-            switch (Ucitavanje.UcitajBrojRaspon("Odaberite redni broj stavke iz izbornika: ", "Odabir mora biti broj između 1 i 6!", 1, 6))
+            switch (Ucitavanje.UcitajBrojRaspon("Odaberite redni broj stavke iz izbornika: ", "Odabir mora biti broj između 1 i 5!", 1, 5))
             {
                 case 1:
                     PregledOglasa();
-                    DetaljiOglasa();
+                    if (Oglasi.Count() != 0)
+                        DetaljiOglasa();
                     PrikaziIzbornik();
                     break;
                 case 2:
@@ -63,11 +64,8 @@ namespace OglasiZaZivotinje
                     BrisanjeOglasa();
                     PrikaziIzbornik();
                     break;
+                
                 case 5:
-                    PregledajPoruke();
-                    PrikaziIzbornik();
-                    break;
-                case 6:
                     Console.WriteLine("\nGotov rad s oglasima!\n");
                     break;
             }
@@ -98,6 +96,7 @@ namespace OglasiZaZivotinje
                
                 Console.WriteLine("**********************************************************************************************************");
 
+             
 
             }
         }
@@ -176,7 +175,7 @@ namespace OglasiZaZivotinje
 
 
 
-        private void DetaljiOglasa()
+        public void DetaljiOglasa()
         {
       
                 int index = Ucitavanje.UcitajBrojRaspon("Za detalje odaberite redni broj oglasa (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, Oglasi.Count());
@@ -229,19 +228,8 @@ namespace OglasiZaZivotinje
                     Console.WriteLine("\t Grad: {0}", o.Korisnik.Grad);
                     Console.WriteLine("**********************************************************************************************************");
 
-                    
-                    if (Ucitavanje.UcitajBool("Želite li poslati poruku korisniku? Upišite 'da' ili bilo što drugo za ne: "))
-                    {
-                    var p = new Poruka();
-                    p.Sifra = Psifra++;
-                    p.ImePosiljatelja = Ucitavanje.UcitajString("Unesite svoje ime: ", "Ime je obavezno.");
-                    p.EmailPosiljatelja = Ucitavanje.UcitajString("Unesite svoj e-mail, da vam korisnik moze odgovoriti: ", "E-mail je obavezan.");
-                    p.TekstPoruke = Ucitavanje.UcitajString("Unesite poruku: ", "Poruka je obavezna.");
-                    p.DatumPoruke = DateTime.Now;
-                    o.Poruke.Add(p);
-                    Console.WriteLine("\nPoruka je uspješno poslana!\n");
+                
 
-                    }
 
                 }
 
@@ -373,54 +361,7 @@ namespace OglasiZaZivotinje
         }
 
 
-        private void PregledajPoruke()
-        {
-            if (Oglasi.Count() == 0)
-            {
-                Console.WriteLine("\nNema oglasa na listi!\n");
-
-            }
-            else
-            {
-                PregledOglasa();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj oglasa za kojeg želite vidjeti poruke (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, Oglasi.Count());
-                if (index != 0)
-                {
-                    var o = Oglasi[index - 1];
-                    if (o.Poruke.Count() == 0)
-                    {
-                        Console.WriteLine("\nNema poruka za ovaj oglas.\n");
-                    }
-                    else
-                    {
-                        
-                        Console.WriteLine("**********************************************************************************************************");
-                        int broj = 1;
-                        foreach (Poruka p in o.Poruke)
-                        {
-                            
-                            Console.WriteLine("\n\t\t{0}. poruka:", broj++);
-                            Console.WriteLine("\t\tIme pošiljatelja: {0}", p.ImePosiljatelja);
-                            Console.WriteLine("\t\tE-mail pošiljatelja: {0}", p.EmailPosiljatelja);
-                            Console.WriteLine("\t\tPoruka: {0}", p.TekstPoruke);
-                            Console.WriteLine("\t\tDatum poruke: {0}", p.DatumPoruke);
-                            
-                        }
-                        Console.WriteLine("**********************************************************************************************************");
-                        
-                        if (Ucitavanje.UcitajBool("Želite li obrisati neku poruku? Upišite 'da' ili bilo što drugo za ne: "))
-                        {
-                                int index2 = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj poruke koju želite obrisati: ", "Nije dobar odabir.", 1, o.Poruke.Count());
-                                o.Poruke.RemoveAt(index2 - 1);
-                                Console.WriteLine("Poruka je uspješno obrisana.");
-                        }
-                            
-                        
-
-                    }
-                }
-            }
-        }
+        
 
 
         private void TestniPodaci()
