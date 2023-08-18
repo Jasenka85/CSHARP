@@ -100,6 +100,8 @@ namespace OglasiZaZivotinje
         }
 
 
+        
+
 
 
         internal static string OdrediUlogu(int broj)
@@ -115,6 +117,9 @@ namespace OglasiZaZivotinje
                     break;
                 case 2:
                     s = "moderator";
+                    break;
+                case 3:
+                    s = "blokiran";
                     break;
                 default:
                     s = "";

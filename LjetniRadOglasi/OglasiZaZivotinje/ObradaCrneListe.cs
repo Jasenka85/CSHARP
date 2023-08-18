@@ -70,7 +70,6 @@ namespace OglasiZaZivotinje
             if (KorisniciNaListi.Count() == 0)
             {
                 Console.WriteLine("\nNema korisnika na crnoj listi!\n");
-                PrikaziIzbornik();
             }
             else
             {
@@ -90,12 +89,10 @@ namespace OglasiZaZivotinje
 
         private void PrikaziDetalje()
         {
-
-            while (true)
-            {
-                if (Ucitavanje.UcitajBool("Želite li detalje o nekom korisniku? \nUpišite 'da' ili bilo što drugo za ne: "))
+            int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite pregledati (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, KorisniciNaListi.Count());
+            
+                if (index !=0 )
                 {
-                    int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite pregledati: ", "Nije dobar odabir.", 1, KorisniciNaListi.Count());
                     var k = KorisniciNaListi[index - 1];
                     Console.WriteLine("**********************************************************************************************************");
                     Console.WriteLine("\t Sifra: {0}", k.Korisnik.Sifra);
@@ -105,16 +102,12 @@ namespace OglasiZaZivotinje
                     Console.WriteLine("\t E-mail: {0}", k.Korisnik.Email);
                     Console.WriteLine("\t Broj mobitela: {0}", k.Korisnik.Mobitel);
                     Console.WriteLine("\t Grad: {0}", k.Korisnik.Grad);
-                    Console.WriteLine("\t IP adresa: {0}", k.Korisnik.IPadresa);
                     Console.WriteLine("\t Razlog blokiranja: {0}", k.RazlogBlokiranja);
                     Console.WriteLine("\t Datum blokiranja: {0}", k.DatumBlokiranja);
                     Console.WriteLine("**********************************************************************************************************");
                 }
-                else
-                {
-                    break;
-                }
-            }
+                
+            
 
         }
 
@@ -124,27 +117,32 @@ namespace OglasiZaZivotinje
         {
             int zastavica = 0;
             var cl = new CrnaLista();
-            Izbornik.ObradaKorisnika.PregledKorisnika();
-            int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite staviti na crnu listu: ", "Nije dobar odabir.", 1, Izbornik.ObradaKorisnika.Korisnici.Count());
-            cl.Korisnik = Izbornik.ObradaKorisnika.Korisnici[index - 1];
-            for (int i = 0; i< KorisniciNaListi.Count(); i++)
-            {
-                if (cl.Korisnik.Sifra == KorisniciNaListi[i].Korisnik.Sifra)
-                {
-                    Console.WriteLine("\nOvaj korisnik je već na crnoj listi!\n");
-                    zastavica++;
-                    break;
-                }
-            }
-            if (zastavica == 0)
-            {
-                cl.RazlogBlokiranja = Ucitavanje.UcitajString("Upišite razlog blokiranja ovog korisnika: ", "Razlog je obavezan.");
-                cl.DatumBlokiranja = DateTime.Now; 
-                KorisniciNaListi.Add(cl);
-                Console.WriteLine("\nKorisnik je uspješno dodan na crnu listu.\n");
-            }
-         
 
+            Izbornik.ObradaKorisnika.PregledKorisnika();
+            int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite staviti na crnu listu (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, Izbornik.ObradaKorisnika.Korisnici.Count());
+
+            if (index != 0)
+            {
+                cl.Korisnik = Izbornik.ObradaKorisnika.Korisnici[index - 1];
+                for (int i = 0; i < KorisniciNaListi.Count(); i++)
+                {
+                    if (cl.Korisnik.Sifra == KorisniciNaListi[i].Korisnik.Sifra)
+                    {
+                        Console.WriteLine("\nOvaj korisnik je već na crnoj listi!\n");
+                        zastavica++;
+                        break;
+                    }
+                }
+                if (zastavica == 0)
+                {
+                    cl.Korisnik.Uloga = 3;
+                    cl.RazlogBlokiranja = Ucitavanje.UcitajString("Upišite razlog blokiranja ovog korisnika: ", "Razlog je obavezan.");
+                    cl.DatumBlokiranja = DateTime.Now;
+                    KorisniciNaListi.Add(cl);
+                    Console.WriteLine("\nKorisnik je uspješno dodan na crnu listu.\n");
+                }
+
+            }
         }
 
 
@@ -157,9 +155,23 @@ namespace OglasiZaZivotinje
             else
             {
                 PregledCrneListe();
-                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite obrisati iz crne liste: ", "Nije dobar odabir.", 1, KorisniciNaListi.Count());
-                KorisniciNaListi.RemoveAt(index-1);
-                Console.WriteLine("\nKorisnik je uspješno obrisan iz crne liste.\n");
+                int index = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika kojeg želite obrisati iz crne liste (ili 0 za povratak na izbornik): ", "Nije dobar odabir.", 0, KorisniciNaListi.Count());
+
+                if (index != 0)
+                {
+                    int sifra = KorisniciNaListi[index - 1].Korisnik.Sifra;
+                    for (int i = 0; i < Izbornik.ObradaKorisnika.Korisnici.Count(); i++)
+                    {
+                        if (Izbornik.ObradaKorisnika.Korisnici[i].Sifra == sifra)
+                        {
+                            Izbornik.ObradaKorisnika.Korisnici[i].Uloga = 0;
+                            
+                            break;
+                        }
+                    }
+                    KorisniciNaListi.RemoveAt(index - 1);
+                    Console.WriteLine("\nKorisnik je uspješno obrisan iz crne liste.\n");
+                }
             }
         }
 

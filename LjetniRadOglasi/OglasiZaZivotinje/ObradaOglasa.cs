@@ -117,6 +117,11 @@ namespace OglasiZaZivotinje
             else
             {
                 o.Korisnik = Izbornik.ObradaKorisnika.Korisnici[index - 1];
+                if (o.Korisnik.Uloga == 3)
+                {
+                    Console.WriteLine("\nKorisnik je na crnoj listi i ne može objaviti oglas!\n");
+                    goto izlaz;
+                }
             }
 
             o.Sifra = Osifra++;
@@ -168,6 +173,8 @@ namespace OglasiZaZivotinje
                                             //ideja je da se te poruke šalju direktno na e-mail korisnika, a kopija ostaje vidljiva administratoru
             Oglasi.Add(o);
             Console.WriteLine("\nOglas je uspješno dodan na popis.\n");
+
+            izlaz:;
         }
 
 
@@ -256,10 +263,13 @@ namespace OglasiZaZivotinje
                 {
                     var o = Oglasi[index - 1];
 
-                    Izbornik.ObradaKorisnika.PregledKorisnika();   // Može promijeniti korisnika koji je objavio oglas (a ako izabere istog, ažurirat će se njegovi podaci ako je došlo do neke promjene)
-                    int index2 = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika koji objavljuje oglas (" + o.Korisnik + "): ", "Nije dobar odabir.", 1, Izbornik.ObradaKorisnika.Korisnici.Count());
-                    o.Korisnik = Izbornik.ObradaKorisnika.Korisnici[index2 - 1];
-
+                    Izbornik.ObradaKorisnika.PregledKorisnika();   // Može promijeniti korisnika koji je objavio oglas ili ostaviti istog
+                    int index2 = Ucitavanje.UcitajBrojRaspon("Odaberite redni broj korisnika koji objavljuje oglas ili 0 ako ste zadovoljni s trenutnim korisnikom (" + o.Korisnik + "): ", "Nije dobar odabir.", 0, Izbornik.ObradaKorisnika.Korisnici.Count());
+                    if (index2 != 0)
+                    {
+                        o.Korisnik = Izbornik.ObradaKorisnika.Korisnici[index2 - 1];
+                        
+                    }
                     // šifra i datum objave idu automatski i ne mogu se mijenjati
                     // kategorija se ne može mijenjati, jer su pitanja drugačija i oglasi u kojima se traži životinja nemaju fotografije - ako se netko zeznuo, najbolje je obrisati oglas
                     o.Aktivan = Ucitavanje.UcitajBool("Je li oglas aktivan? Upišite 'da' ili bilo što drugo za ne: ");

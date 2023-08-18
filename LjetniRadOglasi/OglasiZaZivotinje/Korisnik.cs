@@ -10,7 +10,7 @@ namespace OglasiZaZivotinje
     internal class Korisnik
     {
         public int Sifra { get; set; }
-        public int Uloga { get; set; }      // po defaultu 0 = obican korisnik, 1 = admin, 2 = moderator (samo admin može postaviti 1 ili 2)
+        public int Uloga { get; set; }      // po defaultu 0 = obican korisnik, 1 = admin, 2 = moderator, 3 = blokiran (samo admin može postaviti 1, 2 ili 3)
 
         public string Ime { get; set; }
 
@@ -24,7 +24,7 @@ namespace OglasiZaZivotinje
 
         public string Grad { get; set; }
 
-        public string IPadresa { get; set; }     // sustav bi automatski trebao zabilježiti IP adresu
+        
         
 
         public override string ToString()

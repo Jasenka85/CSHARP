@@ -122,7 +122,7 @@ namespace OglasiZaZivotinje
             k.Email = Ucitavanje.UcitajString("Unesite e-mail korisnika: ", "E-mail je obavezan.");
             k.Mobitel = Ucitavanje.UcitajString("Unesite broj mobitela korisnika: ", "Broj mobitela je obavezan.");
             k.Grad = Ucitavanje.UcitajString("Unesite grad ili mjesto: ", "Lokacija je obavezna.");
-            k.IPadresa = ""; // Za sad stavljam prazno, dok ne vidim može li automatski
+            
             Korisnici.Add(k);
             Console.WriteLine("\nKorisnik je uspješno dodan na popis.\n");
         }
@@ -200,12 +200,16 @@ namespace OglasiZaZivotinje
                 if (index != 0)
                 {
                     var k = Korisnici[index - 1];
-                    k.Uloga = Ucitavanje.UcitajBrojRaspon("Odredite razinu ovlasti: 0 za korisnika, 1 za administratora, 2 za moderatora: ", "Treba upisati broj 0, 1 ili 2.", 0, 2);
-                    if (k.Lozinka == "" && k.Uloga != 0)
+                    k.Uloga = Ucitavanje.UcitajBrojRaspon("Odredite razinu ovlasti: 0 za korisnika, 1 za administratora, 2 za moderatora, 3 za blokiranje: ", "Treba upisati broj 0, 1, 2 ili 3.", 0, 3);
+                    if (k.Uloga == 3)
+                    {
+                        Console.WriteLine("\nKorisnik je uspješno blokiran.\n");
+                    }
+                    else if (k.Lozinka == "" && k.Uloga !=0)
                     {
                         k.Lozinka = Ucitavanje.UcitajString("Odredite lozinku za korisnika: ", "Lozinka je obavezna za admina i moderatora.");
                     }
-                    Console.WriteLine("\nKorisniku je uspješno promijenjena uloga\n");
+                    Console.WriteLine("\nKorisniku je uspješno promijenjena uloga.\n");
                 }
             }
         }
@@ -228,7 +232,7 @@ namespace OglasiZaZivotinje
                 Email = "shabus@gmail.com",
                 Mobitel = "092 146 3753",
                 Grad = "Zaprešić",
-                IPadresa = "91.152.23.137"
+                
 
             });
 
@@ -243,7 +247,7 @@ namespace OglasiZaZivotinje
                 Email = "jaugustinovic@gmail.com",
                 Mobitel = "091 543 6424",
                 Grad = "Osijek",
-                IPadresa = "92.143.54.128"
+                
 
             });
 
@@ -257,8 +261,8 @@ namespace OglasiZaZivotinje
                 Prezime = "Marasović",
                 Email = "amarasovic@gmail.com",
                 Mobitel = "099 234 4422",
-                Grad = "Zagreb",
-                IPadresa = "93.164.72.181"
+                Grad = "Zagreb"
+                
 
             });
 
@@ -273,9 +277,8 @@ namespace OglasiZaZivotinje
                 Prezime = "Grgić",
                 Email = "mgrgic@gmail.com",
                 Mobitel = "095 632 7455",
-                Grad = "Sesvete",
-                IPadresa = "94.164.72.181"
-
+                Grad = "Sesvete"
+                
             });
 
 
@@ -289,8 +292,8 @@ namespace OglasiZaZivotinje
                 Prezime = "Banić",
                 Email = "ivana.banic@gmail.com",
                 Mobitel = "091 555 7654",
-                Grad = "Našice",
-                IPadresa = "95.131.57.148"
+                Grad = "Našice"
+                
 
             } );
 
@@ -304,8 +307,8 @@ namespace OglasiZaZivotinje
                 Prezime = "Popović",
                 Email = "apopovic@gmail.com",
                 Mobitel = "098 323 7532",
-                Grad = "Tenja",
-                IPadresa = "96.163.48.131"
+                Grad = "Tenja"
+                
 
             });
 
