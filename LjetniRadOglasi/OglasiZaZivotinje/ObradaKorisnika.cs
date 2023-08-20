@@ -11,13 +11,20 @@ namespace OglasiZaZivotinje
         int Ksifra = 7;      // podesiti kada se uklone testni podaci!
         public List<Korisnik> Korisnici { get; }
 
-        
-        
+        private Izbornik Izbornik;
+
         public ObradaKorisnika()
         { 
             Korisnici = new List<Korisnik>();
             TestniPodaci();
         }
+
+        public ObradaKorisnika(Izbornik izbornik) : this()
+        {
+            this.Izbornik = izbornik;
+            
+        }
+
 
         public void PrikaziIzbornik()
         {
@@ -95,6 +102,8 @@ namespace OglasiZaZivotinje
             if (index != 0)
             {
                 var k = Korisnici[index - 1];
+                int broj = 1;
+                int zastavica = 0;
 
                 Console.WriteLine("**********************************************************************************************************");
                 Console.WriteLine("\t Sifra: {0}", k.Sifra);
@@ -104,8 +113,22 @@ namespace OglasiZaZivotinje
                 Console.WriteLine("\t E-mail: {0}", k.Email);
                 Console.WriteLine("\t Broj mobitela: {0}", k.Mobitel);
                 Console.WriteLine("\t Grad: {0}", k.Grad);
-                
-                
+                Console.WriteLine("\t Oglasi korisnika: ");
+
+                for (int i = 0; i < Izbornik.ObradaOglasa.Oglasi.Count(); i++)
+                {
+                    if (Izbornik.ObradaOglasa.Oglasi[i].Korisnik.Sifra == k.Sifra)
+                    {
+                        var o = Izbornik.ObradaOglasa.Oglasi[i];
+                        Console.WriteLine("\t\t {0}. {1}: {2}", broj++, Ucitavanje.OdrediKategoriju(o.Kategorija), o.NaslovOglasa);
+                        zastavica++;
+                    }
+                    
+                }
+                if (zastavica==0)
+                {
+                    Console.WriteLine("\t\t Korisnik {0} nema niti jedan oglas.", k.Ime);
+                }
             }
             
             
@@ -205,11 +228,14 @@ namespace OglasiZaZivotinje
                     {
                         Console.WriteLine("\nKorisnik je uspješno blokiran.\n");
                     }
-                    else if (k.Lozinka == "" && k.Uloga !=0)
+                    else
                     {
-                        k.Lozinka = Ucitavanje.UcitajString("Odredite lozinku za korisnika: ", "Lozinka je obavezna za admina i moderatora.");
+                        if (k.Lozinka == "" && k.Uloga != 0)
+                        {
+                            k.Lozinka = Ucitavanje.UcitajString("Odredite lozinku za korisnika: ", "Lozinka je obavezna za admina i moderatora.");
+                        }
+                        Console.WriteLine("\nKorisniku je uspješno promijenjena uloga.\n");
                     }
-                    Console.WriteLine("\nKorisniku je uspješno promijenjena uloga.\n");
                 }
             }
         }

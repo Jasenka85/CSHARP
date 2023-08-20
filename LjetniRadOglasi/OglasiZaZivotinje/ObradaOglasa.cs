@@ -393,7 +393,7 @@ namespace OglasiZaZivotinje
             o1.Fotografije = new List<Fotografija>();
             o1.Fotografije.Add(new Fotografija
             {
-                Sifra = Fsifra++,
+                Sifra = 1,
                 Naziv = "Leona",
                 Link= "https://i.postimg.cc/N0zqmfMj/Leona.jpg"
             });
@@ -426,7 +426,7 @@ namespace OglasiZaZivotinje
             o2.Fotografije = new List<Fotografija>();
             o2.Fotografije.Add(new Fotografija
             {
-                Sifra = Fsifra++,
+                Sifra = 2,
                 Naziv = "Dixie",
                 Link = "https://i.postimg.cc/mrRGB6nT/Dixie.jpg"
             });
@@ -437,7 +437,7 @@ namespace OglasiZaZivotinje
                 ImePosiljatelja = "Goran",
                 EmailPosiljatelja = "goran.kos@gmail.com",
                 TekstPoruke = "Javljam se za Dixija, tražim društvo mom Pixiju. Ima 4 mjeseca.",
-                DatumPoruke = DateTime.Parse("23.03.2023")
+                DatumPoruke = DateTime.Parse("27.04.2023")
             });
             Oglasi.Add(o2);
 
@@ -459,7 +459,7 @@ namespace OglasiZaZivotinje
             o3.Fotografije = new List<Fotografija>();
             o3.Fotografije.Add(new Fotografija
             {
-                Sifra = Fsifra++,
+                Sifra = 3,
                 Naziv = "Mambo",
                 Link = "https://i.postimg.cc/dtvX7TB9/Mambo.jpg"
             });
@@ -533,9 +533,9 @@ namespace OglasiZaZivotinje
             {
                 Sifra = 6,
                 Aktivan = true,
-                Korisnik = Izbornik.ObradaKorisnika.Korisnici[5],
+                Korisnik = Izbornik.ObradaKorisnika.Korisnici[3],
                 Kategorija = 2,
-                DatumObjave = DateTime.Parse("08.05.2023"),
+                DatumObjave = DateTime.Parse("13.06.2023"),
                 NaslovOglasa = "Želim udomiti hrčka",
                 OpisOglasa = "Želim udomiti bebu hrčka, po mogućnosti sirijskog, ali može i ruski ili roborovski.",
                 VrstaZivotinje = "Hrčak",

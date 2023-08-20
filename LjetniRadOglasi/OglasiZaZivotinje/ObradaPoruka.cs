@@ -98,9 +98,9 @@ namespace OglasiZaZivotinje
                             Console.WriteLine("\t\tIme pošiljatelja: {0}", p.ImePosiljatelja);
                             Console.WriteLine("\t\tE-mail pošiljatelja: {0}", p.EmailPosiljatelja);
                             Console.WriteLine("\t\tPoruka: {0}", p.TekstPoruke);
-                            Console.WriteLine("\t\tDatum poruke: {0}", p.DatumPoruke);
+                            Console.WriteLine("\t\tDatum poruke: {0}\n", p.DatumPoruke);
                     }
-                    Console.WriteLine("**********************************************************************************************************");
+                    
 
                     return index;
                 }
@@ -148,6 +148,7 @@ namespace OglasiZaZivotinje
         private void ObrisiPoruku()
         {
             int index = PregledajPoruke();
+            Console.WriteLine("**********************************************************************************************************");
             if (index!=0)
             {
             var o = Izbornik.ObradaOglasa.Oglasi[index - 1];

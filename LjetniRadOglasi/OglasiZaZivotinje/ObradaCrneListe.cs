@@ -94,6 +94,9 @@ namespace OglasiZaZivotinje
                 if (index !=0 )
                 {
                     var k = KorisniciNaListi[index - 1];
+                    int broj = 1;
+                    int zastavica = 0;
+
                     Console.WriteLine("**********************************************************************************************************");
                     Console.WriteLine("\t Sifra: {0}", k.Korisnik.Sifra);
                     Console.WriteLine("\t Ime: {0}", k.Korisnik.Ime);
@@ -104,7 +107,21 @@ namespace OglasiZaZivotinje
                     Console.WriteLine("\t Grad: {0}", k.Korisnik.Grad);
                     Console.WriteLine("\t Razlog blokiranja: {0}", k.RazlogBlokiranja);
                     Console.WriteLine("\t Datum blokiranja: {0}", k.DatumBlokiranja);
-                    Console.WriteLine("**********************************************************************************************************");
+                    Console.WriteLine("\t Oglasi korisnika: ");
+
+                    for (int i = 0; i < Izbornik.ObradaOglasa.Oglasi.Count(); i++)
+                    {
+                        if (Izbornik.ObradaOglasa.Oglasi[i].Korisnik.Sifra == k.Korisnik.Sifra)
+                        {
+                        var o = Izbornik.ObradaOglasa.Oglasi[i];
+                        Console.WriteLine("\t\t {0}. {1}: {2}", broj++, Ucitavanje.OdrediKategoriju(o.Kategorija), o.NaslovOglasa);
+                        zastavica++;
+                        }
+                    }
+                    if (zastavica == 0)
+                    {
+                        Console.WriteLine("\t\t Korisnik {0} nema niti jedan oglas.", k.Korisnik.Ime);
+                    }
                 }
                 
             

@@ -8,7 +8,7 @@ namespace OglasiZaZivotinje
 {
     internal class Izbornik
     {
-        public ObradaKorisnika ObradaKorisnika { get; }
+        public ObradaKorisnika ObradaKorisnika;
         public ObradaPoruka ObradaPoruka;
         public ObradaOglasa ObradaOglasa;
         public ObradaCrneListe ObradaCrneListe;
@@ -16,7 +16,7 @@ namespace OglasiZaZivotinje
         
         public Izbornik() 
         {
-            ObradaKorisnika = new ObradaKorisnika();
+            ObradaKorisnika = new ObradaKorisnika(this);
             ObradaPoruka = new ObradaPoruka(this);
             ObradaOglasa = new ObradaOglasa(this);
             ObradaCrneListe = new ObradaCrneListe(this);
