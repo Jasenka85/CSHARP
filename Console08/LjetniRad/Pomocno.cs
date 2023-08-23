@@ -143,5 +143,16 @@ namespace LjetniRad
                 return Int32.Parse(odgovor);
         }
 
+        internal static decimal UcitajPromjenuDecBroja(string poruka, decimal staro)
+        {
+            Console.Write(poruka);
+            string odgovor = Console.ReadLine();
+            if (odgovor == "")
+                return staro;
+            else
+                return Decimal.Parse(odgovor);
+        }
+
+
     }
 }

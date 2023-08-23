@@ -22,20 +22,22 @@ namespace LjetniRad
         }
         private void PozdravnaPoruka()
         {
-            Console.WriteLine("*************************************");
-            Console.WriteLine("***** Edunova Console APP v 1.0 *****");
-            Console.WriteLine("*************************************");
+            Console.WriteLine("**********************************************************************************************************");
+            Console.WriteLine("*                                        Edunova Console APP v 1.0                                       *");
+            
             
         }
 
         private void PrikaziIzbornik()
         {
-            Console.WriteLine("Glavni izbornik");
-            Console.WriteLine("1. Smjerovi");
-            Console.WriteLine("2. Polaznici");
-            Console.WriteLine("3. Grupe");
-            Console.WriteLine("4. Izlaz iz programa");
-            Console.WriteLine("*************************************");
+            Console.WriteLine("**********************************************************************************************************");
+            Console.WriteLine("*                                            Glavni izbornik:                                            *");
+            Console.WriteLine("**********************************************************************************************************");
+            Console.WriteLine("\t 1. Smjerovi");
+            Console.WriteLine("\t 2. Polaznici");
+            Console.WriteLine("\t 3. Grupe");
+            Console.WriteLine("\t 4. Izlaz iz programa");
+            Console.WriteLine("**********************************************************************************************************");
 
             switch (Pomocno.ucitajBrojRaspon("\nOdaberite stavku izbornika: ", "Odabir mora biti 1-4", 1, 4))
             {
@@ -53,7 +55,7 @@ namespace LjetniRad
                     PrikaziIzbornik();
                     break;
                 case 4:
-                    Console.WriteLine("Hvala na korištenju, doviđenja!");
+                    Console.WriteLine("\nHvala na korištenju, doviđenja!");
                     break;
 
             }

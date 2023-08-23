@@ -8,6 +8,7 @@ namespace LjetniRad
 {
     internal class ObradaPolaznik
     {
+        
         public List<Polaznik> Polaznici { get; }
 
         public ObradaPolaznik()
@@ -21,19 +22,22 @@ namespace LjetniRad
 
         public void PrikaziIzbornik()
         {
-            Console.WriteLine("*************************************");
-            Console.WriteLine("Izbornik za rad s polaznicima");
-            Console.WriteLine("1. Pregled postojećih polaznika");
-            Console.WriteLine("2. Unos novog polaznika");
-            Console.WriteLine("3. Promjena postojećeg polaznika");
-            Console.WriteLine("4. Brisanje polaznika");
-            Console.WriteLine("5. Povratak na glavni izbornik");
-            Console.WriteLine("*************************************");
+            Console.WriteLine("**********************************************************************************************************");
+            Console.WriteLine("*                                     Izbornik za rad s polaznicima                                      *");
+            Console.WriteLine("**********************************************************************************************************");
+            Console.WriteLine("\t 1. Pregled postojećih polaznika");
+            Console.WriteLine("\t 2. Unos novog polaznika");
+            Console.WriteLine("\t 3. Promjena postojećeg polaznika");
+            Console.WriteLine("\t 4. Brisanje polaznika");
+            Console.WriteLine("\t 5. Povratak na glavni izbornik");
+            Console.WriteLine("**********************************************************************************************************");
+           
             switch (Pomocno.ucitajBrojRaspon("\nOdaberite stavku izbornika polaznika: ", "Odabir mora biti 1-5", 1, 5))
             {
                 case 1:
                     PregledPolaznika();
-                    PrikaziDetalje();
+                    if (Polaznici.Count() !=0)
+                        PrikaziDetalje();
                     PrikaziIzbornik();
                     break;
                 case 2:
@@ -62,20 +66,20 @@ namespace LjetniRad
             if (Polaznici.Count() == 0)
             {
                 Console.WriteLine("\nNema polaznika na listi!\n");
-                PrikaziIzbornik();
+                
             }
             else
             {
 
-                Console.WriteLine("-------------------------------");
-                Console.WriteLine("---------- Polaznici ----------");
-                Console.WriteLine("-------------------------------");
+                Console.WriteLine("**********************************************************************************************************");
+                Console.WriteLine("*                                               Polaznici:                                               *");
+                Console.WriteLine("**********************************************************************************************************");
                 int b = 1;
                 foreach (Polaznik polaznik in Polaznici)
                 {
                     Console.WriteLine("\t{0}. {1}", b++, polaznik);
                 }
-                Console.WriteLine("-------------------------------");
+                Console.WriteLine("**********************************************************************************************************");
             }
         }
 
@@ -90,13 +94,13 @@ namespace LjetniRad
                     int index = Pomocno.ucitajBrojRaspon("Odaberite redni broj polaznika kojeg želite pregledati: ", "Nije dobar odabir.", 1, Polaznici.Count());
                     var p = Polaznici[index - 1];
 
-                    Console.WriteLine("-------------------------------");
+                    Console.WriteLine("**********************************************************************************************************");
                     Console.WriteLine("\t Sifra: {0}", p.Sifra);
                     Console.WriteLine("\t Ime: {0}", p.Ime);
                     Console.WriteLine("\t Prezime: {0}", p.Prezime);
                     Console.WriteLine("\t OIB: {0}", p.Oib);
                     Console.WriteLine("\t E-mail: {0}", p.Email);
-                    
+                    Console.WriteLine("**********************************************************************************************************");
 
                 }
                 else
@@ -117,6 +121,7 @@ namespace LjetniRad
             p.Email = Pomocno.UcitajString("Unesite e-mail polaznika: ", "E-mail je obavezan!");
             p.Oib = Pomocno.UcitajString("Unesite OIB polaznika: ", "OIB je obavezan!");
             Polaznici.Add(p);
+            Console.WriteLine("\nPolaznik je uspješno dodan na popis.\n");
         }
 
 
@@ -126,19 +131,15 @@ namespace LjetniRad
             if (Polaznici.Count() == 0)
             {
                 Console.WriteLine("\nNema polaznika na listi!\n");
-                PrikaziIzbornik();
+                
             }
             else
             {
                 PregledPolaznika();
                 int index = Pomocno.ucitajBrojRaspon("Odaberite redni broj polaznika kojeg želite promijeniti (ili 0 za izlaz): ", "Nije dobar odabir!", 0, Polaznici.Count());
 
-                if (index == 0)
-                {
-                    Console.WriteLine("\nPolaznik nije promijenjen.\n");
-
-                }
-                else
+                if (index != 0)
+                
                 {
                     var p = Polaznici[index - 1];
 
@@ -159,19 +160,14 @@ namespace LjetniRad
             if (Polaznici.Count() == 0)
             {
                 Console.WriteLine("\nNema polaznika na listi!\n");
-                PrikaziIzbornik();
+                
             }
             else
             {
                 PregledPolaznika();
                 int index = Pomocno.ucitajBrojRaspon("Odaberite redni broj polaznika kojeg želite obrisati (ili 0 za izlaz): ", "Nije dobar odabir!", 0, Polaznici.Count());
 
-                if (index == 0)
-                {
-                    Console.WriteLine("\nPolaznik nije obrisan.\n");
-                }
-
-                else
+                if (index != 0)
                 {
                     Polaznici.RemoveAt(index - 1);
                     Console.WriteLine("\nPolaznik je uspješno obrisan.\n");
@@ -200,6 +196,35 @@ namespace LjetniRad
                 Email = "mzimska@gmail.com",
                 Oib = "33736472821"
             });
+
+            Polaznici.Add(new Polaznik
+            {
+                Sifra = 3,
+                Ime = "Ivana",
+                Prezime = "Ljubičić",
+                Email = "ljubicica@gmail.com",
+                Oib = "23741498742"
+            });
+
+            Polaznici.Add(new Polaznik
+            {
+                Sifra = 4,
+                Ime = "Marina",
+                Prezime = "Ćilić",
+                Email = "ciribu@gmail.com",
+                Oib = "84370284732"
+            });
+
+            Polaznici.Add(new Polaznik
+            {
+                Sifra = 5,
+                Ime = "Janko",
+                Prezime = "Kostelić",
+                Email = "koska@gmail.com",
+                Oib = "32186498654"
+            });
+
+
 
         }
 
