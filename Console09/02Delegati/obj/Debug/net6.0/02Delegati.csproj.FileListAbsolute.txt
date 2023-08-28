@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\bin\Debug\net6.0\02Delegati.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\bin\Debug\net6.0\02Delegati.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\bin\Debug\net6.0\02Delegati.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\bin\Debug\net6.0\02Delegati.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\bin\Debug\net6.0\02Delegati.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\02Delegati.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\02Delegati.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\02Delegati.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\02Delegati.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\02Delegati.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\02Delegati.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\refint\02Delegati.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\02Delegati.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\02Delegati.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\02Delegati\obj\Debug\net6.0\ref\02Delegati.dll

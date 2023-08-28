@@ -1,0 +1,15 @@
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\bin\Debug\net6.0\01Lambda.exe
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\bin\Debug\net6.0\01Lambda.deps.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\bin\Debug\net6.0\01Lambda.runtimeconfig.json
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\bin\Debug\net6.0\01Lambda.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\bin\Debug\net6.0\01Lambda.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\01Lambda.csproj.AssemblyReference.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\01Lambda.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\01Lambda.AssemblyInfoInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\01Lambda.AssemblyInfo.cs
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\01Lambda.csproj.CoreCompileInputs.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\01Lambda.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\refint\01Lambda.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\01Lambda.pdb
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\01Lambda.genruntimeconfig.cache
+C:\Users\jaugu\Documents\GitHub\CSHARP\Console09\01Lambda\obj\Debug\net6.0\ref\01Lambda.dll
