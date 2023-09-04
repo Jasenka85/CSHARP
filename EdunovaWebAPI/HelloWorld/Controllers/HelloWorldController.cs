@@ -1,6 +1,8 @@
 ﻿
 using System.Collections.Specialized;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace HelloWorld.Controllers
 {
@@ -89,13 +91,90 @@ namespace HelloWorld.Controllers
 
 
         [HttpGet]
-        [Route("ciklicna")]
+        [Route("CiklicnaMatricaString")]
 
         public string[] IspisiCiklicnuMatricu(int redaka, int stupaca)
         {
-            return CiklicnaMatrica.NapraviMatricu(redaka, stupaca);
+            return CiklicnaMatrica.NapraviNizStringova(redaka, stupaca);
         
         }
+
+
+
+        [HttpGet]
+        [Route("CiklicnaMatricaJson")]
+
+        
+        public IActionResult Matrica(int redaka, int stupaca)
+        {
+            // moj kod koji to napuni
+
+            int[,] matrica = new int[redaka, stupaca];
+
+            matrica = CiklicnaMatrica.NapraviMatricu(redaka, stupaca);
+
+            return new JsonResult(JsonConvert.SerializeObject(matrica));
+        }
+
+
+        [HttpGet]
+        [Route("LjubavniKalkulator")]
+
+        public string Kalkulator(string TvojeIme, string ImeSimpatije)
+        {
+            var postotak = new int[2];
+            postotak = LjubavniKalkulator.Sansa(LjubavniKalkulator.PrebrojiSlova(TvojeIme, ImeSimpatije));
+            return "Šansa za vašu ljubav je " + postotak[0] + postotak[1] + "%";
+
+        }
+
+
+
+
+        [HttpGet]
+        [Route("{sifra:int}")]  
+
+        public string PozdravRuta(int sifra)
+        {
+            return "Hello " + sifra;
+
+        }
+
+        [HttpGet]
+        [Route("{sifra:int}/{kategorija}")]
+
+        public string PozdravRuta2(int sifra, string kategorija)
+        {
+            return "Hello " + sifra + " " + kategorija;
+
+        }
+
+
+
+        [HttpPost]
+
+        public string DodavanjeNovog(string ime)
+        {
+            return "Dodao " + ime;
+        }
+
+
+        [HttpPut]
+
+        public string Promjena(int sifra, string naziv)
+        {
+            return "Na šifri " + sifra + " postavljam " + naziv;
+        }
+
+        [HttpDelete]
+
+        public bool Obrisao(int sifra)
+        {
+            return true;
+        }
+
+        
+        
 
 
     }

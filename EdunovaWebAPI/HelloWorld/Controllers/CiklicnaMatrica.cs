@@ -3,7 +3,8 @@
     public class CiklicnaMatrica
     {
 
-        public static string[] NapraviMatricu(int redaka, int stupaca)
+        
+        public static int[,] NapraviMatricu(int redaka, int stupaca)
         {
 
 
@@ -11,10 +12,7 @@
 
             int b = 1;
 
-            int n = 0;          
-            
-            var nizRedaka = new string[redaka];
-
+            int n = 0;
 
 
             while (b < stupaca * redaka)
@@ -54,11 +52,27 @@
 
             }
 
+            
+            return matrica;
+
+        }
+
+
+        public static string[] NapraviNizStringova(int redaka, int stupaca)
+        {
+
+            int[,] matrica = new int[redaka, stupaca];
+
+            matrica = NapraviMatricu(redaka, stupaca);
+
+            var nizRedaka = new string[redaka];
+
+
             for (int i = 0; i < redaka; i++)
             {
                 string s = "";
                 for (int j = 0; j < stupaca; j++)
-                { 
+                {
                     string t = "     " + matrica[i, j];
                     t = t[^5..];
                     s = s + t;
@@ -69,7 +83,6 @@
             return nizRedaka;
 
         }
-
 
     }
 }
