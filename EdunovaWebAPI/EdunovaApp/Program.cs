@@ -1,3 +1,6 @@
+using EdunovaApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -27,6 +30,12 @@ builder.Services.AddSwaggerGen(sgo => { // sgo je instanca klase SwaggerGenOptio
 
 
 });
+
+
+//dodavanje baze podataka mora biti prije buildera
+
+builder.Services.AddDbContext<EdunovaContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString(name: "EdunovaContext")));
+
 
 
 var app = builder.Build();

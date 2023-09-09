@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using OglasiZaZivotinje.Data;
 using OglasiZaZivotinje.Models;
 
 namespace OglasiZaZivotinje.Controllers
@@ -7,93 +9,58 @@ namespace OglasiZaZivotinje.Controllers
     [Route("api/v1/[controller]")]
     public class KorisnikController: ControllerBase
     {
+        private readonly OglasiContext _context;
+
+        public KorisnikController(OglasiContext context)
+        {
+            _context = context;
+        }
+
+
+
         [HttpGet]
         public IActionResult Get()
         {
-            var lista = new List<Korisnik>()
+            if (!ModelState.IsValid)
             {
-            new()
-            {
-                Sifra = 1,
-                Uloga = 1,      // administrator
-                Lozinka = "Zoki123",
-                Ime = "Sanja",
-                Prezime = "Habuš",
-                Email = "shabus@gmail.com",
-                Mobitel = "092 146 3753",
-                Grad = "Zaprešić"
-            },
-
-            new()
-            {
-                Sifra = 2,
-                Uloga = 1,      // administrator
-                Lozinka = "Bruno123",
-                Ime = "Jasenka",
-                Prezime = "Augustinović",
-                Email = "jaugustinovic@gmail.com",
-                Mobitel = "091 543 6424",
-                Grad = "Osijek"
-            },
-
-            new()
-            {
-                Sifra = 3,
-                Uloga = 2,      // moderator
-                Lozinka = "Ivan123",
-                Ime = "Ana",
-                Prezime = "Marasović",
-                Email = "amarasovic@gmail.com",
-                Mobitel = "099 234 4422",
-                Grad = "Zagreb"
-            },
-
-            new()
-            {
-                Sifra = 4,
-                Uloga = 2,      // moderator
-                Lozinka = "Josip123",
-                Ime = "Maja",
-                Prezime = "Grgić",
-                Email = "mgrgic@gmail.com",
-                Mobitel = "095 632 7455",
-                Grad = "Sesvete"
-
-            },
-
-            new() {
-                Sifra = 5,
-                Uloga = 0,      // obican korisnik
-                Lozinka = "",
-                Ime = "Ivana",
-                Prezime = "Banić",
-                Email = "ivana.banic@gmail.com",
-                Mobitel = "091 555 7654",
-                Grad = "Našice"
-            },
-
-            new()
-            {
-                Sifra = 6,
-                Uloga = 0,      // obican korisnik
-                Lozinka = "",
-                Ime = "Adriana",
-                Prezime = "Popović",
-                Email = "apopovic@gmail.com",
-                Mobitel = "098 323 7532",
-                Grad = "Tenja"
+                return BadRequest(ModelState);
             }
-            };
+            try
+            {
+                var korisnici = _context.Korisnik.ToList();
+                if (korisnici == null || korisnici.Count == 0)
+                {
+                    return new EmptyResult();
+                }
+                return new JsonResult(_context.Korisnik.ToList());
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
 
-            return new JsonResult(lista);
-        
+
         }
 
         [HttpPost]
 
         public IActionResult Post(Korisnik korisnik)
         {
-            return Created("api/v1/Korisnik", korisnik);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                _context.Korisnik.Add(korisnik);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, korisnik);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+
         }
 
         [HttpPut]
@@ -101,7 +68,38 @@ namespace OglasiZaZivotinje.Controllers
 
         public IActionResult Put(int sifra, Korisnik korisnik)
         {
-            return StatusCode(StatusCodes.Status200OK, korisnik);
+            if (sifra <= 0 || korisnik == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var korisnikBaza = _context.Korisnik.Find(sifra);
+                if (korisnikBaza == null)
+                {
+                    return BadRequest();
+                }
+                
+                korisnikBaza.Uloga = korisnik.Uloga;
+                korisnikBaza.Ime = korisnik.Ime;
+                korisnikBaza.Prezime = korisnik.Prezime;
+                korisnikBaza.Email = korisnik.Email;
+                korisnikBaza.Lozinka = korisnik.Lozinka;
+                korisnikBaza.Mobitel = korisnik.Mobitel;
+                korisnikBaza.Grad = korisnik.Grad;
+
+                _context.Korisnik.Update(korisnikBaza);
+                _context.SaveChanges();
+
+                return StatusCode(StatusCodes.Status200OK, korisnikBaza);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex); 
+            }
+
         }
 
         [HttpDelete]
@@ -109,7 +107,41 @@ namespace OglasiZaZivotinje.Controllers
 
         public IActionResult Delete(int sifra)
         {
-            return StatusCode(StatusCodes.Status200OK, "{\"obrisano\":true}");
+            if (sifra <= 0)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var korisnikBaza = _context.Korisnik.Find(sifra);
+                if (korisnikBaza == null)
+                {
+                    return BadRequest();
+                }
+
+                _context.Korisnik.Remove(korisnikBaza);
+                _context.SaveChanges();
+
+                return new JsonResult("{\"poruka\":\"Obrisano\"}");
+
+            }
+            catch (Exception ex)
+            {
+
+                try
+                {
+                    SqlException sqle = (SqlException)ex;
+                    return StatusCode(StatusCodes.Status503ServiceUnavailable, sqle);
+                }
+                catch (Exception e)
+                {
+
+                }
+
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex);
+            }
+
         }
 
 
