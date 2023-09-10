@@ -69,3 +69,5 @@ C:\Users\jaugu\Documents\GitHub\CSHARP\EdunovaWebAPI\EdunovaApp\bin\Debug\net7.0
 C:\Users\jaugu\Documents\GitHub\CSHARP\EdunovaWebAPI\EdunovaApp\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\jaugu\Documents\GitHub\CSHARP\EdunovaWebAPI\EdunovaApp\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\jaugu\Documents\GitHub\CSHARP\EdunovaWebAPI\EdunovaApp\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\EdunovaWebAPI\EdunovaApp\bin\Debug\net7.0\EdunovaApp.xml
+C:\Users\jaugu\Documents\GitHub\CSHARP\EdunovaWebAPI\EdunovaApp\obj\Debug\net7.0\EdunovaApp.xml

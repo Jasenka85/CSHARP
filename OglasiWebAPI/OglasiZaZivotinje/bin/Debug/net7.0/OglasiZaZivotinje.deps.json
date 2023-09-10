@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "OglasiZaZivotinje/1.0.0": {
         "dependencies": {
+          "Faker.Net": "2.0.154",
           "Microsoft.AspNetCore.OpenApi": "7.0.5",
           "Microsoft.EntityFrameworkCore": "7.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.10",
@@ -48,6 +49,22 @@
           "lib/netstandard2.0/Azure.Identity.dll": {
             "assemblyVersion": "1.6.0.0",
             "fileVersion": "1.600.22.20503"
+          }
+        }
+      },
+      "Faker.Net/2.0.154": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.3"
+        },
+        "runtime": {
+          "lib/net60/Faker.Net.6.0.dll": {
+            "assemblyVersion": "2.0.154.0",
+            "fileVersion": "2.0.154.0"
+          }
+        },
+        "resources": {
+          "lib/net60/de-DE/Faker.Net.6.0.resources.dll": {
+            "locale": "de-DE"
           }
         }
       },
@@ -359,6 +376,11 @@
           }
         }
       },
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0"
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -632,6 +654,13 @@
       "path": "azure.identity/1.6.0",
       "hashPath": "azure.identity.1.6.0.nupkg.sha512"
     },
+    "Faker.Net/2.0.154": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pkabhT7wxNR1gkPO6ga77XdeqBblaE8a1oY47eMGGvM7DMZ9S8ARZrKkRWaPUNjGCOqtH3oeQSMuEPxd98ir4w==",
+      "path": "faker.net/2.0.154",
+      "hashPath": "faker.net.2.0.154.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.OpenApi/7.0.5": {
       "type": "package",
       "serviceable": true,
@@ -869,6 +898,13 @@
       "sha512": "sha512-Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
       "path": "microsoft.win32.systemevents/5.0.0",
       "hashPath": "microsoft.win32.systemevents.5.0.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.4.0": {
       "type": "package",

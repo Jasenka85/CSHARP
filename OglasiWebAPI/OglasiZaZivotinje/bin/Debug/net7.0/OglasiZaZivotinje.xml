@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OglasiZaZivotinje</name>
+    </assembly>
+    <members>
+        <member name="T:OglasiZaZivotinje.Controllers.KorisnikController">
+            <summary>
+            Namijenjeno za CRUD operacije sa entitetom Korisnik u bazi
+            </summary>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Get">
+             <summary>
+             Dohvaća sve korisnike iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Korisnik
+            
+             </remarks>
+             <returns>Korisnici u bazi</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Post(OglasiZaZivotinje.Models.Korisnik)">
+             <summary>
+             Dodaje korisnika u bazu
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST api/v1/Korisnik
+            
+             </remarks>
+             <returns>Kreiranog korisnika u bazi sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Put(System.Int32,OglasiZaZivotinje.Models.Korisnik)">
+             <summary>
+             Mijenja korisnika sa zadanom šifrom u bazi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT api/v1/Korisnik/{sifra}
+            
+             </remarks>
+             <returns>Promijenjenog korisnika u bazi sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Delete(System.Int32)">
+             <summary>
+             Briše korisnika sa zadanom šifrom iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                DELETE api/v1/Korisnik/{sifra}
+            
+             </remarks>
+             <returns>Poruku da je obrisao korisnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+    </members>
+</doc>

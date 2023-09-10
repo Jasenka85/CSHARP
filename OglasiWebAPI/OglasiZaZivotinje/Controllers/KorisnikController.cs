@@ -5,9 +5,13 @@ using OglasiZaZivotinje.Models;
 
 namespace OglasiZaZivotinje.Controllers
 {
+    /// <summary>
+    /// Namijenjeno za CRUD operacije sa entitetom Korisnik u bazi
+    /// </summary>
+
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class KorisnikController: ControllerBase
+    public class KorisnikController : ControllerBase
     {
         private readonly OglasiContext _context;
 
@@ -17,6 +21,19 @@ namespace OglasiZaZivotinje.Controllers
         }
 
 
+        /// <summary>
+        /// Dohvaća sve korisnike iz baze
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Korisnik
+        ///
+        /// </remarks>
+        /// <returns>Korisnici u bazi</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpGet]
         public IActionResult Get()
@@ -42,6 +59,21 @@ namespace OglasiZaZivotinje.Controllers
 
         }
 
+
+        /// <summary>
+        /// Dodaje korisnika u bazu
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    POST api/v1/Korisnik
+        ///
+        /// </remarks>
+        /// <returns>Kreiranog korisnika u bazi sa svim podacima</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
         [HttpPost]
 
         public IActionResult Post(Korisnik korisnik)
@@ -62,6 +94,22 @@ namespace OglasiZaZivotinje.Controllers
             }
 
         }
+
+
+
+        /// <summary>
+        /// Mijenja korisnika sa zadanom šifrom u bazi
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    PUT api/v1/Korisnik/{sifra}
+        ///
+        /// </remarks>
+        /// <returns>Promijenjenog korisnika u bazi sa svim podacima</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpPut]
         [Route("{sifra:int}")]
@@ -102,6 +150,21 @@ namespace OglasiZaZivotinje.Controllers
 
         }
 
+
+        /// <summary>
+        /// Briše korisnika sa zadanom šifrom iz baze
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    DELETE api/v1/Korisnik/{sifra}
+        ///
+        /// </remarks>
+        /// <returns>Poruku da je obrisao korisnika</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
         [HttpDelete]
         [Route("{sifra:int}")]
 
@@ -119,6 +182,7 @@ namespace OglasiZaZivotinje.Controllers
                 {
                     return BadRequest();
                 }
+                //napisati provjeru može li se obrisati
 
                 _context.Korisnik.Remove(korisnikBaza);
                 _context.SaveChanges();
@@ -142,6 +206,100 @@ namespace OglasiZaZivotinje.Controllers
                 return StatusCode(StatusCodes.Status503ServiceUnavailable, ex);
             }
 
+        }
+
+
+        [HttpGet]
+        [Route("DodajKorisnikaRucno")]
+
+        public string UnosUBazu()
+        {
+            Korisnik k;
+            for (int i = 0; i < 1000; i++)
+            {
+                k = new()
+                {
+                    Uloga = 0,
+                    Ime = "Ime" + i,
+                    Prezime = "Prezime" + i,
+                    Email = "Email" + i,
+                    Lozinka = "",
+                    Mobitel = "091654762" + i,
+                    Grad = "Grad" + i
+                };
+                _context.Korisnik.Add(k);
+                _context.SaveChanges();
+            }
+            return "Uneseno 1000 korisnika";
+        }
+
+
+        [HttpGet]
+        [Route("DodajKorisnikaFaker")]
+
+        public string PopuniBazu()
+        {
+            Korisnik k;
+            for (int i = 0; i < 1000; i++)
+            {
+                k = new()
+                {
+                    Uloga = 0,
+                    Ime = Faker.Name.First(),
+                    Prezime = Faker.Name.Last(),
+                    Email = Faker.Internet.Email(),
+                    Lozinka = "",
+                    Mobitel = "09"+Faker.RandomNumber.Next(1111111,10000000),
+                    Grad = Faker.Address.City()
+                };
+                _context.Korisnik.Add(k);
+                _context.SaveChanges();
+            }
+            return "Uneseno 1000 fake korisnika";
+        }
+
+        //Ruta koja na svakom entitetu koji ima parnu šifru jednom atributu
+        //mijenja vrijednost i sprema u bazu
+
+
+        [HttpGet]
+        [Route("PromijeniParnog")]
+
+        public string Promjena()
+        
+        {
+            var korisnici = _context.Korisnik.ToList();
+
+            foreach (var k in korisnici)
+            {
+                if (k.Sifra % 2 == 0)
+                {
+                    k.Ime += "mijenjao";
+                    _context.Korisnik.Update(k);
+                }
+              
+                
+            }
+            _context.SaveChanges();
+            return "Promijenio sam parne korisnike";
+
+        }
+
+
+        //Napisati rutu koja vraća sumu svih šifri na odabranom entitetu
+
+        [HttpGet]
+        [Route("SumaSifri")]
+
+        public int Zbroj()
+        {
+            var korisnici = _context.Korisnik.ToList();
+            int zbroj = 0;
+            foreach (var k in korisnici)
+            {
+                    zbroj += k.Sifra;
+            }
+            return zbroj;
         }
 
 

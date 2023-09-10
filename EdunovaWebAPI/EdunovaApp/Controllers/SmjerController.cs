@@ -5,19 +5,43 @@ using Microsoft.Data.SqlClient;
 
 namespace EdunovaApp.Controllers
 {
+    /// <summary>
+    /// Namijenjeno za CRUD operacije na entitetom smjer u bazi
+    /// </summary>
     [ApiController]
     [Route("api/v1/[controller]")]
+
+        
     public class SmjerController: ControllerBase
     {
-        //dependency injection u controller -> vidi link!
         
+
+
+        //dependency injection u controller -> vidi link!
+
         private readonly EdunovaContext _context;
 
+        
         public SmjerController(EdunovaContext context)
         {
             _context = context;
         }
 
+
+
+        /// <summary>
+        /// Dohvaća sve smjerove iz baze
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Smjer
+        ///
+        /// </remarks>
+        /// <returns>Smjerovi u bazi</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
         [HttpGet]
         public IActionResult Get()
         {
@@ -44,6 +68,20 @@ namespace EdunovaApp.Controllers
         }
 
 
+        /// <summary>
+        /// Dodaje smjer u bazu
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    POST api/v1/Smjer
+        ///    {naziv:"",trajanje:100}
+        ///
+        /// </remarks>
+        /// <returns>Kreirani smjer u bazi s svim podacima</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
         [HttpPost]
 
         public IActionResult Post(Smjer smjer) 
