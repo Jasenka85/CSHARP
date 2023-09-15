@@ -6,20 +6,18 @@ using Microsoft.Data.SqlClient;
 namespace EdunovaApp.Controllers
 {
     /// <summary>
-    /// Namijenjeno za CRUD operacije na entitetom smjer u bazi
+    /// Namijenjeno za CRUD operacije nad entitetom smjer u bazi
     /// </summary>
     [ApiController]
-    [Route("api/v1/[controller]")]
-
-        
+    [Route("api/v1/[controller]")]    
     public class SmjerController: ControllerBase
     {
-        
-
 
         //dependency injection u controller -> vidi link!
-
+        //https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-model?view=aspnetcore-7.0&tabs=visual-studio#dependency-injection
+        
         private readonly EdunovaContext _context;
+        //read only jer nećemo mijenjati taj objekt, nego ćemo ga koristiti za promjenu podataka u bazi
 
         
         public SmjerController(EdunovaContext context)
@@ -35,7 +33,7 @@ namespace EdunovaApp.Controllers
         /// <remarks>
         /// Primjer upita:
         ///
-        ///    GET api/v1/Smjer
+        ///    GET api/v1/smjer
         ///
         /// </remarks>
         /// <returns>Smjerovi u bazi</returns>
@@ -74,11 +72,11 @@ namespace EdunovaApp.Controllers
         /// <remarks>
         /// Primjer upita:
         ///
-        ///    POST api/v1/Smjer
+        ///    POST api/v1/smjer
         ///    {naziv:"",trajanje:100}
         ///
         /// </remarks>
-        /// <returns>Kreirani smjer u bazi s svim podacima</returns>
+        /// <returns>Kreirani smjer u bazi sa svim podacima</returns>
         /// <response code="200">Sve je u redu</response>
         /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
@@ -104,7 +102,30 @@ namespace EdunovaApp.Controllers
             
         }
 
-
+        /// <summary>
+        /// Mijenja podatke postojećeg smjera u bazi
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    PUT api/v1/smjer/1
+        ///    
+        /// {
+        ///  "sifra": 0,
+        ///  "naziv": "Novi naziv",
+        ///  "trajanje": 120,
+        ///  "cijena": 890.22,
+        ///  "upisnina": 0,
+        ///  "verificiran": true
+        /// }    
+        ///
+        /// </remarks>
+        /// <param name="sifra">Šifra smjera koji se mijenja</param>  
+        /// <returns>Svi poslani podaci od smjera</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="204">Nema u bazi smjera kojeg želimo promijeniti</response>
+        /// <response code="415">Nismo poslali JSON</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
         [HttpPut]
         [Route("{sifra:int}")]
 
@@ -138,16 +159,30 @@ namespace EdunovaApp.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status503ServiceUnavailable,
-                                  ex); // kada se vrati cijela instanca ex tada na klijentu imamo više podataka o grešci
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex); 
+                // kada se vrati cijela instanca ex tada na klijentu imamo više podataka o grešci
                 // nije dobro vraćati cijeli ex ali za dev je OK
             }
         }
 
-
+        /// <summary>
+        /// Briše smjer iz baze
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    DELETE api/v1/smjer/1
+        ///
+        /// </remarks>
+        /// <param name="sifra">Šifra smjera koji se briše</param>  
+        /// <returns>Odgovor je li obrisano ili ne</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="204">U bazi nema smjera kojeg želimo obrisati</response>
+        /// <response code="415">Nismo poslali JSON</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response>  
         [HttpDelete]
         [Route("{sifra:int}")]
-        
+        [Produces("application/json")]   //ovo se može dodati
         public IActionResult Delete(int sifra)
         {
             if (sifra <= 0)
@@ -172,19 +207,9 @@ namespace EdunovaApp.Controllers
             catch (Exception ex)
             {
 
-                try
-                {
-                    SqlException sqle = (SqlException)ex;
-                    return StatusCode(StatusCodes.Status503ServiceUnavailable,
-                                  sqle);
-                }
-                catch (Exception e)
-                {
+                return new JsonResult("{\"poruka\":\"Ne može se obrisati\"}");
 
-                }
 
-                return StatusCode(StatusCodes.Status503ServiceUnavailable,
-                                  ex);
             }
         }
     }
