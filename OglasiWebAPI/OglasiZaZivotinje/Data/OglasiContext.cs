@@ -12,5 +12,27 @@ namespace OglasiZaZivotinje.Data
         }
         public DbSet<Korisnik> Korisnik { get; set; }
 
+        public DbSet<Oglas> Oglas { get; set; }
+
+        public DbSet<Poruka> Poruka { get; set; }
+
+        public DbSet<Fotografija> Fotografija { get; set; }
+
+        public DbSet<Crna_lista> Crna_lista { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //oglas pripada jednom korisniku
+            modelBuilder.Entity<Oglas>().HasOne(o => o.Korisnik);
+
+            //poruka pripada jednom oglasu
+            modelBuilder.Entity<Poruka>().HasOne(p => p.Oglas);
+
+            //fotografija pripada jednom oglasu
+            modelBuilder.Entity<Fotografija>().HasOne(f => f.Oglas);
+
+            //korisnik pripada jednoj crnoj listi
+            modelBuilder.Entity<Crna_lista>().HasOne(c => c.Korisnik);
+        }
     }
 }

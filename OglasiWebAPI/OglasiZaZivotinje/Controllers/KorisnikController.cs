@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using OglasiZaZivotinje.Data;
 using OglasiZaZivotinje.Models;
+using OglasiZaZivotinje.Models.DTO;
 
 namespace OglasiZaZivotinje.Controllers
 {
@@ -49,7 +50,24 @@ namespace OglasiZaZivotinje.Controllers
                 {
                     return new EmptyResult();
                 }
-                return new JsonResult(_context.Korisnik.ToList());
+
+                List<KorisnikDTO> prikazi = new();
+                korisnici.ForEach(k =>
+                {
+                    prikazi.Add(new KorisnikDTO()
+                    {
+                        Sifra = k.Sifra,
+                        Uloga = k.Uloga,
+                        Ime = k.Ime,
+                        Prezime = k.Prezime,
+                        Email=k.Email,
+                        Mobitel=k.Mobitel,
+                        Grad=k.Grad
+                    });
+
+                });
+
+                return Ok(prikazi);
             }
             catch (Exception ex)
             {
@@ -84,8 +102,11 @@ namespace OglasiZaZivotinje.Controllers
             }
             try
             {
+                //ovdje ipak ne prikazujem KorisnikDTO, jer mi za neke korisnike treba lozinka
                 _context.Korisnik.Add(korisnik);
                 _context.SaveChanges();
+
+
                 return StatusCode(StatusCodes.Status201Created, korisnik);
             }
             catch (Exception ex)
@@ -116,6 +137,10 @@ namespace OglasiZaZivotinje.Controllers
 
         public IActionResult Put(int sifra, Korisnik korisnik)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             if (sifra <= 0 || korisnik == null)
             {
                 return BadRequest();
@@ -192,115 +217,14 @@ namespace OglasiZaZivotinje.Controllers
             }
             catch (Exception ex)
             {
-
-                try
-                {
-                    SqlException sqle = (SqlException)ex;
-                    return StatusCode(StatusCodes.Status503ServiceUnavailable, sqle);
-                }
-                catch (Exception e)
-                {
-
-                }
-
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex);
+                return new JsonResult("{\"poruka\":\"Ne može se obrisati\"}");
+       
             }
 
         }
 
 
-        [HttpGet]
-        [Route("DodajKorisnikaRucno")]
-
-        public string UnosUBazu()
-        {
-            Korisnik k;
-            for (int i = 0; i < 1000; i++)
-            {
-                k = new()
-                {
-                    Uloga = 0,
-                    Ime = "Ime" + i,
-                    Prezime = "Prezime" + i,
-                    Email = "Email" + i,
-                    Lozinka = "",
-                    Mobitel = "091654762" + i,
-                    Grad = "Grad" + i
-                };
-                _context.Korisnik.Add(k);
-                _context.SaveChanges();
-            }
-            return "Uneseno 1000 korisnika";
-        }
-
-
-        [HttpGet]
-        [Route("DodajKorisnikaFaker")]
-
-        public string PopuniBazu()
-        {
-            Korisnik k;
-            for (int i = 0; i < 1000; i++)
-            {
-                k = new()
-                {
-                    Uloga = 0,
-                    Ime = Faker.Name.First(),
-                    Prezime = Faker.Name.Last(),
-                    Email = Faker.Internet.Email(),
-                    Lozinka = "",
-                    Mobitel = "09"+Faker.RandomNumber.Next(1111111,10000000),
-                    Grad = Faker.Address.City()
-                };
-                _context.Korisnik.Add(k);
-                _context.SaveChanges();
-            }
-            return "Uneseno 1000 fake korisnika";
-        }
-
-        //Ruta koja na svakom entitetu koji ima parnu šifru jednom atributu
-        //mijenja vrijednost i sprema u bazu
-
-
-        [HttpGet]
-        [Route("PromijeniParnog")]
-
-        public string Promjena()
         
-        {
-            var korisnici = _context.Korisnik.ToList();
-
-            foreach (var k in korisnici)
-            {
-                if (k.Sifra % 2 == 0)
-                {
-                    k.Ime += "mijenjao";
-                    _context.Korisnik.Update(k);
-                }
-              
-                
-            }
-            _context.SaveChanges();
-            return "Promijenio sam parne korisnike";
-
-        }
-
-
-        //Napisati rutu koja vraća sumu svih šifri na odabranom entitetu
-
-        [HttpGet]
-        [Route("SumaSifri")]
-
-        public int Zbroj()
-        {
-            var korisnici = _context.Korisnik.ToList();
-            int zbroj = 0;
-            foreach (var k in korisnici)
-            {
-                    zbroj += k.Sifra;
-            }
-            return zbroj;
-        }
 
 
 
