@@ -15,10 +15,17 @@ namespace OglasiZaZivotinje.Controllers
     public class OglasiController: ControllerBase
     {
             private readonly OglasiContext _context;
+            private readonly ILogger<OglasiController> _logger;
 
-            public OglasiController(OglasiContext context)
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="logger"></param>
+        public OglasiController(OglasiContext context, ILogger<OglasiController> logger)
             {
                 _context = context;
+                _logger = logger;
             }
 
         /// <summary>
@@ -38,6 +45,8 @@ namespace OglasiZaZivotinje.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            _logger.LogInformation("Dohvaćam oglase...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -49,7 +58,7 @@ namespace OglasiZaZivotinje.Controllers
                     .ToList();
                 if (oglasi == null || oglasi.Count == 0)
                 {
-                    return new EmptyResult();
+                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
                 }
 
                 List<OglasDTO> prikazi = new();
@@ -103,6 +112,8 @@ namespace OglasiZaZivotinje.Controllers
         [Route("{sifra:int}/Korisnik")]
         public IActionResult OglasiKorisnika(int sifra)
         {
+            _logger.LogInformation("Dohvaćam oglase korisnika...");
+
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra ne može biti manja od 1.\"}");
@@ -116,7 +127,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (oglasi == null || oglasi.Count == 0)
                 {
-                    return new EmptyResult();
+                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
                 }
 
                 var oglasikorisnika = new List<Oglas>();
@@ -197,6 +208,8 @@ namespace OglasiZaZivotinje.Controllers
         [HttpPost]
         public IActionResult Post(OglasDTO oDto)
         {
+            _logger.LogInformation("Dodajem novi oglas...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -222,6 +235,10 @@ namespace OglasiZaZivotinje.Controllers
                 {
                     return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
                 }
+                if (korisnik.Uloga == 3)
+                {
+                    return new JsonResult("{\"poruka\":\"Korisnik je na crnoj listi i ne može objaviti oglas.\"}");
+                }
 
                 Oglas o = new Oglas()
                 {
@@ -242,7 +259,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 oDto.Aktivan = false;                 //pregazim ono što je unio korisnik
                 oDto.Datum_objave = o.Datum_objave;  //pregazim ono što je unio korisnik
-                oDto.Sifra = o.Sifra;
+                oDto.Sifra = o.Sifra;   //dohvatim šifru iz baze
                 oDto.Korisnik = korisnik.Ime + " " + korisnik.Prezime;
                 return Ok(oDto);
             }
@@ -279,9 +296,10 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpPut]
         [Route("{sifra:int}")]
-
         public IActionResult Put(int sifra, OglasDTO oDto)
         {
+            _logger.LogInformation("Mijenjam oglas...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -365,6 +383,8 @@ namespace OglasiZaZivotinje.Controllers
         [Route("{sifra:int}/Aktiviraj")]
         public IActionResult Aktiviraj(int sifra)
         {
+            _logger.LogInformation("Aktiviram oglas...");
+
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra oglasa ne može biti manja od 1.\"}");
@@ -421,6 +441,8 @@ namespace OglasiZaZivotinje.Controllers
         [Route("{sifra:int}")]
         public IActionResult Delete(int sifra)
         {
+            _logger.LogInformation("Brišem oglas...");
+
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra oglasa ne može biti manja od 1.\"}");

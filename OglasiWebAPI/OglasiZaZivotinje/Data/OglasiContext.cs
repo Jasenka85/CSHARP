@@ -7,8 +7,6 @@ namespace OglasiZaZivotinje.Data
     {
         public OglasiContext(DbContextOptions<OglasiContext> opcije) : base(opcije)
         {
-
-
         }
         public DbSet<Korisnik> Korisnik { get; set; }
 

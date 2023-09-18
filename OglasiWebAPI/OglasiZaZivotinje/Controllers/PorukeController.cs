@@ -16,10 +16,17 @@ namespace OglasiZaZivotinje.Controllers
     public class PorukeController: ControllerBase
     {
         private readonly OglasiContext _context;
+        private readonly ILogger<PorukeController> _logger;
 
-        public PorukeController(OglasiContext context)
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="logger"></param>
+        public PorukeController(OglasiContext context, ILogger<PorukeController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
 
@@ -40,6 +47,8 @@ namespace OglasiZaZivotinje.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            _logger.LogInformation("Dohvaćam poruke...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -52,7 +61,7 @@ namespace OglasiZaZivotinje.Controllers
                 
                 if (poruke == null || poruke.Count == 0)
                 {
-                    return new EmptyResult();
+                    return new JsonResult("{\"poruka\":\"Nema poruka na listi.\"}");
                 }
 
                 List<PorukaDTO> prikazi = new();
@@ -100,6 +109,8 @@ namespace OglasiZaZivotinje.Controllers
         [Route("{sifra:int}/Oglas")]
         public IActionResult PorukeOglasa(int sifra)
         {
+            _logger.LogInformation("Dohvaćam poruke za dani oglas...");
+
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra ne može biti manja od 1.\"}");
@@ -113,7 +124,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (poruke == null || poruke.Count == 0)
                 {
-                    return new EmptyResult();
+                    return new JsonResult("{\"poruka\":\"Nema poruka na listi.\"}");
                 }
 
                 var porukeoglasa = new List<Poruka>();
@@ -181,6 +192,7 @@ namespace OglasiZaZivotinje.Controllers
         [HttpPost]
         public IActionResult Post(PorukaDTO pDto)
         {
+            _logger.LogInformation("Dodajem novu poruku...");
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -249,9 +261,10 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpPut]
         [Route("{sifra:int}")]
-
         public IActionResult Put(int sifra, PorukaDTO pDto)
         {
+            _logger.LogInformation("Mijenjam poruku...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -323,9 +336,10 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpDelete]
         [Route("{sifra:int}")]
-
         public IActionResult Delete(int sifra)
         {
+            _logger.LogInformation("Brišem poruku...");
+
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra poruke ne može biti manja od 1.\"}");

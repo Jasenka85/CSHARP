@@ -8,7 +8,7 @@ namespace OglasiZaZivotinje.Models
         public int Sifra { get; set; }
 
         [Required]  
-        public int Uloga { get; set; }
+        public int Uloga { get; set; }  //0=korisnik, 1=admin, 2=moderator, 3=blokiran
 
         [Required]
         public string? Ime { get; set; }

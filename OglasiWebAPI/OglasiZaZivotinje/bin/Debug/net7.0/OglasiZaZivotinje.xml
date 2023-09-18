@@ -9,6 +9,13 @@
             Namijenjeno za CRUD operacije s entitetom Crna_lista u bazi
             </summary>
         </member>
+        <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.#ctor(OglasiZaZivotinje.Data.OglasiContext,Microsoft.Extensions.Logging.ILogger{OglasiZaZivotinje.Controllers.Crna_listaController})">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            <param name="logger"></param>
+        </member>
         <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.Get">
              <summary>
              Dohvaća sve korisnike iz baze koji su na crnoj listi
@@ -37,6 +44,8 @@
              "datum_blokiranja" se bilježi automatski
              
              Potrebno je unijeti šifru korisnika kojeg stavljate na crnu listu (sifra_korisnika)
+             
+             Korisnik na crnoj listi je blokiran i ne može objaviti novi oglas.
              
              </remarks>
              <returns>Novi unos u crnu listu u bazi, sa svim podacima</returns>
@@ -87,6 +96,13 @@
             <summary>
             Namijenjeno za CRUD operacije s entitetom Fotografija u bazi
             </summary>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.FotografijeController.#ctor(OglasiZaZivotinje.Data.OglasiContext,Microsoft.Extensions.Logging.ILogger{OglasiZaZivotinje.Controllers.FotografijeController})">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:OglasiZaZivotinje.Controllers.FotografijeController.Get">
              <summary>
@@ -182,6 +198,13 @@
             Namijenjeno za CRUD operacije s entitetom Korisnik u bazi
             </summary>
         </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.#ctor(OglasiZaZivotinje.Data.OglasiContext,Microsoft.Extensions.Logging.ILogger{OglasiZaZivotinje.Controllers.KorisnikController})">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            <param name="logger"></param>
+        </member>
         <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Get">
              <summary>
              Dohvaća sve korisnike iz baze
@@ -197,7 +220,7 @@
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
         </member>
-        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Post(OglasiZaZivotinje.Models.Korisnik)">
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Post(OglasiZaZivotinje.Models.DTO.KorisnikDTO)">
              <summary>
              Dodaje korisnika u bazu
              </summary>
@@ -206,6 +229,9 @@
             
                 POST api/v1/Korisnik
             
+             Napomena: "sifra" se dohvaća iz baze,
+             novi korisnik uvijek ima ulogu 0 (običan korisnik)
+             
              </remarks>
              <returns>Kreiranog korisnika u bazi sa svim podacima</returns>
              <response code="200">Sve je u redu</response>
@@ -223,6 +249,10 @@
                 
              Parametar: šifra korisnika kojeg želite mijenjati
             
+             Napomena: "sifra" se dohvaća iz baze
+             Uloge: 0 = korisnik, 1 = administrator, 2 = moderator, 3 = blokiran
+             Lozinka je potrebna samo za administratora i moderatora.
+             
              </remarks>
              <returns>Promijenjenog korisnika u bazi sa svim podacima</returns>
              <response code="200">Sve je u redu</response>
@@ -239,6 +269,9 @@
                 DELETE api/v1/Korisnik/{sifra}
                 
              Parametar: šifra korisnika kojeg želite obrisati
+             
+             Napomena: nije moguće obrisati administratora i moderatora,
+             kao ni korisnika koji ima objavljen oglas.
             
              </remarks>
              <returns>Poruku da je obrisao korisnika</returns>
@@ -250,6 +283,13 @@
             <summary>
             Namijenjeno za CRUD operacije sa entitetom Oglasi u bazi
             </summary>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.#ctor(OglasiZaZivotinje.Data.OglasiContext,Microsoft.Extensions.Logging.ILogger{OglasiZaZivotinje.Controllers.OglasiController})">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Get">
              <summary>
@@ -371,6 +411,13 @@
             <summary>
             Namijenjeno za CRUD operacije s entitetom Poruka u bazi
             </summary>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.PorukeController.#ctor(OglasiZaZivotinje.Data.OglasiContext,Microsoft.Extensions.Logging.ILogger{OglasiZaZivotinje.Controllers.PorukeController})">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:OglasiZaZivotinje.Controllers.PorukeController.Get">
              <summary>

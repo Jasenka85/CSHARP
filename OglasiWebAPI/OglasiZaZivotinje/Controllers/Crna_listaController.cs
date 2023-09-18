@@ -15,10 +15,17 @@ namespace OglasiZaZivotinje.Controllers
     public class Crna_listaController: ControllerBase
     {
         private readonly OglasiContext _context;
+        private readonly ILogger<Crna_listaController> _logger;
 
-        public Crna_listaController(OglasiContext context)
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="logger"></param>
+        public Crna_listaController(OglasiContext context, ILogger<Crna_listaController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         /// <summary>
@@ -38,6 +45,8 @@ namespace OglasiZaZivotinje.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            _logger.LogInformation("Dohvaćam korisnike na crnoj listi...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -49,7 +58,7 @@ namespace OglasiZaZivotinje.Controllers
                     .ToList();
                 if (clista == null || clista.Count == 0)
                 {
-                    return new EmptyResult();
+                    return new JsonResult("{\"poruka\":\"Nema korisnika na crnoj listi.\"}");
                 }
 
                 List<Crna_listaDTO> prikazi = new();
@@ -89,6 +98,8 @@ namespace OglasiZaZivotinje.Controllers
         /// 
         /// Potrebno je unijeti šifru korisnika kojeg stavljate na crnu listu (sifra_korisnika)
         /// 
+        /// Korisnik na crnoj listi je blokiran i ne može objaviti novi oglas.
+        /// 
         /// </remarks>
         /// <returns>Novi unos u crnu listu u bazi, sa svim podacima</returns>
         /// <response code="200">Sve je u redu</response>
@@ -98,6 +109,8 @@ namespace OglasiZaZivotinje.Controllers
         [HttpPost]
         public IActionResult Post(Crna_listaDTO cDto)
         {
+            _logger.LogInformation("Dodajem korisnika na crnu listu...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -106,10 +119,11 @@ namespace OglasiZaZivotinje.Controllers
             {
                 return new JsonResult("{\"poruka\":\"Šifra korisnika ne može biti manja od 1.\"}");
             }
+
             //prvo provjeravam postoji li već korisnik s tom šifrom na crnoj listi u bazi
             var korisnikcl = _context.Crna_lista
-                .Include(k=>k.Korisnik)
-                .FirstOrDefault(k=> k.Korisnik.Sifra == cDto.Sifra_korisnika);
+                .Include(k => k.Korisnik)
+                .FirstOrDefault(k => k.Korisnik.Sifra == cDto.Sifra_korisnika);
             
             //ako postoji, ispiši poruku i izađi
             if (korisnikcl != null)
@@ -125,7 +139,14 @@ namespace OglasiZaZivotinje.Controllers
                 {
                     return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
                 }
-                
+                if (korisnik.Uloga == 1 || korisnik.Uloga == 2)
+                {
+                    return new JsonResult("{\"poruka\":\"Ne mogu blokirati administratora i moderatora.\"}");
+                }
+
+                korisnik.Uloga = 3; //postavi korisniku ulogu 3 = blokiran
+                _context.Korisnik.Update(korisnik);
+                _context.SaveChanges();
 
                 Crna_lista c = new Crna_lista()
                 {
@@ -139,6 +160,7 @@ namespace OglasiZaZivotinje.Controllers
                 cDto.Sifra = c.Sifra;
                 cDto.Korisnik = korisnik.Ime + " " + korisnik.Prezime;
                 cDto.Datum_blokiranja = c.Datum_blokiranja;  //pregazim datum koji je unio korisnik
+                
                 return Ok(cDto);
             }
             catch (Exception ex)
@@ -176,6 +198,8 @@ namespace OglasiZaZivotinje.Controllers
         [Route("{sifra:int}")]
         public IActionResult Put(int sifra, Crna_listaDTO cDto)
         {
+            _logger.LogInformation("Mijenjam unos u crnoj listi...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -247,6 +271,8 @@ namespace OglasiZaZivotinje.Controllers
         [Route("{sifra:int}")]
         public IActionResult Delete(int sifra)
         {
+            _logger.LogInformation("Brišem unos iz crne liste...");
+
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra unosa u crnoj listi ne može biti manja od 1.\"}");

@@ -15,10 +15,17 @@ namespace OglasiZaZivotinje.Controllers
     public class FotografijeController: ControllerBase
     {
         private readonly OglasiContext _context;
+        private readonly ILogger<FotografijeController> _logger;
 
-        public FotografijeController(OglasiContext context)
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="logger"></param>
+        public FotografijeController(OglasiContext context, ILogger<FotografijeController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
 
@@ -40,6 +47,8 @@ namespace OglasiZaZivotinje.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            _logger.LogInformation("Dohvaćam fotografije...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -52,7 +61,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (fotografije == null || fotografije.Count == 0)
                 {
-                    return new EmptyResult();
+                    return new JsonResult("{\"poruka\":\"Nema fotografija na listi.\"}");
                 }
 
                 List<FotografijaDTO> prikazi = new();
@@ -99,6 +108,8 @@ namespace OglasiZaZivotinje.Controllers
         [Route("{sifra:int}/Oglas")]
         public IActionResult FotografijeOglasa(int sifra)
         {
+            _logger.LogInformation("Dohvaćam fotografije iz oglasa...");
+
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra ne može biti manja od 1.\"}");
@@ -112,7 +123,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (fotografije == null || fotografije.Count == 0)
                 {
-                    return new EmptyResult();
+                    return new JsonResult("{\"poruka\":\"Nema fotografija na listi.\"}");
                 }
 
                 var fotografijeoglasa = new List<Fotografija>();
@@ -178,6 +189,8 @@ namespace OglasiZaZivotinje.Controllers
         [HttpPost]
         public IActionResult Post(FotografijaDTO fDto)
         {
+            _logger.LogInformation("Dodajem novu fotografiju...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -247,6 +260,8 @@ namespace OglasiZaZivotinje.Controllers
         [Route("{sifra:int}")]
         public IActionResult Put(int sifra, FotografijaDTO fDto)
         {
+            _logger.LogInformation("Mijenjam fotografiju...");
+
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -315,9 +330,10 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpDelete]
         [Route("{sifra:int}")]
-
         public IActionResult Delete(int sifra)
         {
+            _logger.LogInformation("Brišem fotografiju...");
+
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra fotografije ne može biti manja od 1.\"}");
