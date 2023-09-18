@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OglasiZaZivotinje.Models
@@ -8,7 +9,7 @@ namespace OglasiZaZivotinje.Models
         [Key]
         public int Sifra { get; set; }
 
-        [Required]
+        [Required]  
         public bool Aktivan { get; set; }
 
         [ForeignKey("korisnik")]

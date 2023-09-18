@@ -7,9 +7,9 @@ using OglasiZaZivotinje.Models.DTO;
 namespace OglasiZaZivotinje.Controllers
 {
     /// <summary>
-    /// Namijenjeno za CRUD operacije sa entitetom Korisnik u bazi
+    /// Namijenjeno za CRUD operacije s entitetom Korisnik u bazi
     /// </summary>
-
+    
     [ApiController]
     [Route("api/v1/[controller]")]
     public class KorisnikController : ControllerBase
@@ -64,7 +64,6 @@ namespace OglasiZaZivotinje.Controllers
                         Mobitel=k.Mobitel,
                         Grad=k.Grad
                     });
-
                 });
 
                 return Ok(prikazi);
@@ -73,9 +72,8 @@ namespace OglasiZaZivotinje.Controllers
             {
                 return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
             }
-
-
         }
+
 
 
         /// <summary>
@@ -93,19 +91,22 @@ namespace OglasiZaZivotinje.Controllers
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpPost]
-
         public IActionResult Post(Korisnik korisnik)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            if (korisnik == null)
+            {
+                return BadRequest();
+            }
+
             try
             {
-                //ovdje ipak ne prikazujem KorisnikDTO, jer mi za neke korisnike treba lozinka
+                //ovdje ipak ne prikazujem KorisnikDTO, jer neki korisnici moraju upisati lozinku
                 _context.Korisnik.Add(korisnik);
                 _context.SaveChanges();
-
 
                 return StatusCode(StatusCodes.Status201Created, korisnik);
             }
@@ -125,6 +126,8 @@ namespace OglasiZaZivotinje.Controllers
         /// Primjer upita:
         ///
         ///    PUT api/v1/Korisnik/{sifra}
+        ///    
+        /// Parametar: šifra korisnika kojeg želite mijenjati
         ///
         /// </remarks>
         /// <returns>Promijenjenog korisnika u bazi sa svim podacima</returns>
@@ -134,16 +137,19 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpPut]
         [Route("{sifra:int}")]
-
         public IActionResult Put(int sifra, Korisnik korisnik)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if (sifra <= 0 || korisnik == null)
+            if (korisnik == null)
             {
                 return BadRequest();
+            }
+            if (sifra < 1)
+            {
+                return new JsonResult("{\"poruka\":\"Šifra korisnika ne može biti manja od 1.\"}");
             }
 
             try
@@ -151,7 +157,7 @@ namespace OglasiZaZivotinje.Controllers
                 var korisnikBaza = _context.Korisnik.Find(sifra);
                 if (korisnikBaza == null)
                 {
-                    return BadRequest();
+                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
                 }
                 
                 korisnikBaza.Uloga = korisnik.Uloga;
@@ -166,11 +172,10 @@ namespace OglasiZaZivotinje.Controllers
                 _context.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, korisnikBaza);
-
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex); 
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message); 
             }
 
         }
@@ -183,6 +188,8 @@ namespace OglasiZaZivotinje.Controllers
         /// Primjer upita:
         ///
         ///    DELETE api/v1/Korisnik/{sifra}
+        ///    
+        /// Parametar: šifra korisnika kojeg želite obrisati
         ///
         /// </remarks>
         /// <returns>Poruku da je obrisao korisnika</returns>
@@ -195,32 +202,33 @@ namespace OglasiZaZivotinje.Controllers
 
         public IActionResult Delete(int sifra)
         {
-            if (sifra <= 0)
+            if (sifra < 1)
             {
-                return BadRequest();
+                return new JsonResult("{\"poruka\":\"Šifra poruke ne može biti manja od 1.\"}");
             }
 
             try
             {
-                var korisnikBaza = _context.Korisnik.Find(sifra);
-                if (korisnikBaza == null)
+                var korisnik = _context.Korisnik.Find(sifra);
+                if (korisnik == null)
                 {
-                    return BadRequest();
+                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
                 }
-                //napisati provjeru može li se obrisati
+                if (korisnik.Uloga == 1 || korisnik.Uloga == 2)
+                {
+                    return new JsonResult("{\"poruka\":\"Ne mogu obrisati administratora ili moderatora.\"}");
+                }
 
-                _context.Korisnik.Remove(korisnikBaza);
+                _context.Korisnik.Remove(korisnik);
                 _context.SaveChanges();
 
-                return new JsonResult("{\"poruka\":\"Obrisano\"}");
+                return new JsonResult("{\"poruka\":\"Korisnik obrisan.\"}");
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return new JsonResult("{\"poruka\":\"Ne može se obrisati\"}");
-       
+                return new JsonResult("{\"poruka\":\"Korisnik se ne može obrisati.\"}");       
             }
-
         }
 
 

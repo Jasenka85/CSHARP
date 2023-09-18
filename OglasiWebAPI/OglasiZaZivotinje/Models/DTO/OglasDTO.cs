@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OglasiZaZivotinje.Models.DTO
 {
@@ -6,12 +7,13 @@ namespace OglasiZaZivotinje.Models.DTO
     {
         public int Sifra { get; set; }
 
+        [DefaultValue(false)]   //oglas je neaktivan dok ga ne odobri administrator
         public bool Aktivan { get; set; }
         
         public string? Korisnik { get; set; }
 
         public int Sifra_korisnika { get; set; }
-        public int Kategorija { get; set; }      
+        public int Kategorija { get; set; } 
 
         public DateTime? Datum_objave { get; set; }
 
