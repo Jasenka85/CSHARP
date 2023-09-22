@@ -14,8 +14,8 @@ namespace OglasiZaZivotinje.Controllers
     [Route("api/v1/[controller]")]
     public class OglasiController: ControllerBase
     {
-            private readonly OglasiContext _context;
-            private readonly ILogger<OglasiController> _logger;
+        private readonly OglasiContext _context;
+        private readonly ILogger<OglasiController> _logger;
 
         /// <summary>
         /// Konstruktor
@@ -56,6 +56,7 @@ namespace OglasiZaZivotinje.Controllers
                 var oglasi = _context.Oglas
                     .Include(k => k.Korisnik)
                     .ToList();
+
                 if (oglasi == null || oglasi.Count == 0)
                 {
                     return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
@@ -325,6 +326,10 @@ namespace OglasiZaZivotinje.Controllers
                 {
                     return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
                 }
+                if (korisnik.Uloga == 3)
+                {
+                    return new JsonResult("{\"poruka\":\"Korisnik je na crnoj listi i ne može objaviti oglas.\"}");
+                }
 
                 var oglas = _context.Oglas.Find(sifra);
 
@@ -363,28 +368,35 @@ namespace OglasiZaZivotinje.Controllers
 
 
         /// <summary>
-        /// Aktiviranje oglasa
+        /// Aktiviranje/deaktiviranje oglasa
         /// </summary>
         /// <remarks>
-        /// Služi administratoru za brzo odobravanje oglasa
+        /// Služi administratoru za brzo odobravanje ili skidanje oglasa
         /// (neaktivni oglasi nisu vidljivi na web stranici)
         /// 
         /// Primjer upita:
         ///
-        ///    GET api/v1/Oglasi/{sifra}/Aktiviraj
+        ///    PUT api/v1/Oglasi/{sifra}/Aktiviraj
+        ///    
+        /// Parametri: šifra oglasa kojeg želite aktivirati/deaktivirati
+        /// i aktivnost: 0 = neaktivan, ostali brojevi = aktivan
         ///
         /// </remarks>
-        /// <returns>Obavijest da je oglas aktiviran</returns>
+        /// <returns>Obavijest da je oglas aktiviran/deaktiviran</returns>
         /// <response code="200">Sve je u redu</response>
         /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpPut]
-        [Route("{sifra:int}/Aktiviraj")]
-        public IActionResult Aktiviraj(int sifra)
+        [Route("{sifra:int}/Aktivan")]
+        public IActionResult Aktivan(int sifra, int aktivnost)
         {
-            _logger.LogInformation("Aktiviram oglas...");
+            _logger.LogInformation("Aktiviram/deaktiviram oglas...");
 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra oglasa ne može biti manja od 1.\"}");
@@ -398,16 +410,19 @@ namespace OglasiZaZivotinje.Controllers
                 {
                     return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
                 }
-                if (oglas.Aktivan == true)
-                {
-                    return new JsonResult("{\"poruka\":\"Oglas je već aktivan.\"}");
-                }
 
-                oglas.Aktivan = true;
+                if (aktivnost == 0)
+                {
+                    oglas.Aktivan = false;
+                }
+                else
+                {
+                    oglas.Aktivan = true;
+                }
                 _context.Oglas.Update(oglas);
                 _context.SaveChanges();
 
-                return new JsonResult("{\"poruka\":\"Oglas je sada aktivan.\"}");
+                return new JsonResult("{\"poruka\":\"Aktivnost je uspješno promijenjena.\"}");
 
             }
             catch (Exception ex)

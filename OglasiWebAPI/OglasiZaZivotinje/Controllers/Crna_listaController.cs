@@ -99,6 +99,7 @@ namespace OglasiZaZivotinje.Controllers
         /// Potrebno je unijeti šifru korisnika kojeg stavljate na crnu listu (sifra_korisnika)
         /// 
         /// Korisnik na crnoj listi je blokiran i ne može objaviti novi oglas.
+        /// Preporučuje se deaktivirati sve njegove prijašnje oglase.
         /// 
         /// </remarks>
         /// <returns>Novi unos u crnu listu u bazi, sa svim podacima</returns>

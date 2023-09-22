@@ -38,7 +38,7 @@ namespace OglasiZaZivotinje.Controllers
         ///    GET api/v1/Korisnik
         ///
         /// </remarks>
-        /// <returns>Korisnici u bazi</returns>
+        /// <returns>Svi korisnici u bazi</returns>
         /// <response code="200">Sve je u redu</response>
         /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
@@ -71,6 +71,7 @@ namespace OglasiZaZivotinje.Controllers
                         Ime = k.Ime,
                         Prezime = k.Prezime,
                         Email=k.Email,
+                        //lozinka se neće prikazivati
                         Mobitel=k.Mobitel,
                         Grad=k.Grad
                     });
@@ -137,7 +138,7 @@ namespace OglasiZaZivotinje.Controllers
                 kDto.Sifra = k.Sifra; //dohvatim šifru iz baze
                 kDto.Uloga = 0;   //pregazim ono što je upisao korisnik
 
-                return StatusCode(StatusCodes.Status201Created, kDto);
+                return Ok(kDto);
             }
             catch (Exception ex)
             {
@@ -149,7 +150,7 @@ namespace OglasiZaZivotinje.Controllers
 
 
         /// <summary>
-        /// Mijenja korisnika sa zadanom šifrom u bazi
+        /// Mijenja podatke korisnika sa zadanom šifrom
         /// </summary>
         /// <remarks>
         /// Primjer upita:
@@ -159,29 +160,26 @@ namespace OglasiZaZivotinje.Controllers
         /// Parametar: šifra korisnika kojeg želite mijenjati
         ///
         /// Napomena: "sifra" se dohvaća iz baze
-        /// Uloge: 0 = korisnik, 1 = administrator, 2 = moderator, 3 = blokiran
-        /// Lozinka je potrebna samo za administratora i moderatora.
+        /// Uloga i lozinka se ne mogu mijenjati, to može samo administrator u posebnoj ruti
         /// 
         /// </remarks>
-        /// <returns>Promijenjenog korisnika u bazi sa svim podacima</returns>
+        /// <returns>Promijenjenog korisnika</returns>
         /// <response code="200">Sve je u redu</response>
         /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpPut]
         [Route("{sifra:int}")]
-        public IActionResult Put(int sifra, Korisnik korisnik)
+        public IActionResult Put(int sifra, KorisnikDTO kDto)
         {
-            //ovdje ne koristim KorisnikDTO, da admin može promijeniti ulogu
-            //i dodijeliti lozinku ako je potrebno
 
-            _logger.LogInformation("Mijenjam korisnika...");
+            _logger.LogInformation("Mijenjam podatke korisnika...");
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if (korisnik == null)
+            if (kDto == null)
             {
                 return BadRequest();
             }
@@ -192,24 +190,28 @@ namespace OglasiZaZivotinje.Controllers
 
             try
             {
-                var korisnikBaza = _context.Korisnik.Find(sifra);
-                if (korisnikBaza == null)
+                var korisnik = _context.Korisnik.Find(sifra);
+                if (korisnik == null)
                 {
                     return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
                 }
                 
-                korisnikBaza.Uloga = korisnik.Uloga;
-                korisnikBaza.Ime = korisnik.Ime;
-                korisnikBaza.Prezime = korisnik.Prezime;
-                korisnikBaza.Email = korisnik.Email;
-                korisnikBaza.Lozinka = korisnik.Lozinka;
-                korisnikBaza.Mobitel = korisnik.Mobitel;
-                korisnikBaza.Grad = korisnik.Grad;
+                //uloga se ne mijenja
+                korisnik.Ime = kDto.Ime;
+                korisnik.Prezime = kDto.Prezime;
+                korisnik.Email = kDto.Email;
+                //lozinka se ne mijenja
+                korisnik.Mobitel = kDto.Mobitel;
+                korisnik.Grad = kDto.Grad;
 
-                _context.Korisnik.Update(korisnikBaza);
+                _context.Korisnik.Update(korisnik);
                 _context.SaveChanges();
 
-                return StatusCode(StatusCodes.Status200OK, korisnikBaza);
+                kDto.Sifra = korisnik.Sifra;   //dohvatim sifru iz baze
+                kDto.Uloga = korisnik.Uloga;   //pregazim ono što je unio korisnik
+                //lozinka se ne prikazuje
+
+                return Ok(kDto);
             }
             catch (Exception ex)
             {
@@ -217,6 +219,86 @@ namespace OglasiZaZivotinje.Controllers
             }
 
         }
+
+
+
+
+        /// <summary>
+        /// Mijenja ulogu i lozinku korisnika sa zadanom šifrom
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    PUT api/v1/Korisnik/{sifra}/Uloga
+        ///    
+        /// Parametri: šifra korisnika, nova uloga i lozinka
+        ///
+        /// Uloge: 0 = korisnik, 1 = administrator, 2 = moderator
+        /// Lozinka je potrebna samo za administratora i moderatora.
+        /// 
+        /// </remarks>
+        /// <returns>Promijenjenog korisnika</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpPut]
+        [Route("{sifra:int}/Uloga")]
+        public IActionResult PromjenaUloge(int sifra, int uloga, string? lozinka)
+        {
+
+            _logger.LogInformation("Mijenjam ulogu korisnika...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (sifra < 1)
+            {
+                return new JsonResult("{\"poruka\":\"Šifra korisnika ne može biti manja od 1.\"}");
+            }
+            if (uloga < 0 || uloga > 2)
+            {
+                return new JsonResult("{\"poruka\":\"Uloga korisnika može biti samo 0, 1 ili 2.\"}");
+            }
+
+            try
+            {
+                var korisnik = _context.Korisnik.Find(sifra);
+                if (korisnik == null)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
+                }
+                if (korisnik.Uloga == 3)
+                {
+                    return new JsonResult("{\"poruka\":\"Korisnik je na crnoj listi!\"}");
+                }
+
+                korisnik.Uloga = uloga;
+                korisnik.Lozinka = lozinka;
+
+                _context.Korisnik.Update(korisnik);
+                _context.SaveChanges();
+
+                return Ok(korisnik);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
         /// <summary>

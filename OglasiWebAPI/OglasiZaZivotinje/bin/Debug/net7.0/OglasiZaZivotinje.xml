@@ -46,6 +46,7 @@
              Potrebno je unijeti šifru korisnika kojeg stavljate na crnu listu (sifra_korisnika)
              
              Korisnik na crnoj listi je blokiran i ne može objaviti novi oglas.
+             Preporučuje se deaktivirati sve njegove prijašnje oglase.
              
              </remarks>
              <returns>Novi unos u crnu listu u bazi, sa svim podacima</returns>
@@ -215,7 +216,7 @@
                 GET api/v1/Korisnik
             
              </remarks>
-             <returns>Korisnici u bazi</returns>
+             <returns>Svi korisnici u bazi</returns>
              <response code="200">Sve je u redu</response>
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
@@ -238,9 +239,9 @@
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
         </member>
-        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Put(System.Int32,OglasiZaZivotinje.Models.Korisnik)">
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Put(System.Int32,OglasiZaZivotinje.Models.DTO.KorisnikDTO)">
              <summary>
-             Mijenja korisnika sa zadanom šifrom u bazi
+             Mijenja podatke korisnika sa zadanom šifrom
              </summary>
              <remarks>
              Primjer upita:
@@ -250,11 +251,30 @@
              Parametar: šifra korisnika kojeg želite mijenjati
             
              Napomena: "sifra" se dohvaća iz baze
-             Uloge: 0 = korisnik, 1 = administrator, 2 = moderator, 3 = blokiran
+             Uloga i lozinka se ne mogu mijenjati, to može samo administrator u posebnoj ruti
+             
+             </remarks>
+             <returns>Promijenjenog korisnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.PromjenaUloge(System.Int32,System.Int32,System.String)">
+             <summary>
+             Mijenja ulogu i lozinku korisnika sa zadanom šifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT api/v1/Korisnik/{sifra}/Uloga
+                
+             Parametri: šifra korisnika, nova uloga i lozinka
+            
+             Uloge: 0 = korisnik, 1 = administrator, 2 = moderator
              Lozinka je potrebna samo za administratora i moderatora.
              
              </remarks>
-             <returns>Promijenjenog korisnika u bazi sa svim podacima</returns>
+             <returns>Promijenjenog korisnika</returns>
              <response code="200">Sve je u redu</response>
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
@@ -372,20 +392,23 @@
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
         </member>
-        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Aktiviraj(System.Int32)">
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Aktivan(System.Int32,System.Int32)">
              <summary>
-             Aktiviranje oglasa
+             Aktiviranje/deaktiviranje oglasa
              </summary>
              <remarks>
-             Služi administratoru za brzo odobravanje oglasa
+             Služi administratoru za brzo odobravanje ili skidanje oglasa
              (neaktivni oglasi nisu vidljivi na web stranici)
              
              Primjer upita:
             
-                GET api/v1/Oglasi/{sifra}/Aktiviraj
+                PUT api/v1/Oglasi/{sifra}/Aktiviraj
+                
+             Parametri: šifra oglasa kojeg želite aktivirati/deaktivirati
+             i aktivnost: 0 = neaktivan, ostali brojevi = aktivan
             
              </remarks>
-             <returns>Obavijest da je oglas aktiviran</returns>
+             <returns>Obavijest da je oglas aktiviran/deaktiviran</returns>
              <response code="200">Sve je u redu</response>
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
