@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using EdunovaApp.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(sgo => { // sgo je instanca klase SwaggerGenOptions
-    // �itati https://devintxcontent.blob.core.windows.net/showcontent/Speaker%20Presentations%20Fall%202017/Web%20API%20Best%20Practices.pdf
+    // èitati https://devintxcontent.blob.core.windows.net/showcontent/Speaker%20Presentations%20Fall%202017/Web%20API%20Best%20Practices.pdf
     var o = new Microsoft.OpenApi.Models.OpenApiInfo()
     {
         Title = "Edunova API",
@@ -29,12 +29,21 @@ builder.Services.AddSwaggerGen(sgo => { // sgo je instanca klase SwaggerGenOptio
     };
     sgo.SwaggerDoc("v1", o);
 
+
+
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     sgo.IncludeXmlComments(xmlPath);
 
 });
 
+//loš način, vidi link
+builder.Services.AddCors(opcije=>
+{
+    opcije.AddPolicy("CorsPolicy",
+        builder =>
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
 
 //dodavanje baze podataka mora biti prije buildera
 
@@ -63,4 +72,5 @@ app.UseHttpsRedirection();
 
 app.MapControllers();
 
+app.UseCors("CorsPolicy");
 app.Run();

@@ -6,17 +6,16 @@ namespace OglasiZaZivotinje.Models
     {
         [Key]
         public int Sifra { get; set; }
-
-        [Required]  
+  
         public int Uloga { get; set; }  //0=korisnik, 1=admin, 2=moderator, 3=blokiran
 
-        [Required]
+        [Required(ErrorMessage = "Ime je obavezno!")]
         public string? Ime { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Prezime je obavezno")]
         public string? Prezime { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "E-mail je obavezan")]
         public string? Email { get; set; }
 
         public string? Lozinka { get; set; }

@@ -32,6 +32,12 @@ builder.Services.AddSwaggerGen(sgo => {
     sgo.IncludeXmlComments(xmlPath);
 });
 
+builder.Services.AddCors(opcije =>
+{
+    opcije.AddPolicy("CorsPolicy",	
+        builder =>
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
 
 
 builder.Services.AddDbContext<OglasiContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString(name: "OglasiContext")));
@@ -40,8 +46,8 @@ builder.Services.AddDbContext<OglasiContext>(o => o.UseSqlServer(builder.Configu
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger(opcije =>
     {
         opcije.SerializeAsV2 = true;
@@ -51,13 +57,19 @@ if (app.Environment.IsDevelopment())
     {
         opcije.ConfigObject.AdditionalItems.Add("requestSnippetsEnabled", true);
     });
-}
+//}
 
 
 app.UseHttpsRedirection();
 
-
-
 app.MapControllers();
+
+app.UseCors("CorsPolicy");
+
+app.UseDefaultFiles();
+
+app.UseDeveloperExceptionPage();
+
+app.MapFallbackToFile("index.html");
 
 app.Run();

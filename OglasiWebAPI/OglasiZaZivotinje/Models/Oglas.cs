@@ -9,25 +9,24 @@ namespace OglasiZaZivotinje.Models
         [Key]
         public int Sifra { get; set; }
 
-        [Required]  
+          
         public bool Aktivan { get; set; }
 
         [ForeignKey("korisnik")]
         public Korisnik? Korisnik { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Kategorija je obavezna!")]
         public int Kategorija { get; set; }      // 1 = poklanjam, 2 = trazim
 
-        [Required]
+
         public DateTime? Datum_objave { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Naslov oglasa je obavezan!")]
         public string? Naslov { get; set; }
 
-        [Required]
         public string? Opis { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vrsta životinje je obavezna!")]
         public string? Vrsta_zivotinje { get; set; }
 
         public string? Ime_zivotinje { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OglasiZaZivotinje.Data;
 using OglasiZaZivotinje.Models;
 using OglasiZaZivotinje.Models.DTO;
@@ -269,6 +270,105 @@ namespace OglasiZaZivotinje.Controllers
                 return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
             }
         }
+
+
+
+        /// <summary>
+        /// Dodaje novog korisnika i oglas u bazu
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    POST api/v1/CijeiOglas
+        ///    
+        ///
+        /// Napomena: "sifra" i "korisnik" se dohvaćaju iz baze, 
+        /// "datum_objave" se bilježi automatski,
+        /// oglas je neaktivan (false) dok ga ne odobri administrator.
+        /// 
+        /// Potrebno je unijeti šifru korisnika koji objavljuje oglas (sifra_korisnika)
+        /// 
+        /// Kategorije oglasa: 1 = poklanjam životinju, 2 = želim udomiti životinju.
+        /// 
+        /// 
+        /// </remarks>
+        /// <returns>Kreirani oglas u bazi sa svim podacima</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpPost]
+        [Route("CijeliOglas")]
+        public IActionResult PostKO(CijeliOglasDTO coDto)
+        {
+            _logger.LogInformation("Dodajem novi oglas...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+            if (coDto == null)
+            {
+                return BadRequest();
+            }
+            
+            if (coDto.Kategorija < 1 || coDto.Kategorija > 2)
+            {
+                return new JsonResult("{\"poruka\":\"Kategorija može imati vrijednost 1 ili 2.\"}");
+            }
+
+            try
+            {
+                Korisnik k = new Korisnik()
+                {
+                    Uloga = 0,
+                    Ime = coDto.Ime,
+                    Prezime = coDto.Prezime,
+                    Email = coDto.Email,
+                    Lozinka = "",
+                    Mobitel = coDto.Mobitel,
+                    Grad = coDto.Grad
+                };
+                _context.Korisnik.Add(k);
+                _context.SaveChanges();
+                coDto.SifraKorisnika = k.Sifra;
+
+                Oglas o = new Oglas()
+                {
+                    Aktivan = false,    //Novi oglas je neaktivan dok ga ne odobri administrator
+                    Korisnik = k,
+                    Kategorija = coDto.Kategorija,
+                    Datum_objave = DateTime.Now,    //Datum se automatski bilježi
+                    Naslov = coDto.Naslov,
+                    Opis = coDto.Opis,
+                    Vrsta_zivotinje = coDto.Vrsta_zivotinje,
+                    Ime_zivotinje = coDto.Ime_zivotinje,
+                    Spol_zivotinje = coDto.Spol_zivotinje,
+                    Dob_zivotinje = coDto.Dob_zivotinje,
+                    Kastriran = coDto.Kastriran
+                };
+                _context.Oglas.Add(o);
+                _context.SaveChanges();
+
+                coDto.Aktivan = false;                 //pregazim ono što je unio korisnik
+                coDto.Datum_objave = o.Datum_objave;  //pregazim ono što je unio korisnik
+                coDto.SifraOglasa = o.Sifra;   //dohvatim šifru iz baze
+                return Ok(coDto);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+        }
+
+
+
+
+
+
+
+
+
 
 
 
