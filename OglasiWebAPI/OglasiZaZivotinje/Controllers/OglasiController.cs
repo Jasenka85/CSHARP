@@ -279,27 +279,25 @@ namespace OglasiZaZivotinje.Controllers
         /// <remarks>
         /// Primjer upita:
         ///
-        ///    POST api/v1/CijeiOglas
+        ///    POST api/v1/Oglasi/CijeliOglas
         ///    
         ///
-        /// Napomena: "sifra" i "korisnik" se dohvaćaju iz baze, 
+        /// Napomena: "sifraKorisnika" i "sifraOglasa" se dohvaćaju iz baze, 
         /// "datum_objave" se bilježi automatski,
         /// oglas je neaktivan (false) dok ga ne odobri administrator.
-        /// 
-        /// Potrebno je unijeti šifru korisnika koji objavljuje oglas (sifra_korisnika)
         /// 
         /// Kategorije oglasa: 1 = poklanjam životinju, 2 = želim udomiti životinju.
         /// 
         /// 
         /// </remarks>
-        /// <returns>Kreirani oglas u bazi sa svim podacima</returns>
+        /// <returns>Kreiranog korisnika i oglas u bazi sa svim podacima</returns>
         /// <response code="200">Sve je u redu</response>
         /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpPost]
         [Route("CijeliOglas")]
-        public IActionResult PostKO(CijeliOglasDTO coDto)
+        public IActionResult PostCO(CijeliOglasDTO coDto)
         {
             _logger.LogInformation("Dodajem novi oglas...");
 

@@ -73,3 +73,4 @@ C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\obj\Releas
 C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\obj\Release\net7.0\OglasiZaZivotinje.pdb
 C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\obj\Release\net7.0\OglasiZaZivotinje.genruntimeconfig.cache
 C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\obj\Release\net7.0\ref\OglasiZaZivotinje.dll
+C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\bin\Release\net7.0\OglasiZaZivotinje.staticwebassets.runtime.json

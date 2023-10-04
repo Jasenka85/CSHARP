@@ -73,3 +73,4 @@ C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\bin\Debug\
 C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\bin\Debug\net7.0\de-DE\Faker.Net.6.0.resources.dll
 C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\bin\Debug\net7.0\OglasiZaZivotinje.xml
 C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\obj\Debug\net7.0\OglasiZaZivotinje.xml
+C:\Users\jaugu\Documents\GitHub\CSHARP\OglasiWebAPI\OglasiZaZivotinje\bin\Debug\net7.0\OglasiZaZivotinje.staticwebassets.runtime.json

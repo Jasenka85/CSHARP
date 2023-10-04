@@ -1,0 +1,51 @@
+.mojgrid
+{
+  max-width: 960px;
+  background-color: white;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.mojheader
+{
+margin-bottom: 30px;
+}
+
+body
+{
+  background-color: #B4A6B4;
+}
+
+h1
+{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2
+{
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 30px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.mojform
+{
+padding-left: 15px;
+padding-right: 15px;
+}
+
+.mojizbor
+{
+    font-size: 14px;
+}
+
+.gumbo
+{
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
