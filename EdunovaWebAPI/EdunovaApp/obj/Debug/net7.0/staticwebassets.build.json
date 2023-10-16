@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "qJ6V8SIp5FyRdBmKoB29SKOs1keu88uBOTl/7KR1KoE=",
+  "Hash": "lQt69tWdoQr9PeHdF9vL7dG7parCBBsczmD1HIHEchc=",
   "Source": "EdunovaApp",
   "BasePath": "_content/EdunovaApp",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "EdunovaApp\\wwwroot",
+      "Source": "EdunovaApp",
+      "ContentRoot": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\EdunovaWebAPI\\EdunovaApp\\wwwroot\\",
+      "BasePath": "_content/EdunovaApp",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

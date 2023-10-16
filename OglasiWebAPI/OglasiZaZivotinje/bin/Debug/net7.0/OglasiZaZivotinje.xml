@@ -221,6 +221,21 @@
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
         </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.GetBySifra(System.Int32)">
+             <summary>
+             Dohvaća korisnika sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Korisnik/{sifra}
+            
+             </remarks>
+             <returns>Korisnika sa zadanom šifrom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
         <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Post(OglasiZaZivotinje.Models.DTO.KorisnikDTO)">
              <summary>
              Dodaje korisnika u bazu
@@ -322,6 +337,51 @@
             
              </remarks>
              <returns>Sve oglase u bazi</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.GetOglasiPoklanjam">
+             <summary>
+             Dohvaća oglase kategorije "Poklanjam" s podacima korisnika
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Oglasi/Poklanjam
+            
+             </remarks>
+             <returns>Oglase kategorije "Poklanjam" s podacima korisnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.GetOglasiTrazim">
+             <summary>
+             Dohvaća oglase kategorije "Tražim" s podacima korisnika
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Oglasi/Trazim
+            
+             </remarks>
+             <returns>Oglase kategorije "Tražim" s podacima korisnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.GetBySifra(System.Int32)">
+             <summary>
+             Dohvaća oglas sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Oglasi/{sifra}
+            
+             </remarks>
+             <returns>Oglas sa zadanom šifrom</returns>
              <response code="200">Sve je u redu</response>
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 

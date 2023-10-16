@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using EdunovaApp.Validations;
 
 namespace EdunovaApp.Models
 {
     public class Grupa: Entitet
     {
+        [NazivNeMozeBitiBroj]
         public string? Naziv { get; set; }
 
         [ForeignKey("smjer")]

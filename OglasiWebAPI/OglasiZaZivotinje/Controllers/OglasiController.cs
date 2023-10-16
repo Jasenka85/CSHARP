@@ -91,7 +91,235 @@ namespace OglasiZaZivotinje.Controllers
             }
         }
 
- 
+
+        /// <summary>
+        /// Dohvaća oglase kategorije "Poklanjam" s podacima korisnika
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Oglasi/Poklanjam
+        ///
+        /// </remarks>
+        /// <returns>Oglase kategorije "Poklanjam" s podacima korisnika</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpGet]
+        [Route("Poklanjam")]
+        public IActionResult GetOglasiPoklanjam()
+        {
+            _logger.LogInformation("Dohvaćam oglase...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var oglasi = _context.Oglas
+                    .Include(k => k.Korisnik)
+                    .ToList();
+
+                if (oglasi == null || oglasi.Count == 0)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
+                }
+
+                List<CijeliOglasDTO> prikazi = new();
+
+                foreach(Oglas o in oglasi)
+                {
+                    if(o.Kategorija==1)
+                    prikazi.Add(new CijeliOglasDTO()
+                    {
+                        SifraKorisnika = o.Korisnik.Sifra,
+                        Ime = o.Korisnik?.Ime,
+                        Prezime = o.Korisnik?.Prezime,
+                        Email=o.Korisnik?.Email,
+                        Mobitel=o.Korisnik?.Mobitel,
+                        Grad=o.Korisnik?.Grad,
+                        SifraOglasa = o.Sifra,
+                        Aktivan = o.Aktivan,                      
+                        Kategorija = o.Kategorija,
+                        Datum_objave = o.Datum_objave,
+                        Naslov = o.Naslov,
+                        Opis = o.Opis,
+                        Vrsta_zivotinje = o.Vrsta_zivotinje,
+                        Ime_zivotinje = o.Ime_zivotinje,
+                        Spol_zivotinje = o.Spol_zivotinje,
+                        Dob_zivotinje = o.Dob_zivotinje,
+                        Kastriran = o.Kastriran
+                    });
+                };
+                return new JsonResult(prikazi);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+        }
+
+
+
+        /// <summary>
+        /// Dohvaća oglase kategorije "Tražim" s podacima korisnika
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Oglasi/Trazim
+        ///
+        /// </remarks>
+        /// <returns>Oglase kategorije "Tražim" s podacima korisnika</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpGet]
+        [Route("Trazim")]
+        public IActionResult GetOglasiTrazim()
+        {
+            _logger.LogInformation("Dohvaćam oglase...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var oglasi = _context.Oglas
+                    .Include(k => k.Korisnik)
+                    .ToList();
+
+                if (oglasi == null || oglasi.Count == 0)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
+                }
+
+                List<CijeliOglasDTO> prikazi = new();
+
+                foreach (Oglas o in oglasi)
+                {
+                    if (o.Kategorija == 2)
+                        prikazi.Add(new CijeliOglasDTO()
+                        {
+                            SifraKorisnika = o.Korisnik.Sifra,
+                            Ime = o.Korisnik?.Ime,
+                            Prezime = o.Korisnik?.Prezime,
+                            Email = o.Korisnik?.Email,
+                            Mobitel = o.Korisnik?.Mobitel,
+                            Grad = o.Korisnik?.Grad,
+                            SifraOglasa = o.Sifra,
+                            Aktivan = o.Aktivan,
+                            Kategorija = o.Kategorija,
+                            Datum_objave = o.Datum_objave,
+                            Naslov = o.Naslov,
+                            Opis = o.Opis,
+                            Vrsta_zivotinje = o.Vrsta_zivotinje,
+                            Ime_zivotinje = o.Ime_zivotinje,
+                            Spol_zivotinje = o.Spol_zivotinje,
+                            Dob_zivotinje = o.Dob_zivotinje,
+                            Kastriran = o.Kastriran
+                        });
+                };
+                return new JsonResult(prikazi);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Dohvaća oglas sa zadanom sifrom
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Oglasi/{sifra}
+        ///
+        /// </remarks>
+        /// <returns>Oglas sa zadanom šifrom</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public IActionResult GetBySifra(int sifra)
+        {
+
+            _logger.LogInformation("Dohvaćam oglas sa zadanom šifrom...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (sifra < 1)
+            {
+                return new JsonResult("{\"poruka\":\"Šifra oglasa ne može biti manja od 1.\"}");
+            }
+
+            try
+            {
+                var oglasi = _context.Oglas
+                    .Include(k => k.Korisnik)
+                    .ToList();
+
+                if (oglasi == null || oglasi.Count == 0)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
+                }
+
+                var trazenO = new Oglas();
+
+                foreach (Oglas o in oglasi)
+                {
+                    if (o.Sifra == sifra)
+                    {
+                        trazenO = o;
+                    }
+                }
+
+                if (trazenO == null || trazenO.Korisnik == null)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
+                }
+
+                var prikazi = new OglasDTO()
+                {
+                    Sifra = trazenO.Sifra,
+                    Aktivan = trazenO.Aktivan,
+                    Korisnik = trazenO.Korisnik?.Ime + " " + trazenO.Korisnik?.Prezime,
+                    Sifra_korisnika = trazenO.Korisnik.Sifra,
+                    Kategorija = trazenO.Kategorija,
+                    Datum_objave = trazenO.Datum_objave,
+                    Naslov = trazenO.Naslov,
+                    Opis = trazenO.Opis,
+                    Vrsta_zivotinje = trazenO.Vrsta_zivotinje,
+                    Ime_zivotinje = trazenO.Ime_zivotinje,
+                    Spol_zivotinje = trazenO.Spol_zivotinje,
+                    Dob_zivotinje = trazenO.Dob_zivotinje,
+                    Kastriran = trazenO.Kastriran
+                };
+                    
+                return new JsonResult(prikazi);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+
+        }
+
+
 
 
         /// <summary>

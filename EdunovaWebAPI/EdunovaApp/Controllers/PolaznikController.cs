@@ -72,6 +72,33 @@ namespace EdunovaApp.Controllers
         }
 
 
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public IActionResult GetBySifra(int sifra)
+        {
+            if (sifra <= 0)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var p = _context.Polaznik.Find(sifra);
+                if (p == null)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent, p);
+                }
+                return new JsonResult(p);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable);
+
+            }
+
+        }
+
+
+
         /// <summary>
         /// Dodaje polaznika u bazu
         /// </summary>

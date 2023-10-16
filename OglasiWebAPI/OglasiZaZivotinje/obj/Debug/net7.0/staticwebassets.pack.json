@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\bebe.html"
     },
     {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\bebe_wide.html",
+      "PackagePath": "staticwebassets\\bebe_wide.html"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\bolesti.html",
+      "PackagePath": "staticwebassets\\bolesti.html"
+    },
+    {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\css\\app_korisnik.css",
       "PackagePath": "staticwebassets\\css\\app_korisnik.css"
     },
@@ -19,10 +27,6 @@
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\css\\foundation.css",
       "PackagePath": "staticwebassets\\css\\foundation.css"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\css\\lightbox.css",
-      "PackagePath": "staticwebassets\\css\\lightbox.css"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\divlji-zec-minigalerija.html",
@@ -41,6 +45,18 @@
       "PackagePath": "staticwebassets\\dokumenti\\Tablica-za-okvirno-odredjivanje-starosti-i-kolicine-mlijeka.pdf"
     },
     {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\hitno.html",
+      "PackagePath": "staticwebassets\\hitno.html"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\js\\app_korisnik.js",
       "PackagePath": "staticwebassets\\js\\app_korisnik.js"
     },
@@ -55,10 +71,6 @@
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\js\\effects.js",
       "PackagePath": "staticwebassets\\js\\effects.js"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\js\\lightbox.js",
-      "PackagePath": "staticwebassets\\js\\lightbox.js"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\js\\prototype.js",
@@ -85,12 +97,8 @@
       "PackagePath": "staticwebassets\\js\\vendor\\what-input.js"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\korisnik.html",
-      "PackagePath": "staticwebassets\\korisnik.html"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\oglasi.html",
-      "PackagePath": "staticwebassets\\oglasi.html"
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\popis.html",
+      "PackagePath": "staticwebassets\\popis.html"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\.picasa.ini",
@@ -145,6 +153,222 @@
       "PackagePath": "staticwebassets\\slike\\bebe-zeca\\beba-zec9.jpg"
     },
     {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\.picasa.ini",
+      "PackagePath": "staticwebassets\\slike\\faq\\.picasa.ini"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\3bebe1.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\3bebe1.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\3bebe2.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\3bebe2.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\3bebe3.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\3bebe3.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\3bebe4.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\3bebe4.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Igorito1.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\Igorito1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Igorito2.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\Igorito2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Vesna1.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\Vesna1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Vesna2.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\Vesna2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Vesna3.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\Vesna3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Vesna4.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\Vesna4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Zeko_Anica.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\Zeko_Anica.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Zeko_Ivan.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\Zeko_Ivan.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Zeko_Marija.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\Zeko_Marija.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Zeko_Martina.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\Zeko_Martina.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\Zeko_Mirjana.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\Zeko_Mirjana.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br1.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br1.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br10.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br10.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br11.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br11.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br12.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br12.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br13.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br13.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br14.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br14.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br15.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br15.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br16.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br16.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br17.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br17.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br18.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br18.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br19.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br19.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br2.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br2.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br20.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br20.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br21.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br21.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br22.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br22.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br23.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br23.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br24.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br24.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br25.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br25.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br26.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br26.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br27.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br27.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br28.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br28.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br29.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br29.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br3.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br3.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br30.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br30.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br4.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br4.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br5.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br5.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br6.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br6.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br7.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br7.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br8.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br8.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\brojevi\\br9.JPG",
+      "PackagePath": "staticwebassets\\slike\\faq\\brojevi\\br9.JPG"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\kavez1.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\kavez1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\kavez2.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\kavez2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\kavez3.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\kavez3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\kavez4.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\kavez4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\ovratnik-1.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\ovratnik-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\ovratnik-2.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\ovratnik-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\faq\\sprej.jpg",
+      "PackagePath": "staticwebassets\\slike\\faq\\sprej.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\green_arrow.jpg",
+      "PackagePath": "staticwebassets\\slike\\green_arrow.jpg"
+    },
+    {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\gumb1.png",
       "PackagePath": "staticwebassets\\slike\\gumb1.png"
     },
@@ -161,56 +385,12 @@
       "PackagePath": "staticwebassets\\slike\\header.jpg"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\header_oglasi.jpg",
-      "PackagePath": "staticwebassets\\slike\\header_oglasi.jpg"
-    },
-    {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\hranjenje1.jpg",
       "PackagePath": "staticwebassets\\slike\\hranjenje1.jpg"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\hranjenje2.jpg",
       "PackagePath": "staticwebassets\\slike\\hranjenje2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\blank.gif",
-      "PackagePath": "staticwebassets\\slike\\images\\blank.gif"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\close.gif",
-      "PackagePath": "staticwebassets\\slike\\images\\close.gif"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\closelabel.gif",
-      "PackagePath": "staticwebassets\\slike\\images\\closelabel.gif"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\image-1.jpg",
-      "PackagePath": "staticwebassets\\slike\\images\\image-1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\loading.gif",
-      "PackagePath": "staticwebassets\\slike\\images\\loading.gif"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\next.png",
-      "PackagePath": "staticwebassets\\slike\\images\\next.png"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\nextlabel.gif",
-      "PackagePath": "staticwebassets\\slike\\images\\nextlabel.gif"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\prev.png",
-      "PackagePath": "staticwebassets\\slike\\images\\prev.png"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\prevlabel.gif",
-      "PackagePath": "staticwebassets\\slike\\images\\prevlabel.gif"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\images\\thumb-1.jpg",
-      "PackagePath": "staticwebassets\\slike\\images\\thumb-1.jpg"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\minigalerija\\slika1.jpg",
@@ -281,6 +461,14 @@
       "PackagePath": "staticwebassets\\slike\\minigalerija\\slika9.jpg"
     },
     {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\mladunci-zeca-u-travi.jpg",
+      "PackagePath": "staticwebassets\\slike\\mladunci-zeca-u-travi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\ne-dirajte-bebu.jpg",
+      "PackagePath": "staticwebassets\\slike\\ne-dirajte-bebu.jpg"
+    },
+    {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\novorodjeni-zeko.jpg",
       "PackagePath": "staticwebassets\\slike\\novorodjeni-zeko.jpg"
     },
@@ -289,20 +477,40 @@
       "PackagePath": "staticwebassets\\slike\\pdf-logo.jpg"
     },
     {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Biseptol.png",
+      "PackagePath": "staticwebassets\\slike\\popis\\Biseptol.png"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Biseptol_Immunoboost.png",
+      "PackagePath": "staticwebassets\\slike\\popis\\Biseptol_Immunoboost.png"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Biseptol_moj.png",
+      "PackagePath": "staticwebassets\\slike\\popis\\Biseptol_moj.png"
+    },
+    {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Caniletten_tablete.jpg",
       "PackagePath": "staticwebassets\\slike\\popis\\Caniletten_tablete.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Dudice.jpg",
+      "PackagePath": "staticwebassets\\slike\\popis\\Dudice.jpg"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Gimpet_mlijeko.jpg",
       "PackagePath": "staticwebassets\\slike\\popis\\Gimpet_mlijeko.jpg"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Immunoboost.jpg",
-      "PackagePath": "staticwebassets\\slike\\popis\\Immunoboost.jpg"
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Immunoboost.png",
+      "PackagePath": "staticwebassets\\slike\\popis\\Immunoboost.png"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Kavez_Cavia_100.jpg",
       "PackagePath": "staticwebassets\\slike\\popis\\Kavez_Cavia_100.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Linex.jpg",
+      "PackagePath": "staticwebassets\\slike\\popis\\Linex.jpg"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\Poklon_paketic.jpg",
@@ -317,12 +525,12 @@
       "PackagePath": "staticwebassets\\slike\\popis\\Welpenkalk_prah.jpg"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\dudice.jpg",
-      "PackagePath": "staticwebassets\\slike\\popis\\dudice.jpg"
-    },
-    {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\sto-je-potrebno.jpg",
       "PackagePath": "staticwebassets\\slike\\popis\\sto-je-potrebno.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\popis\\zamjensko_mlijeko.png",
+      "PackagePath": "staticwebassets\\slike\\popis\\zamjensko_mlijeko.png"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\posljedice1.jpg",
@@ -337,16 +545,40 @@
       "PackagePath": "staticwebassets\\slike\\posljedice3.jpg"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\tablica.png",
-      "PackagePath": "staticwebassets\\slike\\tablica.png"
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\posljedice4.jpg",
+      "PackagePath": "staticwebassets\\slike\\posljedice4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\tablice\\tablica.png",
+      "PackagePath": "staticwebassets\\slike\\tablice\\tablica.png"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\tablice\\tablica_sira.png",
+      "PackagePath": "staticwebassets\\slike\\tablice\\tablica_sira.png"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\tablice\\tablica_tezina.png",
+      "PackagePath": "staticwebassets\\slike\\tablice\\tablica_tezina.png"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\tablice\\tezina-beba-graf.jpg",
+      "PackagePath": "staticwebassets\\slike\\tablice\\tezina-beba-graf.jpg"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\slike\\youtube-logo.jpg",
       "PackagePath": "staticwebassets\\slike\\youtube-logo.jpg"
     },
     {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\sto-se-dogodi-bez-macjeg-mlijeka.html",
+      "PackagePath": "staticwebassets\\sto-se-dogodi-bez-macjeg-mlijeka.html"
+    },
+    {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\trazilica.html",
       "PackagePath": "staticwebassets\\trazilica.html"
+    },
+    {
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\zasto-macje-mlijeko.html",
+      "PackagePath": "staticwebassets\\zasto-macje-mlijeko.html"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.OglasiZaZivotinje.Microsoft.AspNetCore.StaticWebAssets.props",

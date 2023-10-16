@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using EdunovaApp.Validations;
 
 namespace EdunovaApp.Models
 {
     public class Smjer: Entitet
     {
         [Required(ErrorMessage="Naziv je obavezan")]
+        [NazivNeMozeBitiBroj]
         public string? Naziv { get; set; }
 
         [Required]

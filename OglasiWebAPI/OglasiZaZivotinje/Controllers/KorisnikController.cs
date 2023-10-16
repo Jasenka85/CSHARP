@@ -86,6 +86,56 @@ namespace OglasiZaZivotinje.Controllers
         }
 
 
+        /// <summary>
+        /// Dohvaća korisnika sa zadanom sifrom
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Korisnik/{sifra}
+        ///
+        /// </remarks>
+        /// <returns>Korisnika sa zadanom šifrom</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public IActionResult GetBySifra(int sifra)
+        {
+
+            _logger.LogInformation("Dohvaćam korisnika sa zadanom šifrom...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (sifra < 1)
+            {
+                return new JsonResult("{\"poruka\":\"Šifra korisnika ne može biti manja od 1.\"}");
+            }
+
+            try
+            {
+                var korisnik = _context.Korisnik.Find(sifra);
+                if (korisnik == null)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
+                }
+                return new JsonResult(korisnik);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+
+        }
+
+
+
+
+
 
         /// <summary>
         /// Dodaje korisnika u bazu
