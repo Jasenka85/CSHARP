@@ -21,7 +21,6 @@ namespace OglasiZaZivotinje.Models.DTO
 
         public int SifraOglasa { get; set; }
 
-        [DefaultValue(false)]   //oglas je neaktivan dok ga ne odobri administrator
         public bool Aktivan { get; set; }
 
         public int Kategorija { get; set; }

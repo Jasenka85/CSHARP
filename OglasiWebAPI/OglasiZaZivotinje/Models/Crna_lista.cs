@@ -11,6 +11,7 @@ namespace OglasiZaZivotinje.Models
         [ForeignKey("korisnik")]
         public Korisnik? Korisnik { get; set; }
 
+        [Required(ErrorMessage = "Razlog blokiranja je obavezan!")]
         public string? Razlog_blokiranja { get; set; }
 
         public DateTime? Datum_blokiranja { get; set; }

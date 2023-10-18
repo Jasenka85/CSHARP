@@ -134,6 +134,66 @@ namespace OglasiZaZivotinje.Controllers
 
 
 
+        /// <summary>
+        /// Dohvaća administratore i moderatore
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Korisnik/Admini
+        ///
+        /// </remarks>
+        /// <returns>Popis administratora i moderatora</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpGet]
+        [Route("Admini")]
+        public IActionResult GetAdmini()
+        {
+            _logger.LogInformation("Dohvaćam administratore i moderatore...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            try
+            {
+                var korisnici = _context.Korisnik.ToList();
+
+                if (korisnici == null || korisnici.Count == 0)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema korisnika na listi.\"}");
+                }
+
+                List<KorisnikDTO> prikazi = new();
+
+                foreach(Korisnik k in korisnici)
+                {
+                    if (k.Uloga == 1 || k.Uloga == 2)
+                    {
+                        prikazi.Add(new KorisnikDTO()
+                        {
+                            Sifra = k.Sifra,
+                            Uloga = k.Uloga,
+                            Ime = k.Ime,
+                            Prezime = k.Prezime,
+                            Email = k.Email,
+                            //lozinka se neće prikazivati
+                            Mobitel = k.Mobitel,
+                            Grad = k.Grad
+                        });
+                    }
+                };
+
+                return new JsonResult(prikazi);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+        }
 
 
 

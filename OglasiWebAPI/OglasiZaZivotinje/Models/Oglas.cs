@@ -24,6 +24,7 @@ namespace OglasiZaZivotinje.Models
         [Required(ErrorMessage = "Naslov oglasa je obavezan!")]
         public string? Naslov { get; set; }
 
+        [Required(ErrorMessage = "Opis oglasa je obavezan!")]
         public string? Opis { get; set; }
 
         [Required(ErrorMessage = "Vrsta životinje je obavezna!")]

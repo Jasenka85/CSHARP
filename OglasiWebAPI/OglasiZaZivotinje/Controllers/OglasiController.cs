@@ -320,6 +320,96 @@ namespace OglasiZaZivotinje.Controllers
         }
 
 
+        /// <summary>
+        /// Dohvaća cijeli oglas sa zadanom sifrom
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Oglasi/CijeliOglas/{sifra}
+        ///
+        /// </remarks>
+        /// <returns>Oglas sa zadanom šifrom</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpGet]
+        [Route("CijeliOglas/{sifra:int}")]
+        public IActionResult GetCijeliBySifra(int sifra)
+        {
+
+            _logger.LogInformation("Dohvaćam oglas sa zadanom šifrom...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (sifra < 1)
+            {
+                return new JsonResult("{\"poruka\":\"Šifra oglasa ne može biti manja od 1.\"}");
+            }
+
+            try
+            {
+                var oglasi = _context.Oglas
+                    .Include(k => k.Korisnik)
+                    .ToList();
+
+                if (oglasi == null || oglasi.Count == 0)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
+                }
+
+                var trazenO = new Oglas();
+
+                foreach (Oglas o in oglasi)
+                {
+                    if (o.Sifra == sifra)
+                    {
+                        trazenO = o;
+                    }
+                }
+
+                if (trazenO == null || trazenO.Korisnik == null)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
+                }
+
+                var prikazi = new CijeliOglasDTO()
+                {
+                    SifraKorisnika = trazenO.Korisnik.Sifra,
+                    Ime = trazenO.Korisnik?.Ime,
+                    Prezime = trazenO.Korisnik?.Prezime,
+                    Email = trazenO.Korisnik?.Email,
+                    Mobitel = trazenO.Korisnik?.Mobitel,
+                    Grad = trazenO.Korisnik?.Grad,
+                    SifraOglasa = trazenO.Sifra,
+                    Aktivan = trazenO.Aktivan,
+                    Kategorija = trazenO.Kategorija,
+                    Datum_objave = trazenO.Datum_objave,
+                    Naslov = trazenO.Naslov,
+                    Opis = trazenO.Opis,
+                    Vrsta_zivotinje = trazenO.Vrsta_zivotinje,
+                    Ime_zivotinje = trazenO.Ime_zivotinje,
+                    Spol_zivotinje = trazenO.Spol_zivotinje,
+                    Dob_zivotinje = trazenO.Dob_zivotinje,
+                    Kastriran = trazenO.Kastriran
+                };
+
+                return new JsonResult(prikazi);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+
+        }
+
+
+
+
 
 
         /// <summary>

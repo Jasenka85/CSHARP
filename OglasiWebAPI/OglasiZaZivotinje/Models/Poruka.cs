@@ -20,7 +20,7 @@ namespace OglasiZaZivotinje.Models
         [Required]
         public string? Tekst_poruke { get; set; }
 
-        [Required]
+        
         public DateTime? Datum_poruke { get; set; }
 
 
