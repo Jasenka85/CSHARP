@@ -8,6 +8,8 @@ namespace OglasiZaZivotinje.Models.DTO
 
         
         public int Uloga { get; set; }
+
+        public string? NazivUloge { get; set; }
        
 
         public string? Ime { get; set; }

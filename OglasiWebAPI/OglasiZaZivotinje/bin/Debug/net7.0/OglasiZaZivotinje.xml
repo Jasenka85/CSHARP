@@ -289,7 +289,7 @@
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
         </member>
-        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.PromjenaUloge(System.Int32,System.Int32,System.String)">
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.PromjenaUloge(System.Int32,OglasiZaZivotinje.Models.Korisnik)">
              <summary>
              Mijenja ulogu i lozinku korisnika sa zadanom šifrom
              </summary>
@@ -358,7 +358,7 @@
         </member>
         <member name="M:OglasiZaZivotinje.Controllers.OglasiController.GetOglasiPoklanjam">
              <summary>
-             Dohvaća oglase kategorije "Poklanjam" s podacima korisnika
+             Dohvaća samo aktivne oglase kategorije "Poklanjam", obrnutim redoslijedom
              </summary>
              <remarks>
              Primjer upita:
@@ -373,7 +373,7 @@
         </member>
         <member name="M:OglasiZaZivotinje.Controllers.OglasiController.GetOglasiTrazim">
              <summary>
-             Dohvaća oglase kategorije "Tražim" s podacima korisnika
+             Dohvaća samo aktivne oglase kategorije "Tražim", obrnutim redoslijedom
              </summary>
              <remarks>
              Primjer upita:

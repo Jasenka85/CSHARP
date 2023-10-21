@@ -64,10 +64,28 @@ namespace OglasiZaZivotinje.Controllers
                 List<KorisnikDTO> prikazi = new();
                 korisnici.ForEach(k =>
                 {
+                    string imeuloge = " ";
+                    switch (k.Uloga)
+                    {
+                        case 0:
+                            imeuloge = "korisnik";
+                            break;
+                        case 1:
+                            imeuloge = "administrator";
+                            break;
+                        case 2:
+                            imeuloge = "moderator";
+                            break;
+                        case 3:
+                            imeuloge = "blokiran";
+                            break;
+                    }
+                    
                     prikazi.Add(new KorisnikDTO()
                     {
                         Sifra = k.Sifra,
                         Uloga = k.Uloga,
+                        NazivUloge = imeuloge,
                         Ime = k.Ime,
                         Prezime = k.Prezime,
                         Email=k.Email,
@@ -171,12 +189,24 @@ namespace OglasiZaZivotinje.Controllers
 
                 foreach(Korisnik k in korisnici)
                 {
+                    
                     if (k.Uloga == 1 || k.Uloga == 2)
                     {
+                        string imeuloge = " ";
+                        switch (k.Uloga)
+                        {
+                            case 1:
+                                imeuloge = "administrator";
+                                break;
+                            case 2:
+                                imeuloge = "moderator";
+                                break;
+                        }
                         prikazi.Add(new KorisnikDTO()
                         {
                             Sifra = k.Sifra,
                             Uloga = k.Uloga,
+                            NazivUloge = imeuloge,
                             Ime = k.Ime,
                             Prezime = k.Prezime,
                             Email = k.Email,
@@ -353,8 +383,8 @@ namespace OglasiZaZivotinje.Controllers
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpPut]
-        [Route("{sifra:int}/Uloga")]
-        public IActionResult PromjenaUloge(int sifra, int uloga, string? lozinka)
+        [Route("Uloga/{sifra:int}")]
+        public IActionResult PromjenaUloge(int sifra, Korisnik k)
         {
 
             _logger.LogInformation("Mijenjam ulogu korisnika...");
@@ -363,14 +393,19 @@ namespace OglasiZaZivotinje.Controllers
             {
                 return BadRequest(ModelState);
             }
+            if (k == null)
+            {
+                return BadRequest();
+            }
             if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra korisnika ne može biti manja od 1.\"}");
             }
-            if (uloga < 0 || uloga > 2)
+            if (k.Uloga < 0 || k.Uloga > 2)
             {
                 return new JsonResult("{\"poruka\":\"Uloga korisnika može biti samo 0, 1 ili 2.\"}");
             }
+            
 
             try
             {
@@ -379,18 +414,25 @@ namespace OglasiZaZivotinje.Controllers
                 {
                     return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
                 }
-                if (korisnik.Uloga == 3)
-                {
-                    return new JsonResult("{\"poruka\":\"Korisnik je na crnoj listi!\"}");
-                }
+                
 
-                korisnik.Uloga = uloga;
-                korisnik.Lozinka = lozinka;
+                korisnik.Uloga = k.Uloga;
+                korisnik.Lozinka = k.Lozinka;
+
+                //pregazim ono što je uneseno
+                k.Sifra = korisnik.Sifra;   //dohvatim sifru iz baze
+                k.Ime = korisnik.Ime;
+                k.Prezime = korisnik.Prezime;
+                k.Email = korisnik.Email;
+                k.Mobitel = korisnik.Mobitel;
+                k.Grad = korisnik.Grad;
 
                 _context.Korisnik.Update(korisnik);
                 _context.SaveChanges();
 
-                return Ok(korisnik);
+                return Ok(k);
+
+                
             }
             catch (Exception ex)
             {

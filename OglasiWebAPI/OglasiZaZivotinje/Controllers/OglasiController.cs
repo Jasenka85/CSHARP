@@ -93,7 +93,7 @@ namespace OglasiZaZivotinje.Controllers
 
 
         /// <summary>
-        /// Dohvaća oglase kategorije "Poklanjam" s podacima korisnika
+        /// Dohvaća samo aktivne oglase kategorije "Poklanjam", obrnutim redoslijedom
         /// </summary>
         /// <remarks>
         /// Primjer upita:
@@ -131,7 +131,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 foreach(Oglas o in oglasi)
                 {
-                    if(o.Kategorija==1)
+                    if(o.Kategorija==1 && o.Aktivan==true)
                     prikazi.Add(new CijeliOglasDTO()
                     {
                         SifraKorisnika = o.Korisnik.Sifra,
@@ -153,7 +153,7 @@ namespace OglasiZaZivotinje.Controllers
                         Kastriran = o.Kastriran
                     });
                 };
-                return new JsonResult(prikazi);
+                return new JsonResult(prikazi.OrderByDescending(p=>p.SifraOglasa));
             }
             catch (Exception ex)
             {
@@ -164,7 +164,7 @@ namespace OglasiZaZivotinje.Controllers
 
 
         /// <summary>
-        /// Dohvaća oglase kategorije "Tražim" s podacima korisnika
+        /// Dohvaća samo aktivne oglase kategorije "Tražim", obrnutim redoslijedom
         /// </summary>
         /// <remarks>
         /// Primjer upita:
@@ -202,7 +202,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 foreach (Oglas o in oglasi)
                 {
-                    if (o.Kategorija == 2)
+                    if (o.Kategorija == 2 && o.Aktivan==true)
                         prikazi.Add(new CijeliOglasDTO()
                         {
                             SifraKorisnika = o.Korisnik.Sifra,
@@ -224,7 +224,7 @@ namespace OglasiZaZivotinje.Controllers
                             Kastriran = o.Kastriran
                         });
                 };
-                return new JsonResult(prikazi);
+                return new JsonResult(prikazi.OrderByDescending(p => p.SifraOglasa));
             }
             catch (Exception ex)
             {
