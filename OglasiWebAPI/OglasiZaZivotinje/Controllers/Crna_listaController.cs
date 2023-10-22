@@ -84,6 +84,74 @@ namespace OglasiZaZivotinje.Controllers
 
 
 
+        /// <summary>
+        /// Dohvaća zapis u crnoj listi sa zadanom sifrom
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Crna_lista/{sifra}
+        ///
+        /// </remarks>
+        /// <returns>Zapis u crnoj listi sa zadanom šifrom</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public IActionResult GetBySifra(int sifra)
+        {
+
+            _logger.LogInformation("Dohvaćam zapis sa zadanom šifrom...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (sifra < 1)
+            {
+                return new JsonResult("{\"poruka\":\"Šifra ne može biti manja od 1.\"}");
+            }
+
+            try
+            {
+                var clista = _context.Crna_lista
+                            .Include(k => k.Korisnik)
+                            .ToList();
+                if (clista == null || clista.Count == 0)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema korisnika na crnoj listi.\"}");
+                }
+
+                var trazenC = new Crna_lista();
+
+                foreach (Crna_lista c in clista)
+                {
+                    if (c.Sifra == sifra)
+                    {
+                        trazenC = c;
+                    }
+                }
+
+                if (trazenC == null || trazenC.Korisnik == null)
+                {
+                    return new JsonResult("{\"poruka\":\"Nema zapisa s tom šifrom.\"}");
+                }
+                return new JsonResult(trazenC);
+
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+
+        }
+
+
+
+
 
         /// <summary>
         /// Dodaje novog korisnika na crnu listu u bazi

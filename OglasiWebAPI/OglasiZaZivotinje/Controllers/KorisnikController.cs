@@ -414,7 +414,10 @@ namespace OglasiZaZivotinje.Controllers
                 {
                     return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
                 }
-                
+                if (korisnik.Uloga == 3)
+                {
+                    return new JsonResult("{\"poruka\":\"Korisnik je na crnoj listi!\"}");
+                }
 
                 korisnik.Uloga = k.Uloga;
                 korisnik.Lozinka = k.Lozinka;

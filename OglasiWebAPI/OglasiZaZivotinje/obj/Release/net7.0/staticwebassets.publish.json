@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AdR9cdemm7+f1gPVSehQ4rY4pe7Tl8SNMkHGD38wDAI=",
+  "Hash": "Bi3lhLbuDT7ZX76UQNBUpczjTYKsZFGRo7zvGk9CI3g=",
   "Source": "OglasiZaZivotinje",
   "BasePath": "_content/OglasiZaZivotinje",
   "Mode": "Default",
@@ -255,12 +255,12 @@
       "OriginalItemSpec": "wwwroot\\static\\js\\787.cc4f064d.chunk.js.map"
     },
     {
-      "Identity": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.5ecc91a7.js",
+      "Identity": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.9d4667c4.js",
       "SourceId": "OglasiZaZivotinje",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\",
       "BasePath": "_content/OglasiZaZivotinje",
-      "RelativePath": "static/js/main.5ecc91a7.js",
+      "RelativePath": "static/js/main.9d4667c4.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -269,15 +269,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.5ecc91a7.js"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.9d4667c4.js"
     },
     {
-      "Identity": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.5ecc91a7.js.LICENSE.txt",
+      "Identity": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.9d4667c4.js.LICENSE.txt",
       "SourceId": "OglasiZaZivotinje",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\",
       "BasePath": "_content/OglasiZaZivotinje",
-      "RelativePath": "static/js/main.5ecc91a7.js.LICENSE.txt",
+      "RelativePath": "static/js/main.9d4667c4.js.LICENSE.txt",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -286,15 +286,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.5ecc91a7.js.LICENSE.txt"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.9d4667c4.js.LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.5ecc91a7.js.map",
+      "Identity": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.9d4667c4.js.map",
       "SourceId": "OglasiZaZivotinje",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\",
       "BasePath": "_content/OglasiZaZivotinje",
-      "RelativePath": "static/js/main.5ecc91a7.js.map",
+      "RelativePath": "static/js/main.9d4667c4.js.map",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -303,7 +303,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\static\\js\\main.5ecc91a7.js.map"
+      "OriginalItemSpec": "wwwroot\\static\\js\\main.9d4667c4.js.map"
     },
     {
       "Identity": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\media\\header_oglasi.45716b8d20585f617c74.jpg",

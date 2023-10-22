@@ -292,24 +292,8 @@ namespace OglasiZaZivotinje.Controllers
                     return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
                 }
 
-                var prikazi = new OglasDTO()
-                {
-                    Sifra = trazenO.Sifra,
-                    Aktivan = trazenO.Aktivan,
-                    Korisnik = trazenO.Korisnik?.Ime + " " + trazenO.Korisnik?.Prezime,
-                    Sifra_korisnika = trazenO.Korisnik.Sifra,
-                    Kategorija = trazenO.Kategorija,
-                    Datum_objave = trazenO.Datum_objave,
-                    Naslov = trazenO.Naslov,
-                    Opis = trazenO.Opis,
-                    Vrsta_zivotinje = trazenO.Vrsta_zivotinje,
-                    Ime_zivotinje = trazenO.Ime_zivotinje,
-                    Spol_zivotinje = trazenO.Spol_zivotinje,
-                    Dob_zivotinje = trazenO.Dob_zivotinje,
-                    Kastriran = trazenO.Kastriran
-                };
-                    
-                return new JsonResult(prikazi);
+                
+                return new JsonResult(trazenO);
 
             }
             catch (Exception ex)

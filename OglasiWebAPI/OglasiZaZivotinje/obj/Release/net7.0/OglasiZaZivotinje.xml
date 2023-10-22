@@ -31,6 +31,21 @@
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
         </member>
+        <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.GetBySifra(System.Int32)">
+             <summary>
+             Dohvaća zapis u crnoj listi sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Crna_lista/{sifra}
+            
+             </remarks>
+             <returns>Zapis u crnoj listi sa zadanom šifrom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
         <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.Post(OglasiZaZivotinje.Models.DTO.Crna_listaDTO)">
              <summary>
              Dodaje novog korisnika na crnu listu u bazi
