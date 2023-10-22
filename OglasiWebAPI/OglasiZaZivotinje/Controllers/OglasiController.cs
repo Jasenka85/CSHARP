@@ -83,7 +83,7 @@ namespace OglasiZaZivotinje.Controllers
                         Kastriran=o.Kastriran
                     });
                 });
-                return Ok(prikazi);
+                return new JsonResult(prikazi.OrderByDescending(p => p.Sifra));
             }
             catch (Exception ex)
             {
@@ -101,7 +101,7 @@ namespace OglasiZaZivotinje.Controllers
         ///    GET api/v1/Oglasi/Poklanjam
         ///
         /// </remarks>
-        /// <returns>Oglase kategorije "Poklanjam" s podacima korisnika</returns>
+        /// <returns>Oglase kategorije "Poklanjam", obrnutim redoslijedom</returns>
         /// <response code="200">Sve je u redu</response>
         /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
@@ -172,7 +172,7 @@ namespace OglasiZaZivotinje.Controllers
         ///    GET api/v1/Oglasi/Trazim
         ///
         /// </remarks>
-        /// <returns>Oglase kategorije "Tražim" s podacima korisnika</returns>
+        /// <returns>Oglase kategorije "Tražim", obrnutim redoslijedom</returns>
         /// <response code="200">Sve je u redu</response>
         /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
         /// <response code="503">Na azure treba dodati IP u firewall</response> 

@@ -69,6 +69,9 @@ namespace OglasiZaZivotinje.Controllers
                         Sifra = c.Sifra,
                         Korisnik = c.Korisnik?.Ime + " " + c.Korisnik?.Prezime,
                         Sifra_korisnika = c.Korisnik.Sifra,
+                        Email_korisnika = c.Korisnik.Email,
+                        Mobitel_korisnika = c.Korisnik.Mobitel,
+                        Grad_korisnika = c.Korisnik.Grad,
                         Razlog_blokiranja = c.Razlog_blokiranja,
                         Datum_blokiranja=c.Datum_blokiranja
                     });
@@ -116,29 +119,28 @@ namespace OglasiZaZivotinje.Controllers
 
             try
             {
-                var clista = _context.Crna_lista
-                            .Include(k => k.Korisnik)
-                            .ToList();
-                if (clista == null || clista.Count == 0)
-                {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika na crnoj listi.\"}");
-                }
+                var trazenC = _context.Crna_lista
+                    .Include(c => c.Korisnik)
+                    .FirstOrDefault(x => x.Sifra == sifra);
 
-                var trazenC = new Crna_lista();
-
-                foreach (Crna_lista c in clista)
-                {
-                    if (c.Sifra == sifra)
-                    {
-                        trazenC = c;
-                    }
-                }
 
                 if (trazenC == null || trazenC.Korisnik == null)
                 {
                     return new JsonResult("{\"poruka\":\"Nema zapisa s tom šifrom.\"}");
                 }
-                return new JsonResult(trazenC);
+
+                var trazenDto = new Crna_listaDTO()
+                {
+                    Sifra = trazenC.Sifra,
+                    Korisnik = trazenC.Korisnik?.Ime + " " + trazenC.Korisnik?.Prezime,
+                    Sifra_korisnika = trazenC.Korisnik.Sifra,
+                    Email_korisnika = trazenC.Korisnik.Email,
+                    Mobitel_korisnika = trazenC.Korisnik.Mobitel,
+                    Grad_korisnika = trazenC.Korisnik.Grad,
+                    Razlog_blokiranja = trazenC.Razlog_blokiranja,
+                    Datum_blokiranja = trazenC.Datum_blokiranja
+                };
+                return new JsonResult(trazenDto);
 
 
             }
@@ -228,6 +230,9 @@ namespace OglasiZaZivotinje.Controllers
 
                 cDto.Sifra = c.Sifra;
                 cDto.Korisnik = korisnik.Ime + " " + korisnik.Prezime;
+                cDto.Email_korisnika = korisnik.Email;
+                cDto.Mobitel_korisnika = korisnik.Mobitel;
+                cDto.Grad_korisnika = korisnik.Grad;
                 cDto.Datum_blokiranja = c.Datum_blokiranja;  //pregazim datum koji je unio korisnik
                 
                 return Ok(cDto);
@@ -252,9 +257,8 @@ namespace OglasiZaZivotinje.Controllers
         ///
         /// Parametar: šifra unosa u crnu listu kojeg želite mijenjati
         /// 
-        /// Potrebno je unijeti i šifru korisnika koji je na crnoj listi (sifra_korisnika).
         /// 
-        /// Napomena: "korisnik" se dohvaća iz baze, 
+        /// Napomena: "korisnik" i "sifra_korisnika" se dohvaćaju iz baze, 
         /// "datum_blokiranja" se bilježi automatski i ne može se mijenjati.
         /// 
         /// </remarks>
@@ -277,37 +281,36 @@ namespace OglasiZaZivotinje.Controllers
             {
                 return BadRequest();
             }
-            if (sifra < 1 || cDto.Sifra_korisnika < 1)
+            if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra ne može biti manja od 1.\"}");
             }
 
             try
             {
-                var korisnik = _context.Korisnik.Find(cDto.Sifra_korisnika);
+                var trazenC = _context.Crna_lista
+                   .Include(c => c.Korisnik)
+                   .FirstOrDefault(x => x.Sifra == sifra);
 
-                if (korisnik == null)
+
+                if (trazenC == null || trazenC.Korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
+                    return new JsonResult("{\"poruka\":\"Nema zapisa s tom šifrom.\"}");
                 }
 
-                var clista = _context.Crna_lista.Find(sifra);
+                trazenC.Razlog_blokiranja = cDto.Razlog_blokiranja;
+                //korisnik i datum blokiranja ne mogu se mijenjati
 
-                if (clista == null)
-                {
-                    return new JsonResult("{\"poruka\":\"Nema unosa u crnu listu s tom šifrom.\"}");
-                }
-                
-                clista.Korisnik = korisnik;
-                clista.Razlog_blokiranja = cDto.Razlog_blokiranja;
-                //datum blokiranja se ne može mijenjati
-
-                _context.Crna_lista.Update(clista);
+                _context.Crna_lista.Update(trazenC);
                 _context.SaveChanges();
 
                 cDto.Sifra = sifra;
-                cDto.Korisnik = korisnik.Ime + " " + korisnik.Prezime;
-                cDto.Datum_blokiranja = clista.Datum_blokiranja;    //pregazim ono što je upisao korisnik
+                cDto.Korisnik = trazenC.Korisnik?.Ime + " " + trazenC.Korisnik?.Prezime;
+                cDto.Sifra_korisnika = trazenC.Korisnik.Sifra;
+                cDto.Email_korisnika = trazenC.Korisnik.Email;
+                cDto.Mobitel_korisnika = trazenC.Korisnik.Mobitel;
+                cDto.Grad_korisnika = trazenC.Korisnik.Grad;
+                cDto.Datum_blokiranja = trazenC.Datum_blokiranja;    //pregazim ono što je upisao korisnik
                 return Ok(cDto);
             }
             catch (Exception ex)
@@ -349,13 +352,19 @@ namespace OglasiZaZivotinje.Controllers
 
             try
             {
-                var clista = _context.Crna_lista.Find(sifra);
-                if (clista == null)
+                var trazenC = _context.Crna_lista
+                   .Include(c => c.Korisnik)
+                   .FirstOrDefault(x => x.Sifra == sifra);
+
+                if (trazenC == null)
                 {
                     return new JsonResult("{\"poruka\":\"Nema unosa u crnoj listi s tom šifrom.\"}");
                 }
+                trazenC.Korisnik.Uloga = 0;
+                _context.Korisnik.Update(trazenC.Korisnik);
+                _context.SaveChanges();
 
-                _context.Crna_lista.Remove(clista);
+                _context.Crna_lista.Remove(trazenC);
                 _context.SaveChanges();
 
                 return new JsonResult("{\"poruka\":\"Unos iz crne liste obrisan.\"}");

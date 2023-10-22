@@ -10,6 +10,12 @@ namespace OglasiZaZivotinje.Models.DTO
 
         public int Sifra_korisnika { get; set; }
 
+        public string? Email_korisnika { get; set; }
+
+        public string? Mobitel_korisnika { get; set; }
+
+        public string? Grad_korisnika { get; set; }
+
         public string? Razlog_blokiranja { get; set; }
 
         public DateTime? Datum_blokiranja { get; set; }

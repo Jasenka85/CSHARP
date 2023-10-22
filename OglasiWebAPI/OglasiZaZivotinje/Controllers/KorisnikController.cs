@@ -277,7 +277,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 kDto.Sifra = k.Sifra; //dohvatim šifru iz baze
                 kDto.Uloga = 0;   //pregazim ono što je upisao korisnik
-
+                kDto.NazivUloge = "korisnik";
                 return Ok(kDto);
             }
             catch (Exception ex)
@@ -349,6 +349,26 @@ namespace OglasiZaZivotinje.Controllers
 
                 kDto.Sifra = korisnik.Sifra;   //dohvatim sifru iz baze
                 kDto.Uloga = korisnik.Uloga;   //pregazim ono što je unio korisnik
+
+                string imeuloge = " ";
+                switch (korisnik.Uloga)
+                {
+                    case 0:
+                        imeuloge = "korisnik";
+                        break;
+                    case 1:
+                        imeuloge = "administrator";
+                        break;
+                    case 2:
+                        imeuloge = "moderator";
+                        break;
+                    case 3:
+                        imeuloge = "blokiran";
+                        break;
+                }
+
+                kDto.NazivUloge = imeuloge;
+
                 //lozinka se ne prikazuje
 
                 return Ok(kDto);
