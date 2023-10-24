@@ -86,6 +86,71 @@ namespace OglasiZaZivotinje.Controllers
         }
 
 
+        /// <summary>
+        /// Dohvaća fotografiju sa zadanom sifrom
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Fotografije/{sifra}
+        ///
+        /// </remarks>
+        /// <returns>Fotografiju sa zadanom šifrom</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public IActionResult GetBySifra(int sifra)
+        {
+
+            _logger.LogInformation("Dohvaćam fotografiju sa zadanom šifrom...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (sifra < 1)
+            {
+                return new JsonResult("{\"poruka\":\"Šifra fotografije ne može biti manja od 1.\"}");
+            }
+
+            try
+            {
+                var fotografija = _context.Fotografija
+                   .Include(c => c.Oglas)
+                   .FirstOrDefault(x => x.Sifra == sifra);
+
+                if (fotografija == null || fotografija.Oglas == null)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent);
+                }
+
+                var trazen = new FotografijaDTO()
+                {
+                    Sifra = fotografija.Sifra,
+                    Oglas = fotografija.Oglas?.Naslov,
+                    Sifra_oglasa = fotografija.Oglas.Sifra,
+                    Naziv = fotografija.Naziv,
+                    Link = fotografija.Link
+                };
+
+                return new JsonResult(trazen);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+
+        }
+
+
+
+
+
+
 
 
         /// <summary>
@@ -94,7 +159,7 @@ namespace OglasiZaZivotinje.Controllers
         /// <remarks>
         /// Primjer upita:
         ///
-        ///    GET api/v1/Fotografije/{sifra}/Oglas
+        ///    GET api/v1/Fotografije/Oglas/{sifra}
         ///
         /// Parametar: šifra oglasa u kojem želite pregledati fotografije
         /// 
@@ -105,7 +170,7 @@ namespace OglasiZaZivotinje.Controllers
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpGet]
-        [Route("{sifra:int}/Oglas")]
+        [Route("Oglas/{sifra:int}")]
         public IActionResult FotografijeOglasa(int sifra)
         {
             _logger.LogInformation("Dohvaćam fotografije iz oglasa...");
@@ -123,7 +188,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (fotografije == null || fotografije.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema fotografija na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 var fotografijeoglasa = new List<Fotografija>();
@@ -138,7 +203,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (fotografijeoglasa.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"U oglasu nema fotografija.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 var prikazi = new List<FotografijaDTO>();
@@ -210,7 +275,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (oglas == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 Fotografija f = new Fotografija()
@@ -246,9 +311,8 @@ namespace OglasiZaZivotinje.Controllers
         ///
         /// Parametar: šifra fotografije koju želite mijenjati
         /// 
-        /// Potrebno je unijeti i šifru oglasa u kojem se nalazi fotografija (sifra_oglasa).
         /// 
-        /// Napomena: "oglas" se dohvaća iz baze
+        /// Napomena: "oglas" i "sifra_oglasa" se dohvaćaju iz baze
         /// 
         /// </remarks>
         /// <returns>Promijenjenu fotografiju u bazi sa svim podacima</returns>
@@ -270,28 +334,23 @@ namespace OglasiZaZivotinje.Controllers
             {
                 return BadRequest();
             }
-            if (sifra < 1 || fDto.Sifra_oglasa < 1)
+            if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra ne može biti manja od 1.\"}");
             }
 
             try
             {
-                var oglas = _context.Oglas.Find(fDto.Sifra_oglasa);
+                var fotografija = _context.Fotografija
+                   .Include(c => c.Oglas)
+                   .FirstOrDefault(x => x.Sifra == sifra);
 
-                if (oglas == null)
+                if (fotografija == null || fotografija.Oglas == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
-                var fotografija = _context.Fotografija.Find(sifra);
-
-                if (fotografija == null)
-                {
-                    return new JsonResult("{\"poruka\":\"Nema fotografije s tom šifrom.\"}");
-                }
-
-                fotografija.Oglas = oglas;
+                
                 fotografija.Naziv = fDto.Naziv;
                 fotografija.Link = fDto.Link;
                 
@@ -299,7 +358,8 @@ namespace OglasiZaZivotinje.Controllers
                 _context.SaveChanges();
 
                 fDto.Sifra = sifra;
-                fDto.Oglas = oglas.Naslov;
+                fDto.Oglas = fotografija.Oglas.Naslov;      //pregazim ono što je unio korisnik
+                fDto.Sifra_oglasa = fotografija.Oglas.Sifra;
                 return Ok(fDto);
             }
             catch (Exception ex)
@@ -344,7 +404,7 @@ namespace OglasiZaZivotinje.Controllers
                 var fotografija = _context.Fotografija.Find(sifra);
                 if (fotografija == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema fotografije s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 _context.Fotografija.Remove(fotografija);
@@ -355,7 +415,7 @@ namespace OglasiZaZivotinje.Controllers
             }
             catch (Exception)
             {
-                return new JsonResult("{\"poruka\":\"Fotografija se ne može obrisati.\"}");
+                return new JsonResult("{\"poruka\":\"Fotografija nije obrisana.\"}");
 
             }
 

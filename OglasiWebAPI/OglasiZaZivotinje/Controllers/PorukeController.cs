@@ -61,7 +61,7 @@ namespace OglasiZaZivotinje.Controllers
                 
                 if (poruke == null || poruke.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema poruka na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 List<PorukaDTO> prikazi = new();
@@ -79,13 +79,77 @@ namespace OglasiZaZivotinje.Controllers
                     });
                 });
 
-                return Ok(prikazi);
+                return new JsonResult(prikazi.OrderByDescending(p => p.Sifra));
             }
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
             }
         }
+
+
+        /// <summary>
+        /// Dohvaća poruku sa zadanom sifrom
+        /// </summary>
+        /// <remarks>
+        /// Primjer upita:
+        ///
+        ///    GET api/v1/Poruke/{sifra}
+        ///
+        /// </remarks>
+        /// <returns>Poruku sa zadanom šifrom</returns>
+        /// <response code="200">Sve je u redu</response>
+        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+        /// <response code="503">Na azure treba dodati IP u firewall</response> 
+
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public IActionResult GetBySifra(int sifra)
+        {
+
+            _logger.LogInformation("Dohvaćam poruku sa zadanom šifrom...");
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (sifra < 1)
+            {
+                return new JsonResult("{\"poruka\":\"Šifra poruke ne može biti manja od 1.\"}");
+            }
+
+            try
+            {
+                var poruka = _context.Poruka
+                   .Include(c => c.Oglas)
+                   .FirstOrDefault(x => x.Sifra == sifra);
+
+                if (poruka == null || poruka.Oglas == null)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent);
+                }
+
+                var trazen = new PorukaDTO()
+                {
+                    Sifra = poruka.Sifra,
+                    Oglas = poruka.Oglas?.Naslov,
+                    Sifra_oglasa = poruka.Oglas.Sifra,
+                    Ime_posiljatelja = poruka.Ime_posiljatelja,
+                    Email_posiljatelja = poruka.Email_posiljatelja,
+                    Tekst_poruke = poruka.Tekst_poruke,
+                    Datum_poruke = poruka.Datum_poruke
+                };
+
+                return new JsonResult(trazen);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+            }
+
+        }
+
 
 
 
@@ -106,7 +170,7 @@ namespace OglasiZaZivotinje.Controllers
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpGet]
-        [Route("{sifra:int}/Oglas")]
+        [Route("Oglas/{sifra:int}")]
         public IActionResult PorukeOglasa(int sifra)
         {
             _logger.LogInformation("Dohvaćam poruke za dani oglas...");
@@ -124,7 +188,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (poruke == null || poruke.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema poruka na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 var porukeoglasa = new List<Poruka>();
@@ -139,7 +203,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (porukeoglasa.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema poruka za taj oglas.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 var prikazi = new List<PorukaDTO>();
@@ -157,8 +221,8 @@ namespace OglasiZaZivotinje.Controllers
                         Datum_poruke = p.Datum_poruke
                     });
                 });
-                return Ok(prikazi);
-
+                
+                return new JsonResult(prikazi.OrderByDescending(p => p.Sifra));
             }
             catch (Exception ex)
             {
@@ -211,7 +275,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (oglas == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 Poruka p = new Poruka()
@@ -248,9 +312,8 @@ namespace OglasiZaZivotinje.Controllers
         ///
         /// Parametar: šifra poruke koju želite mijenjati
         /// 
-        /// Potrebno je unijeti i šifru oglasa kojem se šalje poruka (sifra_oglasa).
         /// 
-        /// Napomena: "oglas" se dohvaća iz baze, 
+        /// Napomena: "oglas" i "sifra_oglasa" se dohvaćaju iz baze, 
         /// "datum_poruke" se bilježi automatski i ne može se mijenjati.
         /// 
         /// </remarks>
@@ -273,28 +336,23 @@ namespace OglasiZaZivotinje.Controllers
             {
                 return BadRequest();
             }
-            if (sifra < 1 || pDto.Sifra_oglasa < 1)
+            if (sifra < 1)
             {
                 return new JsonResult("{\"poruka\":\"Šifra ne može biti manja od 1.\"}");
             }
 
             try
             {
-                var oglas = _context.Oglas.Find(pDto.Sifra_oglasa);
+                var poruka = _context.Poruka
+                   .Include(c => c.Oglas)
+                   .FirstOrDefault(x => x.Sifra == sifra);
 
-                if (oglas == null)
+                if (poruka == null || poruka.Oglas == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
+                
 
-                var poruka = _context.Poruka.Find(sifra);
-
-                if (poruka == null)
-                {
-                    return new JsonResult("{\"poruka\":\"Nema poruke s tom šifrom.\"}");
-                }
-
-                poruka.Oglas = oglas;
                 poruka.Ime_posiljatelja = pDto.Ime_posiljatelja;
                 poruka.Email_posiljatelja = pDto.Email_posiljatelja;
                 poruka.Tekst_poruke = pDto.Tekst_poruke;
@@ -304,8 +362,9 @@ namespace OglasiZaZivotinje.Controllers
                 _context.SaveChanges();
 
                 pDto.Sifra = sifra;
-                pDto.Oglas = oglas.Naslov;
+                pDto.Oglas = poruka.Oglas.Naslov;
                 pDto.Datum_poruke = poruka.Datum_poruke;   //pregazim ono što je unio korisnik
+                pDto.Sifra_oglasa = poruka.Oglas.Sifra;
                 return Ok(pDto);
             }
             catch (Exception ex)
@@ -350,7 +409,7 @@ namespace OglasiZaZivotinje.Controllers
                 var poruka = _context.Poruka.Find(sifra);
                 if (poruka == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema poruke s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 _context.Poruka.Remove(poruka);
@@ -360,7 +419,7 @@ namespace OglasiZaZivotinje.Controllers
             }
             catch (Exception)
             {
-                return new JsonResult("{\"poruka\":\"Poruka se ne može obrisati.\"}");
+                return new JsonResult("{\"poruka\":\"Poruka nije obrisana.\"}");
             }
 
         }

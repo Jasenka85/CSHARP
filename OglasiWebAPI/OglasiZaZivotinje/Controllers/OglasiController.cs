@@ -411,7 +411,7 @@ namespace OglasiZaZivotinje.Controllers
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpGet]
-        [Route("{sifra:int}/Korisnik")]
+        [Route("Korisnik/{sifra:int}")]
         public IActionResult OglasiKorisnika(int sifra)
         {
             _logger.LogInformation("Dohvaćam oglase korisnika...");
@@ -442,7 +442,7 @@ namespace OglasiZaZivotinje.Controllers
                     }
                 }
 
-                if (oglasikorisnika.Count == 0)
+                if (oglasikorisnika == null || oglasikorisnika.Count == 0)
                 {
                     return StatusCode(StatusCodes.Status204NoContent);
                 }

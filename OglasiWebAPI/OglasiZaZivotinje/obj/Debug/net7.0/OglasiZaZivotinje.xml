@@ -134,6 +134,21 @@
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response>
         </member>
+        <member name="M:OglasiZaZivotinje.Controllers.FotografijeController.GetBySifra(System.Int32)">
+             <summary>
+             Dohvaća fotografiju sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Fotografije/{sifra}
+            
+             </remarks>
+             <returns>Fotografiju sa zadanom šifrom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
         <member name="M:OglasiZaZivotinje.Controllers.FotografijeController.FotografijeOglasa(System.Int32)">
              <summary>
              Dohvaća sve fotografije iz traženog oglasa
@@ -141,7 +156,7 @@
              <remarks>
              Primjer upita:
             
-                GET api/v1/Fotografije/{sifra}/Oglas
+                GET api/v1/Fotografije/Oglas/{sifra}
             
              Parametar: šifra oglasa u kojem želite pregledati fotografije
              
@@ -181,9 +196,8 @@
             
              Parametar: šifra fotografije koju želite mijenjati
              
-             Potrebno je unijeti i šifru oglasa u kojem se nalazi fotografija (sifra_oglasa).
              
-             Napomena: "oglas" se dohvaća iz baze
+             Napomena: "oglas" i "sifra_oglasa" se dohvaćaju iz baze
              
              </remarks>
              <returns>Promijenjenu fotografiju u bazi sa svim podacima</returns>
@@ -518,27 +532,6 @@
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
         </member>
-        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Aktivan(System.Int32,System.Int32)">
-             <summary>
-             Aktiviranje/deaktiviranje oglasa
-             </summary>
-             <remarks>
-             Služi administratoru za brzo odobravanje ili skidanje oglasa
-             (neaktivni oglasi nisu vidljivi na web stranici)
-             
-             Primjer upita:
-            
-                PUT api/v1/Oglasi/{sifra}/Aktiviraj
-                
-             Parametri: šifra oglasa kojeg želite aktivirati/deaktivirati
-             i aktivnost: 0 = neaktivan, ostali brojevi = aktivan
-            
-             </remarks>
-             <returns>Obavijest da je oglas aktiviran/deaktiviran</returns>
-             <response code="200">Sve je u redu</response>
-             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
-             <response code="503">Na azure treba dodati IP u firewall</response> 
-        </member>
         <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Delete(System.Int32)">
              <summary>
              Briše oglas sa zadanom šifrom iz baze
@@ -579,6 +572,21 @@
             
              </remarks>
              <returns>Sve poruke u bazi</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.PorukeController.GetBySifra(System.Int32)">
+             <summary>
+             Dohvaća poruku sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Poruke/{sifra}
+            
+             </remarks>
+             <returns>Poruku sa zadanom šifrom</returns>
              <response code="200">Sve je u redu</response>
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
@@ -631,9 +639,8 @@
             
              Parametar: šifra poruke koju želite mijenjati
              
-             Potrebno je unijeti i šifru oglasa kojem se šalje poruka (sifra_oglasa).
              
-             Napomena: "oglas" se dohvaća iz baze, 
+             Napomena: "oglas" i "sifra_oglasa" se dohvaćaju iz baze, 
              "datum_poruke" se bilježi automatski i ne može se mijenjati.
              
              </remarks>
