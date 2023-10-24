@@ -61,7 +61,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (fotografije == null || fotografije.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema fotografija na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 List<FotografijaDTO> prikazi = new();

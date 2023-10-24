@@ -58,7 +58,7 @@ namespace OglasiZaZivotinje.Controllers
                     .ToList();
                 if (clista == null || clista.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika na crnoj listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 List<Crna_listaDTO> prikazi = new();
@@ -126,7 +126,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (trazenC == null || trazenC.Korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema zapisa s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 var trazenDto = new Crna_listaDTO()
@@ -208,7 +208,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
                 if (korisnik.Uloga == 1 || korisnik.Uloga == 2)
                 {
@@ -295,7 +295,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (trazenC == null || trazenC.Korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema zapisa s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 trazenC.Razlog_blokiranja = cDto.Razlog_blokiranja;
@@ -358,7 +358,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (trazenC == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema unosa u crnoj listi s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
                 trazenC.Korisnik.Uloga = 0;
                 _context.Korisnik.Update(trazenC.Korisnik);
@@ -371,7 +371,7 @@ namespace OglasiZaZivotinje.Controllers
             }
             catch (Exception)
             {
-                return new JsonResult("{\"poruka\":\"Ovaj unos u crnoj listi se ne može obrisati.\"}");
+                return new JsonResult("{\"poruka\":\"Unos iz crne liste nije obrisan.\"}");
             }
         }
 

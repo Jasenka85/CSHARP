@@ -506,11 +506,10 @@
             
              Parametar: šifra oglasa kojeg želite mijenjati
              
-             Potrebno je unijeti i šifru korisnika koji je objavio oglas (sifra_korisnika).
              
              Kategorije oglasa: 1 = poklanjam životinju, 2 = želim udomiti životinju.
              
-             Napomena: "korisnik" se dohvaća iz baze, 
+             Napomena: "korisnik" i "sifra korisnika" se dohvaćaju iz baze, 
              "datum_objave" se bilježi automatski pri objavi i ne može se mijenjati.
              
              </remarks>

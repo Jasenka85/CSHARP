@@ -60,7 +60,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (oglasi == null || oglasi.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 List<OglasDTO> prikazi = new();
@@ -124,7 +124,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (oglasi == null || oglasi.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 List<CijeliOglasDTO> prikazi = new();
@@ -153,6 +153,12 @@ namespace OglasiZaZivotinje.Controllers
                         Kastriran = o.Kastriran
                     });
                 };
+                if (prikazi.Count == 0)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent);
+                }
+
+
                 return new JsonResult(prikazi.OrderByDescending(p=>p.SifraOglasa));
             }
             catch (Exception ex)
@@ -195,7 +201,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (oglasi == null || oglasi.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 List<CijeliOglasDTO> prikazi = new();
@@ -224,6 +230,12 @@ namespace OglasiZaZivotinje.Controllers
                             Kastriran = o.Kastriran
                         });
                 };
+
+                if (prikazi.Count == 0)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent);
+                }
+
                 return new JsonResult(prikazi.OrderByDescending(p => p.SifraOglasa));
             }
             catch (Exception ex)
@@ -268,32 +280,33 @@ namespace OglasiZaZivotinje.Controllers
 
             try
             {
-                var oglasi = _context.Oglas
-                    .Include(k => k.Korisnik)
-                    .ToList();
+                var oglas = _context.Oglas
+                   .Include(c => c.Korisnik)
+                   .FirstOrDefault(x => x.Sifra == sifra);
 
-                if (oglasi == null || oglasi.Count == 0)
+                if (oglas == null || oglas.Korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
-                var trazenO = new Oglas();
-
-                foreach (Oglas o in oglasi)
+                var trazen = new OglasDTO()
                 {
-                    if (o.Sifra == sifra)
-                    {
-                        trazenO = o;
-                    }
-                }
+                    Sifra = oglas.Sifra,
+                    Aktivan = oglas.Aktivan,
+                    Korisnik = oglas.Korisnik?.Ime + " " + oglas.Korisnik?.Prezime,
+                    Sifra_korisnika = oglas.Korisnik.Sifra,
+                    Kategorija = oglas.Kategorija,
+                    Datum_objave = oglas.Datum_objave,
+                    Naslov = oglas.Naslov,
+                    Opis = oglas.Opis,
+                    Vrsta_zivotinje = oglas.Vrsta_zivotinje,
+                    Ime_zivotinje = oglas.Ime_zivotinje,
+                    Spol_zivotinje = oglas.Spol_zivotinje,
+                    Dob_zivotinje = oglas.Dob_zivotinje,
+                    Kastriran = oglas.Kastriran
+                };
 
-                if (trazenO == null || trazenO.Korisnik == null)
-                {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
-                }
-
-                
-                return new JsonResult(trazenO);
+                return new JsonResult(trazen);
 
             }
             catch (Exception ex)
@@ -336,28 +349,13 @@ namespace OglasiZaZivotinje.Controllers
 
             try
             {
-                var oglasi = _context.Oglas
-                    .Include(k => k.Korisnik)
-                    .ToList();
-
-                if (oglasi == null || oglasi.Count == 0)
-                {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
-                }
-
-                var trazenO = new Oglas();
-
-                foreach (Oglas o in oglasi)
-                {
-                    if (o.Sifra == sifra)
-                    {
-                        trazenO = o;
-                    }
-                }
+                var trazenO = _context.Oglas
+                   .Include(c => c.Korisnik)
+                   .FirstOrDefault(x => x.Sifra == sifra);
 
                 if (trazenO == null || trazenO.Korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 var prikazi = new CijeliOglasDTO()
@@ -431,7 +429,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (oglasi == null || oglasi.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 var oglasikorisnika = new List<Oglas>();
@@ -446,7 +444,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (oglasikorisnika.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa od tog korisnika.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 var prikazi = new List<OglasDTO>();
@@ -682,11 +680,10 @@ namespace OglasiZaZivotinje.Controllers
         ///
         /// Parametar: šifra oglasa kojeg želite mijenjati
         /// 
-        /// Potrebno je unijeti i šifru korisnika koji je objavio oglas (sifra_korisnika).
         /// 
         /// Kategorije oglasa: 1 = poklanjam životinju, 2 = želim udomiti životinju.
         /// 
-        /// Napomena: "korisnik" se dohvaća iz baze, 
+        /// Napomena: "korisnik" i "sifra korisnika" se dohvaćaju iz baze, 
         /// "datum_objave" se bilježi automatski pri objavi i ne može se mijenjati.
         /// 
         /// </remarks>
@@ -709,9 +706,9 @@ namespace OglasiZaZivotinje.Controllers
             {
                 return BadRequest();
             }
-            if (sifra < 1 || oDto.Sifra_korisnika < 1)
+            if (sifra < 1)
             {
-                return new JsonResult("{\"poruka\":\"Šifra ne može biti manja od 1.\"}");
+                return new JsonResult("{\"poruka\":\"Šifra oglasa ne može biti manja od 1.\"}");
             }
             if (oDto.Kategorija < 1 || oDto.Kategorija > 2)
             {
@@ -720,26 +717,17 @@ namespace OglasiZaZivotinje.Controllers
 
             try
             {
-                var korisnik = _context.Korisnik.Find(oDto.Sifra_korisnika);
-                
-                if (korisnik == null)
-                {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
-                }
-                if (korisnik.Uloga == 3)
-                {
-                    return new JsonResult("{\"poruka\":\"Korisnik je na crnoj listi i ne može objaviti oglas.\"}");
-                }
+              
+                var oglas = _context.Oglas
+                   .Include(c => c.Korisnik)
+                   .FirstOrDefault(x => x.Sifra == sifra);
 
-                var oglas = _context.Oglas.Find(sifra);
-
-                if (oglas == null)
+                if (oglas == null || oglas.Korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 oglas.Aktivan = oDto.Aktivan;
-                oglas.Korisnik = korisnik;
                 oglas.Kategorija = oDto.Kategorija;
                 //datum objave se ne može mijenjati
                 oglas.Naslov = oDto.Naslov;
@@ -755,7 +743,8 @@ namespace OglasiZaZivotinje.Controllers
 
                 oDto.Datum_objave = oglas.Datum_objave;     //pregazim ono što je unio korisnik
                 oDto.Sifra = sifra;
-                oDto.Korisnik = korisnik.Ime + " " + korisnik.Prezime;
+                oDto.Korisnik = oglas.Korisnik.Ime + " " + oglas.Korisnik.Prezime;
+                oDto.Sifra_korisnika = oglas.Korisnik.Sifra;
                 return Ok(oDto);            
             }
             catch (Exception ex)
@@ -764,74 +753,6 @@ namespace OglasiZaZivotinje.Controllers
             }
 
         }
-
-
-
-        /// <summary>
-        /// Aktiviranje/deaktiviranje oglasa
-        /// </summary>
-        /// <remarks>
-        /// Služi administratoru za brzo odobravanje ili skidanje oglasa
-        /// (neaktivni oglasi nisu vidljivi na web stranici)
-        /// 
-        /// Primjer upita:
-        ///
-        ///    PUT api/v1/Oglasi/{sifra}/Aktiviraj
-        ///    
-        /// Parametri: šifra oglasa kojeg želite aktivirati/deaktivirati
-        /// i aktivnost: 0 = neaktivan, ostali brojevi = aktivan
-        ///
-        /// </remarks>
-        /// <returns>Obavijest da je oglas aktiviran/deaktiviran</returns>
-        /// <response code="200">Sve je u redu</response>
-        /// <response code="400">Zahtjev nije valjan (BadRequest)</response> 
-        /// <response code="503">Na azure treba dodati IP u firewall</response> 
-
-        [HttpPut]
-        [Route("{sifra:int}/Aktivan")]
-        public IActionResult Aktivan(int sifra, int aktivnost)
-        {
-            _logger.LogInformation("Aktiviram/deaktiviram oglas...");
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-            if (sifra < 1)
-            {
-                return new JsonResult("{\"poruka\":\"Šifra oglasa ne može biti manja od 1.\"}");
-            }
-
-            try
-            {
-                var oglas = _context.Oglas.Find(sifra);
-
-                if (oglas == null)
-                {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
-                }
-
-                if (aktivnost == 0)
-                {
-                    oglas.Aktivan = false;
-                }
-                else
-                {
-                    oglas.Aktivan = true;
-                }
-                _context.Oglas.Update(oglas);
-                _context.SaveChanges();
-
-                return new JsonResult("{\"poruka\":\"Aktivnost je uspješno promijenjena.\"}");
-
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
-            }
-
-        }
-
 
 
 
@@ -869,7 +790,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (oglas == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema oglasa s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
                 
                 _context.Oglas.Remove(oglas);
@@ -880,7 +801,7 @@ namespace OglasiZaZivotinje.Controllers
             }
             catch (Exception)
             {
-                return new JsonResult("{\"poruka\":\"Oglas se ne može obrisati.\"}");
+                return new JsonResult("{\"poruka\":\"Oglas nije obrisan.\"}");
 
             }
 

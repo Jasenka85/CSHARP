@@ -58,7 +58,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (korisnici == null || korisnici.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 List<KorisnikDTO> prikazi = new();
@@ -139,7 +139,7 @@ namespace OglasiZaZivotinje.Controllers
                 var korisnik = _context.Korisnik.Find(sifra);
                 if (korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
                 return new JsonResult(korisnik);
             }
@@ -182,7 +182,7 @@ namespace OglasiZaZivotinje.Controllers
 
                 if (korisnici == null || korisnici.Count == 0)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika na listi.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
 
                 List<KorisnikDTO> prikazi = new();
@@ -216,6 +216,11 @@ namespace OglasiZaZivotinje.Controllers
                         });
                     }
                 };
+
+                if (prikazi.Count == 0)
+                {
+                    return StatusCode(StatusCodes.Status204NoContent);
+                }
 
                 return new JsonResult(prikazi);
             }
@@ -333,7 +338,7 @@ namespace OglasiZaZivotinje.Controllers
                 var korisnik = _context.Korisnik.Find(sifra);
                 if (korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
                 
                 //uloga se ne mijenja
@@ -432,7 +437,7 @@ namespace OglasiZaZivotinje.Controllers
                 var korisnik = _context.Korisnik.Find(sifra);
                 if (korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
                 if (korisnik.Uloga == 3)
                 {
@@ -511,7 +516,7 @@ namespace OglasiZaZivotinje.Controllers
                 var korisnik = _context.Korisnik.Find(sifra);
                 if (korisnik == null)
                 {
-                    return new JsonResult("{\"poruka\":\"Nema korisnika s tom šifrom.\"}");
+                    return StatusCode(StatusCodes.Status204NoContent);
                 }
                 if (korisnik.Uloga == 1 || korisnik.Uloga == 2)
                 {

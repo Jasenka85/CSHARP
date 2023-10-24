@@ -506,36 +506,14 @@
             
              Parametar: šifra oglasa kojeg želite mijenjati
              
-             Potrebno je unijeti i šifru korisnika koji je objavio oglas (sifra_korisnika).
              
              Kategorije oglasa: 1 = poklanjam životinju, 2 = želim udomiti životinju.
              
-             Napomena: "korisnik" se dohvaća iz baze, 
+             Napomena: "korisnik" i "sifra korisnika" se dohvaćaju iz baze, 
              "datum_objave" se bilježi automatski pri objavi i ne može se mijenjati.
              
              </remarks>
              <returns>Promijenjeni oglas u bazi sa svim podacima</returns>
-             <response code="200">Sve je u redu</response>
-             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
-             <response code="503">Na azure treba dodati IP u firewall</response> 
-        </member>
-        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Aktivan(System.Int32,System.Int32)">
-             <summary>
-             Aktiviranje/deaktiviranje oglasa
-             </summary>
-             <remarks>
-             Služi administratoru za brzo odobravanje ili skidanje oglasa
-             (neaktivni oglasi nisu vidljivi na web stranici)
-             
-             Primjer upita:
-            
-                PUT api/v1/Oglasi/{sifra}/Aktiviraj
-                
-             Parametri: šifra oglasa kojeg želite aktivirati/deaktivirati
-             i aktivnost: 0 = neaktivan, ostali brojevi = aktivan
-            
-             </remarks>
-             <returns>Obavijest da je oglas aktiviran/deaktiviran</returns>
              <response code="200">Sve je u redu</response>
              <response code="400">Zahtjev nije valjan (BadRequest)</response> 
              <response code="503">Na azure treba dodati IP u firewall</response> 
