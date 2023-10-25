@@ -77,7 +77,7 @@ namespace OglasiZaZivotinje.Controllers
                     });
                 });
 
-                return Ok(prikazi);
+                return new JsonResult(prikazi.OrderByDescending(p => p.Sifra));
             }
             catch (Exception ex)
             {
