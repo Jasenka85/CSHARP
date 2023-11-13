@@ -64,8 +64,19 @@ namespace OglasiZaZivotinje.Controllers
                 }
 
                 List<OglasDTO> prikazi = new();
+
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory()
+                    + ds + "wwwroot" + ds + "slike" + ds + "oglasi" + ds);
+
                 oglasi.ForEach(o =>
                 {
+                    var putanja = "/slike/nemaslike.png";
+                    if(System.IO.File.Exists(dir + o.Sifra + ".png"))
+                    {
+                        putanja = "/slike/oglasi/" + o.Sifra + ".png";
+                    }    
+
                     prikazi.Add(new OglasDTO()
                     {
                         Sifra = o.Sifra,
@@ -80,7 +91,8 @@ namespace OglasiZaZivotinje.Controllers
                         Ime_zivotinje=o.Ime_zivotinje,
                         Spol_zivotinje=o.Spol_zivotinje,
                         Dob_zivotinje=o.Dob_zivotinje,
-                        Kastriran=o.Kastriran
+                        Kastriran=o.Kastriran,
+                        Slika = putanja
                     });
                 });
                 return new JsonResult(prikazi.OrderByDescending(p => p.Sifra));
@@ -129,29 +141,41 @@ namespace OglasiZaZivotinje.Controllers
 
                 List<CijeliOglasDTO> prikazi = new();
 
-                foreach(Oglas o in oglasi)
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory()
+                    + ds + "wwwroot" + ds + "slike" + ds + "oglasi" + ds);
+
+                foreach (Oglas o in oglasi)
                 {
-                    if(o.Kategorija==1 && o.Aktivan==true)
-                    prikazi.Add(new CijeliOglasDTO()
+                    if (o.Kategorija == 1 && o.Aktivan == true)
                     {
-                        SifraKorisnika = o.Korisnik.Sifra,
-                        Ime = o.Korisnik?.Ime,
-                        Prezime = o.Korisnik?.Prezime,
-                        Email=o.Korisnik?.Email,
-                        Mobitel=o.Korisnik?.Mobitel,
-                        Grad=o.Korisnik?.Grad,
-                        SifraOglasa = o.Sifra,
-                        Aktivan = o.Aktivan,                      
-                        Kategorija = o.Kategorija,
-                        Datum_objave = o.Datum_objave,
-                        Naslov = o.Naslov,
-                        Opis = o.Opis,
-                        Vrsta_zivotinje = o.Vrsta_zivotinje,
-                        Ime_zivotinje = o.Ime_zivotinje,
-                        Spol_zivotinje = o.Spol_zivotinje,
-                        Dob_zivotinje = o.Dob_zivotinje,
-                        Kastriran = o.Kastriran
-                    });
+                        var putanja = "/slike/nemaslike.png";
+                        if (System.IO.File.Exists(dir + o.Sifra + ".png"))
+                        {
+                            putanja = "/slike/oglasi/" + o.Sifra + ".png";
+                        }
+                        prikazi.Add(new CijeliOglasDTO()
+                        {
+                            SifraKorisnika = o.Korisnik.Sifra,
+                            Ime = o.Korisnik?.Ime,
+                            Prezime = o.Korisnik?.Prezime,
+                            Email = o.Korisnik?.Email,
+                            Mobitel = o.Korisnik?.Mobitel,
+                            Grad = o.Korisnik?.Grad,
+                            SifraOglasa = o.Sifra,
+                            Aktivan = o.Aktivan,
+                            Kategorija = o.Kategorija,
+                            Datum_objave = o.Datum_objave,
+                            Naslov = o.Naslov,
+                            Opis = o.Opis,
+                            Vrsta_zivotinje = o.Vrsta_zivotinje,
+                            Ime_zivotinje = o.Ime_zivotinje,
+                            Spol_zivotinje = o.Spol_zivotinje,
+                            Dob_zivotinje = o.Dob_zivotinje,
+                            Kastriran = o.Kastriran,
+                            Slika=putanja
+                        });
+                    }
                 };
                 if (prikazi.Count == 0)
                 {
@@ -206,9 +230,19 @@ namespace OglasiZaZivotinje.Controllers
 
                 List<CijeliOglasDTO> prikazi = new();
 
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory()
+                    + ds + "wwwroot" + ds + "slike" + ds + "oglasi" + ds);
+
                 foreach (Oglas o in oglasi)
                 {
-                    if (o.Kategorija == 2 && o.Aktivan==true)
+                    if (o.Kategorija == 2 && o.Aktivan == true)
+                    {
+                        var putanja = "/slike/nemaslike.png";
+                        if (System.IO.File.Exists(dir + o.Sifra + ".png"))
+                        {
+                            putanja = "/slike/oglasi/" + o.Sifra + ".png";
+                        }
                         prikazi.Add(new CijeliOglasDTO()
                         {
                             SifraKorisnika = o.Korisnik.Sifra,
@@ -227,8 +261,10 @@ namespace OglasiZaZivotinje.Controllers
                             Ime_zivotinje = o.Ime_zivotinje,
                             Spol_zivotinje = o.Spol_zivotinje,
                             Dob_zivotinje = o.Dob_zivotinje,
-                            Kastriran = o.Kastriran
+                            Kastriran = o.Kastriran,
+                            Slika=putanja
                         });
+                    }
                 };
 
                 if (prikazi.Count == 0)
@@ -280,30 +316,42 @@ namespace OglasiZaZivotinje.Controllers
 
             try
             {
-                var oglas = _context.Oglas
+                var o = _context.Oglas
                    .Include(c => c.Korisnik)
                    .FirstOrDefault(x => x.Sifra == sifra);
 
-                if (oglas == null || oglas.Korisnik == null)
+                if (o == null || o.Korisnik == null)
                 {
                     return StatusCode(StatusCodes.Status204NoContent);
                 }
 
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory()
+                    + ds + "wwwroot" + ds + "slike" + ds + "oglasi" + ds);
+
+                var putanja = "/slike/nemaslike.png";
+
+                if (System.IO.File.Exists(dir + o.Sifra + ".png"))
+                {
+                    putanja = "/slike/oglasi/" + o.Sifra + ".png";
+                }
+
                 var trazen = new OglasDTO()
                 {
-                    Sifra = oglas.Sifra,
-                    Aktivan = oglas.Aktivan,
-                    Korisnik = oglas.Korisnik?.Ime + " " + oglas.Korisnik?.Prezime,
-                    Sifra_korisnika = oglas.Korisnik.Sifra,
-                    Kategorija = oglas.Kategorija,
-                    Datum_objave = oglas.Datum_objave,
-                    Naslov = oglas.Naslov,
-                    Opis = oglas.Opis,
-                    Vrsta_zivotinje = oglas.Vrsta_zivotinje,
-                    Ime_zivotinje = oglas.Ime_zivotinje,
-                    Spol_zivotinje = oglas.Spol_zivotinje,
-                    Dob_zivotinje = oglas.Dob_zivotinje,
-                    Kastriran = oglas.Kastriran
+                    Sifra = o.Sifra,
+                    Aktivan = o.Aktivan,
+                    Korisnik = o.Korisnik?.Ime + " " + o.Korisnik?.Prezime,
+                    Sifra_korisnika = o.Korisnik.Sifra,
+                    Kategorija = o.Kategorija,
+                    Datum_objave = o.Datum_objave,
+                    Naslov = o.Naslov,
+                    Opis = o.Opis,
+                    Vrsta_zivotinje = o.Vrsta_zivotinje,
+                    Ime_zivotinje = o.Ime_zivotinje,
+                    Spol_zivotinje = o.Spol_zivotinje,
+                    Dob_zivotinje = o.Dob_zivotinje,
+                    Kastriran = o.Kastriran,
+                    Slika = putanja
                 };
 
                 return new JsonResult(trazen);
@@ -349,34 +397,46 @@ namespace OglasiZaZivotinje.Controllers
 
             try
             {
-                var trazenO = _context.Oglas
+                var o = _context.Oglas
                    .Include(c => c.Korisnik)
                    .FirstOrDefault(x => x.Sifra == sifra);
 
-                if (trazenO == null || trazenO.Korisnik == null)
+                if (o == null || o.Korisnik == null)
                 {
                     return StatusCode(StatusCodes.Status204NoContent);
                 }
 
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory()
+                    + ds + "wwwroot" + ds + "slike" + ds + "oglasi" + ds);
+
+                var putanja = "/slike/nemaslike.png";
+
+                if (System.IO.File.Exists(dir + o.Sifra + ".png"))
+                {
+                    putanja = "/slike/oglasi/" + o.Sifra + ".png";
+                }
+
                 var prikazi = new CijeliOglasDTO()
                 {
-                    SifraKorisnika = trazenO.Korisnik.Sifra,
-                    Ime = trazenO.Korisnik?.Ime,
-                    Prezime = trazenO.Korisnik?.Prezime,
-                    Email = trazenO.Korisnik?.Email,
-                    Mobitel = trazenO.Korisnik?.Mobitel,
-                    Grad = trazenO.Korisnik?.Grad,
-                    SifraOglasa = trazenO.Sifra,
-                    Aktivan = trazenO.Aktivan,
-                    Kategorija = trazenO.Kategorija,
-                    Datum_objave = trazenO.Datum_objave,
-                    Naslov = trazenO.Naslov,
-                    Opis = trazenO.Opis,
-                    Vrsta_zivotinje = trazenO.Vrsta_zivotinje,
-                    Ime_zivotinje = trazenO.Ime_zivotinje,
-                    Spol_zivotinje = trazenO.Spol_zivotinje,
-                    Dob_zivotinje = trazenO.Dob_zivotinje,
-                    Kastriran = trazenO.Kastriran
+                    SifraKorisnika = o.Korisnik.Sifra,
+                    Ime = o.Korisnik?.Ime,
+                    Prezime = o.Korisnik?.Prezime,
+                    Email = o.Korisnik?.Email,
+                    Mobitel = o.Korisnik?.Mobitel,
+                    Grad = o.Korisnik?.Grad,
+                    SifraOglasa = o.Sifra,
+                    Aktivan = o.Aktivan,
+                    Kategorija = o.Kategorija,
+                    Datum_objave = o.Datum_objave,
+                    Naslov = o.Naslov,
+                    Opis = o.Opis,
+                    Vrsta_zivotinje = o.Vrsta_zivotinje,
+                    Ime_zivotinje = o.Ime_zivotinje,
+                    Spol_zivotinje = o.Spol_zivotinje,
+                    Dob_zivotinje = o.Dob_zivotinje,
+                    Kastriran = o.Kastriran,
+                    Slika=putanja
                 };
 
                 return new JsonResult(prikazi);
@@ -447,10 +507,24 @@ namespace OglasiZaZivotinje.Controllers
                     return StatusCode(StatusCodes.Status204NoContent);
                 }
 
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory()
+                    + ds + "wwwroot" + ds + "slike" + ds + "oglasi" + ds);
+
+                
+
+
                 var prikazi = new List<OglasDTO>();
                 
                 oglasikorisnika.ForEach(o =>
                 {
+                    var putanja = "/slike/nemaslike.png";
+
+                    if (System.IO.File.Exists(dir + o.Sifra + ".png"))
+                    {
+                        putanja = "/slike/oglasi/" + o.Sifra + ".png";
+                    }
+
                     prikazi.Add(new OglasDTO()
                     {
                         Sifra = o.Sifra,
@@ -465,10 +539,12 @@ namespace OglasiZaZivotinje.Controllers
                         Ime_zivotinje = o.Ime_zivotinje,
                         Spol_zivotinje = o.Spol_zivotinje,
                         Dob_zivotinje = o.Dob_zivotinje,
-                        Kastriran = o.Kastriran
+                        Kastriran = o.Kastriran,
+                        Slika=putanja
                     });
                 });
-                return Ok(prikazi);
+
+                return new JsonResult(prikazi);
 
             }
             catch (Exception ex)
@@ -563,6 +639,23 @@ namespace OglasiZaZivotinje.Controllers
                 oDto.Datum_objave = o.Datum_objave;  //pregazim ono što je unio korisnik
                 oDto.Sifra = o.Sifra;   //dohvatim šifru iz baze
                 oDto.Korisnik = korisnik.Ime + " " + korisnik.Prezime;
+
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory() + ds + "wwwroot" + ds + "slike" + ds + "oglasi");
+
+                if (!System.IO.Directory.Exists(dir))
+                {
+                    System.IO.Directory.CreateDirectory(dir);
+                }
+
+                var putanja = Path.Combine(dir + ds + o.Sifra + ".png");
+
+                if (oDto.Slika != "/slike/nemaslike.png")
+                {
+                    System.IO.File.WriteAllBytes(putanja, Convert.FromBase64String(oDto.Slika));
+                    oDto.Slika = putanja;   
+                }
+
                 return Ok(oDto);
             }
             catch (Exception ex)
@@ -619,17 +712,17 @@ namespace OglasiZaZivotinje.Controllers
             {
                 Korisnik k = new Korisnik()
                 {
-                    Uloga = 0,
+                    Uloga = 0,  // novi korisnik uvijek ima ulogu 0 = korisnik
                     Ime = coDto.Ime,
                     Prezime = coDto.Prezime,
                     Email = coDto.Email,
-                    Lozinka = "",
+                    Lozinka = "",   //lozinka će se dodijeliti ako postane administrator ili moderator
                     Mobitel = coDto.Mobitel,
                     Grad = coDto.Grad
                 };
                 _context.Korisnik.Add(k);
                 _context.SaveChanges();
-                coDto.SifraKorisnika = k.Sifra;
+                coDto.SifraKorisnika = k.Sifra; //pregazim ono što je unio korisnik
 
                 Oglas o = new Oglas()
                 {
@@ -651,11 +744,29 @@ namespace OglasiZaZivotinje.Controllers
                 coDto.Aktivan = false;                 //pregazim ono što je unio korisnik
                 coDto.Datum_objave = o.Datum_objave;  //pregazim ono što je unio korisnik
                 coDto.SifraOglasa = o.Sifra;   //dohvatim šifru iz baze
+
+
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory() + ds + "wwwroot" + ds + "slike" + ds + "oglasi");
+
+                if (!System.IO.Directory.Exists(dir))
+                {
+                    System.IO.Directory.CreateDirectory(dir);
+                }
+
+                var putanja = Path.Combine(dir + ds + o.Sifra + ".png");
+
+                if (coDto.Slika != "/slike/nemaslike.png")
+                {
+                    System.IO.File.WriteAllBytes(putanja, Convert.FromBase64String(coDto.Slika));
+                    coDto.Slika = putanja;
+                }
+
                 return Ok(coDto);
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status503ServiceUnavailable, ex.Message);
+                return StatusCode(StatusCodes.Status400BadRequest, "Oglas se ne može objaviti, obavezna polja ne mogu biti prazna.");
             }
         }
 
@@ -745,6 +856,35 @@ namespace OglasiZaZivotinje.Controllers
                 oDto.Sifra = sifra;
                 oDto.Korisnik = oglas.Korisnik.Ime + " " + oglas.Korisnik.Prezime;
                 oDto.Sifra_korisnika = oglas.Korisnik.Sifra;
+
+
+                var ds = Path.DirectorySeparatorChar;
+                string dir = Path.Combine(Directory.GetCurrentDirectory() + ds + "wwwroot" + ds + "slike" + ds + "oglasi");
+                if (!System.IO.Directory.Exists(dir))
+                {
+                    System.IO.Directory.CreateDirectory(dir);
+                }
+
+                var putanja = Path.Combine(dir + ds + oglas.Sifra + ".png");
+
+
+                if (oDto.Slika == null || oDto.Slika == "")
+                {
+                    if (System.IO.File.Exists(dir + oglas.Sifra + ".png"))
+                    {
+                        oDto.Slika = putanja;
+                    }
+                    else
+                    {
+                        oDto.Slika = "/slike/nemaslike.png";
+                    }  
+                }
+                else
+                {
+                    System.IO.File.WriteAllBytes(putanja, Convert.FromBase64String(oDto.Slika));
+                    oDto.Slika = putanja;
+                }
+
                 return Ok(oDto);            
             }
             catch (Exception ex)
@@ -753,6 +893,7 @@ namespace OglasiZaZivotinje.Controllers
             }
 
         }
+
 
 
 
@@ -806,6 +947,7 @@ namespace OglasiZaZivotinje.Controllers
             }
 
         }
+
 
 
 

@@ -7,7 +7,6 @@ namespace OglasiZaZivotinje.Models.DTO
     {
         public int Sifra { get; set; }
 
-        [DefaultValue(false)]   //oglas je neaktivan dok ga ne odobri administrator
         public bool Aktivan { get; set; }
         
         public string? Korisnik { get; set; }
@@ -31,7 +30,7 @@ namespace OglasiZaZivotinje.Models.DTO
 
         public string? Kastriran { get; set; }   // nije samo "da" ili "ne", može pisati da je mužjak kastriran ali ženka nije i razne kombinacije
 
-
+        public string? Slika { get; set; }
 
     }
 }

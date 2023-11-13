@@ -41,6 +41,7 @@ namespace OglasiZaZivotinje.Models.DTO
 
         public string? Kastriran { get; set; }   // nije samo "da" ili "ne", može pisati da je mužjak kastriran ali ženka nije i razne kombinacije
 
+        public string? Slika { get; set; }
 
     }
 }

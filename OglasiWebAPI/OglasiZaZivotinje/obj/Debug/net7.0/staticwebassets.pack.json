@@ -41,12 +41,12 @@
       "PackagePath": "staticwebassets\\service-worker.js.map"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\css\\main.5d58b7af.css",
-      "PackagePath": "staticwebassets\\static\\css\\main.5d58b7af.css"
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\css\\main.a90f07cb.css",
+      "PackagePath": "staticwebassets\\static\\css\\main.a90f07cb.css"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\css\\main.5d58b7af.css.map",
-      "PackagePath": "staticwebassets\\static\\css\\main.5d58b7af.css.map"
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\css\\main.a90f07cb.css.map",
+      "PackagePath": "staticwebassets\\static\\css\\main.a90f07cb.css.map"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\787.cc4f064d.chunk.js",
@@ -57,16 +57,16 @@
       "PackagePath": "staticwebassets\\static\\js\\787.cc4f064d.chunk.js.map"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.dd98f4bb.js",
-      "PackagePath": "staticwebassets\\static\\js\\main.dd98f4bb.js"
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.feb443c3.js",
+      "PackagePath": "staticwebassets\\static\\js\\main.feb443c3.js"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.dd98f4bb.js.LICENSE.txt",
-      "PackagePath": "staticwebassets\\static\\js\\main.dd98f4bb.js.LICENSE.txt"
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.feb443c3.js.LICENSE.txt",
+      "PackagePath": "staticwebassets\\static\\js\\main.feb443c3.js.LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.dd98f4bb.js.map",
-      "PackagePath": "staticwebassets\\static\\js\\main.dd98f4bb.js.map"
+      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\js\\main.feb443c3.js.map",
+      "PackagePath": "staticwebassets\\static\\js\\main.feb443c3.js.map"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\media\\header_oglasi.45716b8d20585f617c74.jpg",
@@ -75,10 +75,6 @@
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\media\\logo.d5d8ce4611dbfa462b4205a01fc08ae9.svg",
       "PackagePath": "staticwebassets\\static\\media\\logo.d5d8ce4611dbfa462b4205a01fc08ae9.svg"
-    },
-    {
-      "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\media\\nemafoto.1b227063a99efd658771.jpg",
-      "PackagePath": "staticwebassets\\static\\media\\nemafoto.1b227063a99efd658771.jpg"
     },
     {
       "Id": "C:\\Users\\jaugu\\Documents\\GitHub\\CSHARP\\OglasiWebAPI\\OglasiZaZivotinje\\wwwroot\\static\\media\\oglas.336bb6e71027f6f588f4.png",

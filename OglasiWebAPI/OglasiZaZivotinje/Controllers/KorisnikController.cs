@@ -508,7 +508,7 @@ namespace OglasiZaZivotinje.Controllers
 
             if (sifra < 1)
             {
-                return new JsonResult("{\"poruka\":\"Šifra poruke ne može biti manja od 1.\"}");
+                return BadRequest();
             }
 
             try
@@ -520,7 +520,7 @@ namespace OglasiZaZivotinje.Controllers
                 }
                 if (korisnik.Uloga == 1 || korisnik.Uloga == 2)
                 {
-                    return new JsonResult("{\"poruka\":\"Ne mogu obrisati administratora ili moderatora.\"}");
+                    return StatusCode(StatusCodes.Status400BadRequest, "Ne mogu obrisati administratora i moderatora.");
                 }
 
                 _context.Korisnik.Remove(korisnik);
@@ -531,7 +531,7 @@ namespace OglasiZaZivotinje.Controllers
             }
             catch (Exception)
             {
-                return new JsonResult("{\"poruka\":\"Korisnik se ne može obrisati.\"}");       
+                return StatusCode(StatusCodes.Status400BadRequest, "Korisnik se ne može obrisati jer ima oglas.");
             }
         }
 
