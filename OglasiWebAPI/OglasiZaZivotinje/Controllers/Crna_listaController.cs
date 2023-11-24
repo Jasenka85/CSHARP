@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OglasiZaZivotinje.Data;
 using OglasiZaZivotinje.Models;
@@ -12,6 +13,7 @@ namespace OglasiZaZivotinje.Controllers
 
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize]
     public class Crna_listaController: ControllerBase
     {
         private readonly OglasiContext _context;

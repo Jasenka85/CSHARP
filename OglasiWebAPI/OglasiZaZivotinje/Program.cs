@@ -1,5 +1,9 @@
 using System.Reflection;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using OglasiZaZivotinje.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,11 +31,48 @@ builder.Services.AddSwaggerGen(sgo => {
         }
     };
     sgo.SwaggerDoc("v1", o);
+
+    // SECURITY
+
+    sgo.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = @"JWT Autorizacija radi tako da se prvo na ruti /api/v1/Autorizacija/token.  
+                      autorizirate i dobijete token (kopirajte ga bez navodnika). 
+                      U donji prozor?i? upišite: Bearer [razmak] [token]",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+
+    sgo.AddSecurityRequirement(new OpenApiSecurityRequirement()
+      {
+        {
+          new OpenApiSecurityScheme
+          {
+            Reference = new OpenApiReference
+              {
+                Type = ReferenceType.SecurityScheme,
+                Id = "Bearer"
+              },
+              Scheme = "oauth2",
+              Name = "Bearer",
+              In = ParameterLocation.Header,
+
+            },
+            new List<string>()
+          }
+        });
+
+    // END SECURITY
+
+
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     sgo.IncludeXmlComments(xmlPath);
 });
 
+//los nacin
 builder.Services.AddCors(opcije =>
 {
     opcije.AddPolicy("CorsPolicy",	
@@ -39,8 +80,33 @@ builder.Services.AddCors(opcije =>
         builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 
-
+//dodavaje baze podataka
 builder.Services.AddDbContext<OglasiContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString(name: "OglasiContext")));
+
+
+// SECURITY
+
+builder.Services.AddAuthentication(x => {
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MojKljucKojijeJakoMisteriozaniDugacak")),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = false
+    };
+});
+
+builder.Services.AddAuthorization();
+
+
+// END SECURITY
+
 
 
 var app = builder.Build();
@@ -61,6 +127,11 @@ var app = builder.Build();
 
 
 app.UseHttpsRedirection();
+
+// SECURITY
+app.UseAuthentication();
+app.UseAuthorization();
+// ENDSECURITY
 
 app.UseStaticFiles();
 

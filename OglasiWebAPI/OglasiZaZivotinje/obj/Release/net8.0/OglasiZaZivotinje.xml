@@ -1,0 +1,554 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OglasiZaZivotinje</name>
+    </assembly>
+    <members>
+        <member name="T:OglasiZaZivotinje.Controllers.Crna_listaController">
+            <summary>
+            Namijenjeno za CRUD operacije s entitetom Crna_lista u bazi
+            </summary>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.#ctor(OglasiZaZivotinje.Data.OglasiContext,Microsoft.Extensions.Logging.ILogger{OglasiZaZivotinje.Controllers.Crna_listaController})">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.Get">
+             <summary>
+             Dohvaća sve korisnike iz baze koji su na crnoj listi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Crna_lista
+            
+             </remarks>
+             <returns>Korisnike iz baze koji su na crnoj listi</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.GetBySifra(System.Int32)">
+             <summary>
+             Dohvaća zapis u crnoj listi sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Crna_lista/{sifra}
+            
+             </remarks>
+             <returns>Zapis u crnoj listi sa zadanom šifrom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.Post(OglasiZaZivotinje.Models.DTO.Crna_listaDTO)">
+             <summary>
+             Dodaje novog korisnika na crnu listu u bazi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST api/v1/Crna_lista
+                
+             Napomena: "sifra" i "korisnik" se dohvaćaju iz baze, 
+             "datum_blokiranja" se bilježi automatski
+             
+             Potrebno je unijeti šifru korisnika kojeg stavljate na crnu listu (sifra_korisnika)
+             
+             Korisnik na crnoj listi je blokiran i ne može objaviti novi oglas.
+             Preporučuje se deaktivirati sve njegove prijašnje oglase.
+             
+             </remarks>
+             <returns>Novi unos u crnu listu u bazi, sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.Put(System.Int32,OglasiZaZivotinje.Models.DTO.Crna_listaDTO)">
+             <summary>
+             Mijenja unos u crnoj listi sa zadanom šifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT api/v1/Crna_lista/{sifra}
+            
+             Parametar: šifra unosa u crnu listu kojeg želite mijenjati
+             
+             
+             Napomena: "korisnik" i "sifra_korisnika" se dohvaćaju iz baze, 
+             "datum_blokiranja" se bilježi automatski i ne može se mijenjati.
+             
+             </remarks>
+             <returns>Promijenjen unos u crnu listu sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.Crna_listaController.Delete(System.Int32)">
+             <summary>
+             Briše unos iz crne liste sa zadanom šifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                DELETE api/v1/Crna_lista/{sifra}
+            
+             Parametar: šifra unosa u crnoj listi kojeg želite obrisati
+             
+             </remarks>
+             <returns>Obavijest da je obrisao unos u crnoj listi</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="T:OglasiZaZivotinje.Controllers.KorisnikController">
+            <summary>
+            Namijenjeno za CRUD operacije s entitetom Korisnik u bazi
+            </summary>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.#ctor(OglasiZaZivotinje.Data.OglasiContext,Microsoft.Extensions.Logging.ILogger{OglasiZaZivotinje.Controllers.KorisnikController})">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Get">
+             <summary>
+             Dohvaća sve korisnike iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Korisnik
+            
+             </remarks>
+             <returns>Svi korisnici u bazi</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.GetBySifra(System.Int32)">
+             <summary>
+             Dohvaća korisnika sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Korisnik/{sifra}
+            
+             </remarks>
+             <returns>Korisnika sa zadanom šifrom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.GetAdmini">
+             <summary>
+             Dohvaća administratore i moderatore
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Korisnik/Admini
+            
+             </remarks>
+             <returns>Popis administratora i moderatora</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Post(OglasiZaZivotinje.Models.DTO.KorisnikDTO)">
+             <summary>
+             Dodaje korisnika u bazu
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST api/v1/Korisnik
+            
+             Napomena: "sifra" se dohvaća iz baze,
+             novi korisnik uvijek ima ulogu 0 (običan korisnik)
+             
+             </remarks>
+             <returns>Kreiranog korisnika u bazi sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Put(System.Int32,OglasiZaZivotinje.Models.DTO.KorisnikDTO)">
+             <summary>
+             Mijenja podatke korisnika sa zadanom šifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT api/v1/Korisnik/{sifra}
+                
+             Parametar: šifra korisnika kojeg želite mijenjati
+            
+             Napomena: "sifra" se dohvaća iz baze
+             Uloga se ne može mijenjati, to može samo administrator u posebnoj ruti
+             
+             </remarks>
+             <returns>Promijenjenog korisnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.PromjenaUloge(System.Int32,OglasiZaZivotinje.Models.Korisnik)">
+             <summary>
+             Mijenja ulogu korisnika sa zadanom šifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT api/v1/Korisnik/{sifra}/Uloga
+                
+             Parametri: šifra korisnika, nova uloga i lozinka
+            
+             Uloge: 0 = korisnik, 1 = administrator, 2 = moderator
+             
+             </remarks>
+             <returns>Promijenjenog korisnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.KorisnikController.Delete(System.Int32)">
+             <summary>
+             Briše korisnika sa zadanom šifrom iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                DELETE api/v1/Korisnik/{sifra}
+                
+             Parametar: šifra korisnika kojeg želite obrisati
+             
+             Napomena: nije moguće obrisati administratora i moderatora,
+             kao ni korisnika koji ima objavljen oglas.
+            
+             </remarks>
+             <returns>Poruku da je obrisao korisnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="T:OglasiZaZivotinje.Controllers.OglasiController">
+            <summary>
+            Namijenjeno za CRUD operacije sa entitetom Oglasi u bazi
+            </summary>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.#ctor(OglasiZaZivotinje.Data.OglasiContext,Microsoft.Extensions.Logging.ILogger{OglasiZaZivotinje.Controllers.OglasiController})">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Get">
+             <summary>
+             Dohvaća sve oglase iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Oglasi
+            
+             </remarks>
+             <returns>Sve oglase u bazi</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.GetOglasiPoklanjam">
+             <summary>
+             Dohvaća samo aktivne oglase kategorije "Poklanjam", obrnutim redoslijedom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Oglasi/Poklanjam
+            
+             </remarks>
+             <returns>Oglase kategorije "Poklanjam", obrnutim redoslijedom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.GetOglasiTrazim">
+             <summary>
+             Dohvaća samo aktivne oglase kategorije "Tražim", obrnutim redoslijedom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Oglasi/Trazim
+            
+             </remarks>
+             <returns>Oglase kategorije "Tražim", obrnutim redoslijedom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.GetBySifra(System.Int32)">
+             <summary>
+             Dohvaća oglas sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Oglasi/{sifra}
+            
+             </remarks>
+             <returns>Oglas sa zadanom šifrom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.GetCijeliBySifra(System.Int32)">
+             <summary>
+             Dohvaća cijeli oglas sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Oglasi/CijeliOglas/{sifra}
+            
+             </remarks>
+             <returns>Oglas sa zadanom šifrom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.OglasiKorisnika(System.Int32)">
+             <summary>
+             Dohvaća sve oglase od traženog korisnika
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Oglasi/{sifra}/Korisnik
+            
+             Parametar: šifra korisnika čije oglase želite pregledati
+             
+             </remarks>
+             <returns>Sve oglase od traženog korisnika</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Post(OglasiZaZivotinje.Models.DTO.OglasDTO)">
+             <summary>
+             Dodaje novi oglas u bazu
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST api/v1/Oglasi
+                
+            
+             Napomena: "sifra" i "korisnik" se dohvaćaju iz baze, 
+             "datum_objave" se bilježi automatski,
+             oglas je neaktivan (false) dok ga ne odobri administrator.
+             
+             Potrebno je unijeti šifru korisnika koji objavljuje oglas (sifra_korisnika)
+             
+             Kategorije oglasa: 1 = poklanjam životinju, 2 = želim udomiti životinju.
+             
+             
+             </remarks>
+             <returns>Kreirani oglas u bazi sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.PostCO(OglasiZaZivotinje.Models.DTO.CijeliOglasDTO)">
+             <summary>
+             Dodaje novog korisnika i oglas u bazu
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST api/v1/Oglasi/CijeliOglas
+                
+            
+             Napomena: "sifraKorisnika" i "sifraOglasa" se dohvaćaju iz baze, 
+             "datum_objave" se bilježi automatski,
+             oglas je neaktivan (false) dok ga ne odobri administrator.
+             
+             Kategorije oglasa: 1 = poklanjam životinju, 2 = želim udomiti životinju.
+             
+             
+             </remarks>
+             <returns>Kreiranog korisnika i oglas u bazi sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Put(System.Int32,OglasiZaZivotinje.Models.DTO.OglasDTO)">
+             <summary>
+             Mijenja oglas sa zadanom šifrom u bazi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT api/v1/Oglasi/{sifra}
+            
+             Parametar: šifra oglasa kojeg želite mijenjati
+             
+             
+             Kategorije oglasa: 1 = poklanjam životinju, 2 = želim udomiti životinju.
+             
+             Napomena: "korisnik" i "sifra korisnika" se dohvaćaju iz baze, 
+             "datum_objave" se bilježi automatski pri objavi i ne može se mijenjati.
+             
+             </remarks>
+             <returns>Promijenjeni oglas u bazi sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.OglasiController.Delete(System.Int32)">
+             <summary>
+             Briše oglas sa zadanom šifrom iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                DELETE api/v1/Oglasi/{sifra}
+            
+             Parametar: šifra oglasa kojeg želite obrisati
+             
+             </remarks>
+             <returns>Poruku da je obrisao oglas</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="T:OglasiZaZivotinje.Controllers.PorukeController">
+            <summary>
+            Namijenjeno za CRUD operacije s entitetom Poruka u bazi
+            </summary>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.PorukeController.#ctor(OglasiZaZivotinje.Data.OglasiContext,Microsoft.Extensions.Logging.ILogger{OglasiZaZivotinje.Controllers.PorukeController})">
+            <summary>
+            Konstruktor
+            </summary>
+            <param name="context"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.PorukeController.Get">
+             <summary>
+             Dohvaća sve poruke u bazi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Poruke
+            
+             </remarks>
+             <returns>Sve poruke u bazi</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.PorukeController.GetBySifra(System.Int32)">
+             <summary>
+             Dohvaća poruku sa zadanom sifrom
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Poruke/{sifra}
+            
+             </remarks>
+             <returns>Poruku sa zadanom šifrom</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.PorukeController.PorukeOglasa(System.Int32)">
+             <summary>
+             Dohvaća sve poruke za traženi oglas
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                GET api/v1/Poruke/{sifra}/Oglas
+            
+             Parametar: šifra oglasa za kojeg želite pregledati poruke
+             
+             </remarks>
+             <returns>Sve poruke za traženi oglas</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.PorukeController.Post(OglasiZaZivotinje.Models.DTO.PorukaDTO)">
+             <summary>
+             Dodaje novu poruku u bazu
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                POST api/v1/Poruke
+                
+             Napomena: "sifra" i "oglas" se dohvaćaju iz baze, 
+             "datum_poruke" se bilježi automatski
+             
+             Potrebno je unijeti šifru oglasa za kojeg šaljete poruku (sifra_oglasa)
+             
+             </remarks>
+             <returns>Kreiranu poruku u bazi sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.PorukeController.Put(System.Int32,OglasiZaZivotinje.Models.DTO.PorukaDTO)">
+             <summary>
+             Mijenja poruku sa zadanom šifrom u bazi
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                PUT api/v1/Poruke/{sifra}
+            
+             Parametar: šifra poruke koju želite mijenjati
+             
+             
+             Napomena: "oglas" i "sifra_oglasa" se dohvaćaju iz baze, 
+             "datum_poruke" se bilježi automatski i ne može se mijenjati.
+             
+             </remarks>
+             <returns>Promijenjenu poruku u bazi sa svim podacima</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+        <member name="M:OglasiZaZivotinje.Controllers.PorukeController.Delete(System.Int32)">
+             <summary>
+             Briše poruku sa zadanom šifrom iz baze
+             </summary>
+             <remarks>
+             Primjer upita:
+            
+                DELETE api/v1/Poruke/{sifra}
+            
+             Parametar: šifra poruke koju želite obrisati
+             
+             </remarks>
+             <returns>Obavijest da je obrisao poruku</returns>
+             <response code="200">Sve je u redu</response>
+             <response code="400">Zahtjev nije valjan (BadRequest)</response> 
+             <response code="503">Na azure treba dodati IP u firewall</response> 
+        </member>
+    </members>
+</doc>

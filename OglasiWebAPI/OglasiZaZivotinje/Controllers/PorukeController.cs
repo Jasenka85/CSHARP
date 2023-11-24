@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OglasiZaZivotinje.Data;
 using OglasiZaZivotinje.Models;
@@ -45,6 +46,7 @@ namespace OglasiZaZivotinje.Controllers
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             _logger.LogInformation("Dohvaćam poruke...");
@@ -104,6 +106,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpGet]
         [Route("{sifra:int}")]
+        [Authorize]
         public IActionResult GetBySifra(int sifra)
         {
 
@@ -171,6 +174,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpGet]
         [Route("Oglas/{sifra:int}")]
+        [Authorize]
         public IActionResult PorukeOglasa(int sifra)
         {
             _logger.LogInformation("Dohvaćam poruke za dani oglas...");
@@ -324,6 +328,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpPut]
         [Route("{sifra:int}")]
+        [Authorize]
         public IActionResult Put(int sifra, PorukaDTO pDto)
         {
             _logger.LogInformation("Mijenjam poruku...");
@@ -395,6 +400,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpDelete]
         [Route("{sifra:int}")]
+        [Authorize]
         public IActionResult Delete(int sifra)
         {
             _logger.LogInformation("Brišem poruku...");

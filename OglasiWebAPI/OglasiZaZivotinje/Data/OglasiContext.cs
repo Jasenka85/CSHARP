@@ -14,9 +14,9 @@ namespace OglasiZaZivotinje.Data
 
         public DbSet<Poruka> Poruka { get; set; }
 
-        public DbSet<Fotografija> Fotografija { get; set; }
-
         public DbSet<Crna_lista> Crna_lista { get; set; }
+
+        public DbSet<Administrator> Administrator { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,9 +25,6 @@ namespace OglasiZaZivotinje.Data
 
             //poruka pripada jednom oglasu
             modelBuilder.Entity<Poruka>().HasOne(p => p.Oglas);
-
-            //fotografija pripada jednom oglasu
-            modelBuilder.Entity<Fotografija>().HasOne(f => f.Oglas);
 
             //korisnik pripada jednoj crnoj listi
             modelBuilder.Entity<Crna_lista>().HasOne(c => c.Korisnik);

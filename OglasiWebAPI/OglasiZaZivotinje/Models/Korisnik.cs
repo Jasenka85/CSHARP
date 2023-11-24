@@ -18,8 +18,6 @@ namespace OglasiZaZivotinje.Models
         [Required(ErrorMessage = "E-mail je obavezan")]
         public string? Email { get; set; }
 
-        public string? Lozinka { get; set; }
-
         public string? Mobitel { get; set; }
 
         public string? Grad { get; set; }

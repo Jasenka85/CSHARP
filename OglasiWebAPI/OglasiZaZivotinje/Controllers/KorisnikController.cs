@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using OglasiZaZivotinje.Data;
 using OglasiZaZivotinje.Models;
@@ -44,6 +45,7 @@ namespace OglasiZaZivotinje.Controllers
         /// <response code="503">Na azure treba dodati IP u firewall</response> 
 
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             _logger.LogInformation("Dohvaćam korisnike...");
@@ -89,7 +91,6 @@ namespace OglasiZaZivotinje.Controllers
                         Ime = k.Ime,
                         Prezime = k.Prezime,
                         Email=k.Email,
-                        //lozinka se neće prikazivati
                         Mobitel=k.Mobitel,
                         Grad=k.Grad
                     });
@@ -120,6 +121,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpGet]
         [Route("{sifra:int}")]
+        [Authorize]
         public IActionResult GetBySifra(int sifra)
         {
 
@@ -168,6 +170,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpGet]
         [Route("Admini")]
+        [Authorize]
         public IActionResult GetAdmini()
         {
             _logger.LogInformation("Dohvaćam administratore i moderatore...");
@@ -210,7 +213,6 @@ namespace OglasiZaZivotinje.Controllers
                             Ime = k.Ime,
                             Prezime = k.Prezime,
                             Email = k.Email,
-                            //lozinka se neće prikazivati
                             Mobitel = k.Mobitel,
                             Grad = k.Grad
                         });
@@ -272,7 +274,6 @@ namespace OglasiZaZivotinje.Controllers
                     Ime = kDto.Ime,
                     Prezime = kDto.Prezime,
                     Email = kDto.Email,
-                    Lozinka = "",   //lozinka će se popuniti samo ako član postane administrator ili moderator
                     Mobitel = kDto.Mobitel,
                     Grad = kDto.Grad
                 };
@@ -305,7 +306,7 @@ namespace OglasiZaZivotinje.Controllers
         /// Parametar: šifra korisnika kojeg želite mijenjati
         ///
         /// Napomena: "sifra" se dohvaća iz baze
-        /// Uloga i lozinka se ne mogu mijenjati, to može samo administrator u posebnoj ruti
+        /// Uloga se ne može mijenjati, to može samo administrator u posebnoj ruti
         /// 
         /// </remarks>
         /// <returns>Promijenjenog korisnika</returns>
@@ -315,6 +316,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpPut]
         [Route("{sifra:int}")]
+        [Authorize]
         public IActionResult Put(int sifra, KorisnikDTO kDto)
         {
 
@@ -345,7 +347,6 @@ namespace OglasiZaZivotinje.Controllers
                 korisnik.Ime = kDto.Ime;
                 korisnik.Prezime = kDto.Prezime;
                 korisnik.Email = kDto.Email;
-                //lozinka se ne mijenja
                 korisnik.Mobitel = kDto.Mobitel;
                 korisnik.Grad = kDto.Grad;
 
@@ -374,8 +375,6 @@ namespace OglasiZaZivotinje.Controllers
 
                 kDto.NazivUloge = imeuloge;
 
-                //lozinka se ne prikazuje
-
                 return Ok(kDto);
             }
             catch (Exception ex)
@@ -389,7 +388,7 @@ namespace OglasiZaZivotinje.Controllers
 
 
         /// <summary>
-        /// Mijenja ulogu i lozinku korisnika sa zadanom šifrom
+        /// Mijenja ulogu korisnika sa zadanom šifrom
         /// </summary>
         /// <remarks>
         /// Primjer upita:
@@ -399,7 +398,6 @@ namespace OglasiZaZivotinje.Controllers
         /// Parametri: šifra korisnika, nova uloga i lozinka
         ///
         /// Uloge: 0 = korisnik, 1 = administrator, 2 = moderator
-        /// Lozinka je potrebna samo za administratora i moderatora.
         /// 
         /// </remarks>
         /// <returns>Promijenjenog korisnika</returns>
@@ -409,6 +407,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpPut]
         [Route("Uloga/{sifra:int}")]
+        [Authorize]
         public IActionResult PromjenaUloge(int sifra, Korisnik k)
         {
 
@@ -445,7 +444,6 @@ namespace OglasiZaZivotinje.Controllers
                 }
 
                 korisnik.Uloga = k.Uloga;
-                korisnik.Lozinka = k.Lozinka;
 
                 //pregazim ono što je uneseno
                 k.Sifra = korisnik.Sifra;   //dohvatim sifru iz baze
@@ -502,6 +500,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpDelete]
         [Route("{sifra:int}")]
+        [Authorize]
         public IActionResult Delete(int sifra)
         {
             _logger.LogInformation("Brišem korisnika...");

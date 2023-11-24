@@ -18,8 +18,6 @@ namespace OglasiZaZivotinje.Models.DTO
 
         public string? Email { get; set; }
 
-        //Lozinka se neće prikazivati
-
         public string? Mobitel { get; set; }
 
         public string? Grad { get; set; }

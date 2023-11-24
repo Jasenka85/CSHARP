@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OglasiZaZivotinje.Data;
@@ -716,7 +717,6 @@ namespace OglasiZaZivotinje.Controllers
                     Ime = coDto.Ime,
                     Prezime = coDto.Prezime,
                     Email = coDto.Email,
-                    Lozinka = "",   //lozinka će se dodijeliti ako postane administrator ili moderator
                     Mobitel = coDto.Mobitel,
                     Grad = coDto.Grad
                 };
@@ -805,6 +805,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpPut]
         [Route("{sifra:int}")]
+        [Authorize]
         public IActionResult Put(int sifra, OglasDTO oDto)
         {
             _logger.LogInformation("Mijenjam oglas...");
@@ -916,6 +917,7 @@ namespace OglasiZaZivotinje.Controllers
 
         [HttpDelete]
         [Route("{sifra:int}")]
+        [Authorize]
         public IActionResult Delete(int sifra)
         {
             _logger.LogInformation("Brišem oglas...");
